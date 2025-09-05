@@ -71,6 +71,71 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-遇到的问题与收获的经验教训" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/05/%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E6%94%B6%E8%8E%B7%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%95%99%E8%AE%AD/" class="article-date">
+  <time class="dt-published" datetime="2025-09-05T15:46:28.000Z" itemprop="datePublished">2025-09-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/05/%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E6%94%B6%E8%8E%B7%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%95%99%E8%AE%AD/">遇到的问题与收获的经验教训</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>问题：PowerShell 权限不足，禁止运行脚本<br>现象：第一次尝试安装 Hexo 时，命令就失败了，并提示 UnauthorizedAccess（未经授权的访问）。</li>
+</ol>
+<p>原因：Windows PowerShell 出于安全考虑，默认禁止执行任何脚本，而 npm 命令需要调用一个脚本。</p>
+<p>解决方案：以管理员身份打开 PowerShell，并执行 Set-ExecutionPolicy RemoteSigned 来调整安全策略。</p>
+<p>经验教训：本地开发环境需要正确配置。 操作系统自带的安全特性有时会与开发工具冲突，学会根据报错信息调整环境配置是程序员的基本功。</p>
+<ol start="2">
+<li>问题：hexo 命令无法被识别<br>现象：即使安装成功，输入 hexo init 时系统仍然提示找不到 hexo 这个命令。</li>
+</ol>
+<p>原因：npm 安装的全局工具所在的路径，没有被添加到系统的“环境变量 PATH”中，导致系统不知道去哪里找这个命令。</p>
+<p>解决方案：找到 npm 的全局路径，并手动将其添加到系统的环境变量 Path 中。</p>
+<p>经验教训：理解环境变量 PATH 的作用。 它是操作系统寻找命令的“地图”，是解决各种“命令找不到”问题的关键所在。</p>
+<ol start="3">
+<li>问题：hexo deploy 部署时网络连接被重置<br>现象：可以正常浏览 GitHub 网站，但部署时反复出现 Recv failure: Connection was reset 错误。</li>
+</ol>
+<p>原因：浏览网页（HTTPS）和用 Git 上传文件是两种完全不同的网络传输方式。后者对网络连接的稳定性要求极高，容易受到不稳定网络、防火墙或代理的干扰。</p>
+<p>解决方案：将部署方式从不稳定的 HTTPS 切换到更稳定、更专业的 SSH 协议。这需要生成 SSH 密钥并将其添加到 GitHub 账户中。</p>
+<p>经验教训：问题要对症下药。 “能上网”不代表“网络适合所有任务”。针对特定的问题（如大文件、长时间的持续传输），需要选择更合适的工具或协议（SSH）来解决。</p>
+<ol start="4">
+<li>问题：预览正常，但部署时提示 nothing to commit<br>现象：在本地用 hexo s 预览时能看到新文章，但 hexo d 部署时却提示没有改动，导致线上博客不更新。</li>
+</ol>
+<p>原因：这是典型的“构建缓存”或“脏数据”问题。本地预览可能使用了内存中的最新数据，但用于部署的 public 文件夹却是旧的、未被更新的。</p>
+<p>解决方案：使用 hexo clean 命令。这个命令会强制删除旧的 public 文件夹和缓存，确保下一次生成和部署使用的是最新的源文件。</p>
+<p>经验教训：学会清理缓存是重要的调试技巧。 当源代码和最终结果不一致时，首先要考虑是不是缓存导致的。hexo clean 是解决 Hexo 各种“玄学”问题的利器。</p>
+<p>您的核心收获<br>工作流的掌握：您已经完整地掌握了 Hexo 博客的日常工作流：hexo new -&gt; 编辑和保存 -&gt; hexo s (预览) -&gt; hexo clean &amp;&amp; hexo d (清理并发布)。</p>
+<p>调试能力的提升：您学会了如何根据报错信息一步步定位问题，从环境配置、网络协议，再到构建缓存，这套调试思路适用于未来遇到的任何技术问题。</p>
+<p>信心的建立：您从一个简单的想法开始，通过自己的努力和坚持，解决了一路上所有的技术障碍，最终成功搭建并发布了属于自己的网站。这是最有价值的收获。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/05/%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E6%94%B6%E8%8E%B7%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%95%99%E8%AE%AD/" data-id="cmf70gsws000a6ond188ygrbk" data-title="遇到的问题与收获的经验教训" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/09/05/hello-world/" class="article-date">
@@ -110,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/05/hello-world/" data-id="cmf6zwmtw0000osndg6f14hdv" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/05/hello-world/" data-id="cmf70gswf00006ond9rm4a9cb" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -183,7 +248,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E8%83%BD%E8%AE%BF%E9%97%AEGitHub%E5%8D%B4%E6%97%A0%E6%B3%95Deploy/" data-id="cmf6zwmtz0001osndbnre2yyr" data-title="为什么浏览网页正常而Git上传会失败？" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E8%83%BD%E8%AE%BF%E9%97%AEGitHub%E5%8D%B4%E6%97%A0%E6%B3%95Deploy/" data-id="cmf70gswi00016ond4hgnesbw" data-title="为什么浏览网页正常而Git上传会失败？" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -247,6 +312,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2025/09/05/%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E6%94%B6%E8%8E%B7%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%95%99%E8%AE%AD/">遇到的问题与收获的经验教训</a>
+          </li>
         
           <li>
             <a href="/2025/09/05/hello-world/">Hello World</a>
