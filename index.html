@@ -163,12 +163,66 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/15/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" data-id="cmgresmy60006bond9nk9gmfz" data-title="算法学习笔记：二分查找的两种写法与细节" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/10/15/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" data-id="cmgreyhv000069snd7a4yftut" data-title="算法学习笔记：二分查找的两种写法与细节" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" rel="tag">二分查找</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Hexo 博客 PowerShell 发布完整流程笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/10/14/Hexo%20%E5%8D%9A%E5%AE%A2%20PowerShell%20%E5%8F%91%E5%B8%83%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2025-10-14T15:09:00.000Z" itemprop="datePublished">2025-10-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>记录一下使用 PowerShell 发布 Hexo 博客的完整步骤，作为操作备份，防止遗忘。假设已经安装好了 Node. Js 和 Git 环境。</p>
+<p>整个流程分为三步核心操作：<strong>新建文章 -&gt; 生成静态文件 -&gt; 部署到服务器</strong>。</p>
+<h3 id="第-1-步：启动-PowerShell-并进入博客目录"><a href="#第-1-步：启动-PowerShell-并进入博客目录" class="headerlink" title="第 1 步：启动 PowerShell 并进入博客目录"></a>第 1 步：启动 PowerShell 并进入博客目录</h3><p>首先，你需要打开 PowerShell 终端，并切换到你的 Hexo 博客所在的根文件夹。</p>
+<ol>
+<li>按下 <code>Win + X</code> 键，然后选择 “Windows PowerShell” 或者 “终端”。</li>
+<li>使用 <code>cd</code> 命令进入你的 Hexo 博客文件夹。例如，如果你的博客在 <code>D:\blog</code>：</li>
+</ol>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> D:\blog</span><br><span class="line"><span class="literal">---</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### 第 2 步：新建文章</span></span><br><span class="line"></span><br><span class="line">使用 `hexo new` 命令来创建一篇新的博文。文章的标题是必需的参数。</span><br><span class="line"></span><br><span class="line">PowerShell</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>hexo new “你的文章标题”</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">例如，创建一篇名为 &quot;Hello World&quot; 的文章：</span><br><span class="line"></span><br><span class="line">PowerShell</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>hexo new “Hello World”</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">执行后，Hexo 会在 `source/_posts` 文件夹里创建一个名为 `你的文章标题.md` 的 Markdown 文件。之后就可以用你喜欢的编辑器（如 VS Code, Sublime Text, Typora 等）打开这个文件开始写作了。</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">### 第 3 步：生成并部署</span><br><span class="line"></span><br><span class="line">在你写完文章并保存之后，就到了发布的环节。这里有两个核心命令 `generate` 和 `deploy`。</span><br><span class="line"></span><br><span class="line">#### 清除缓存并生成静态文件 (`hexo g`)</span><br><span class="line"></span><br><span class="line">这个命令会把你的 Markdown 文章（`.md`）转换成网站所需的静态文件（如 `.html`, `.css`, `.js` 等）。</span><br><span class="line"></span><br><span class="line">PowerShell</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>hexo clean &amp;&amp; hexo generate</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- `hexo clean`: 清除之前生成过的旧文件缓存（即 `public` 文件夹），这可以避免一些潜在的缓存问题。</span><br><span class="line">    </span><br><span class="line">- `hexo generate` (可简写为 `hexo g`): 生成最新的网站文件，默认会存放在 `public` 文件夹里。</span><br><span class="line">    </span><br><span class="line">- `&amp;&amp;`: 这是一个连接符，表示先执行 `hexo clean` 命令，当它成功执行完毕后，再执行 `hexo generate` 命令。</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">#### 部署到网站 (`hexo d`)</span><br><span class="line"></span><br><span class="line">这个命令会把 `public` 文件夹里的所有内容推送到你在 `_config.yml` 文件里配置好的 Git 仓库（比如 GitHub Pages）。</span><br><span class="line"></span><br><span class="line">PowerShell</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>hexo deploy</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- `hexo deploy` (可简写为 `hexo d`)</span><br><span class="line">    </span><br><span class="line">- 执行此命令时，PowerShell 可能会提示你输入 GitHub 的用户名和密码（或 Personal Access Token），根据提示输入即可完成推送。</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">### 总结：最常用的命令组合</span><br><span class="line"></span><br><span class="line">在你写完文章并保存后，只需要在 PowerShell 的博客根目录里，按顺序执行以下命令即可完成发布：</span><br><span class="line"></span><br><span class="line">PowerShell</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="1-新建文章-只需要在开始写作时用一次"><a href="#1-新建文章-只需要在开始写作时用一次" class="headerlink" title="1. 新建文章 (只需要在开始写作时用一次)"></a>1. 新建文章 (只需要在开始写作时用一次)</h1><p>hexo new “My New Post”</p>
+<h1 id="2-写完文章后，一键生成并部署-这是最常用的组合"><a href="#2-写完文章后，一键生成并部署-这是最常用的组合" class="headerlink" title="2. 写完文章后，一键生成并部署 (这是最常用的组合)"></a>2. 写完文章后，一键生成并部署 (这是最常用的组合)</h1><p>hexo g -d</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">这里的 `hexo g -d` 是 `hexo generate --deploy` 的缩写，它会先执行生成操作，然后立刻执行部署操作，一步到位，非常方便。</span><br><span class="line"></span><br><span class="line">### 可选步骤：本地预览</span><br><span class="line"></span><br><span class="line">在发布到线上服务器之前，如果你想先在自己电脑上看看网站效果，可以使用本地预览命令：</span><br><span class="line"></span><br><span class="line">PowerShell</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>hexo server</p>
+<pre><code>
+- `hexo server` (可简写为 `hexo s`)
+    
+
+执行后，PowerShell 会显示一个网址，通常是 `http://localhost:4000`。在浏览器里打开这个网址，就可以实时预览你的博客效果了。确认所有内容显示无误后，在 PowerShell 窗口里按 `Ctrl + C` 停止本地服务器，然后再执行 `hexo g -d` 进行部署。
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/10/14/Hexo%20%E5%8D%9A%E5%AE%A2%20PowerShell%20%E5%8F%91%E5%B8%83%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/" data-id="cmgreyhus00009snd9b2gdfg4" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
     </footer>
   </div>
   
@@ -216,7 +270,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/14/SQL%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%94%A8%E6%8B%BC%E5%9B%BE%E6%B8%B8%E6%88%8F%E7%90%86%E8%A7%A3%20JOIN/" data-id="cmgresmxx0000bondanae187h" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/10/14/SQL%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%94%A8%E6%8B%BC%E5%9B%BE%E6%B8%B8%E6%88%8F%E7%90%86%E8%A7%A3%20JOIN/" data-id="cmgreyhuv00019sndhkhqanio" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -302,7 +356,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/08/%E7%AB%AF%E5%8F%A3443%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3SSH%E8%BF%9E%E6%8E%A5%E8%B6%85%E6%97%B6%E9%97%AE%E9%A2%98/" data-id="cmgresmy70007bondew89hvo6" data-title="排错实录：端口443如何解决SSH连接超时问题" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/08/%E7%AB%AF%E5%8F%A3443%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3SSH%E8%BF%9E%E6%8E%A5%E8%B6%85%E6%97%B6%E9%97%AE%E9%A2%98/" data-id="cmgreyhv100089snd9x5x26c0" data-title="排错实录：端口443如何解决SSH连接超时问题" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -665,7 +719,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/08/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95%20(Debugging)%20%E7%9A%84%E6%A0%B8%E5%BF%83%E6%96%B9%E6%B3%95%E4%B8%8E%E6%8A%80%E5%B7%A7/" data-id="cmgresmy8000abond7n4tg8iw" data-title="编程学习笔记：代码调试 (Debugging) 的核心方法与技巧" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/08/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95%20(Debugging)%20%E7%9A%84%E6%A0%B8%E5%BF%83%E6%96%B9%E6%B3%95%E4%B8%8E%E6%8A%80%E5%B7%A7/" data-id="cmgreyhv200099snddetw0dm2" data-title="编程学习笔记：代码调试 (Debugging) 的核心方法与技巧" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -710,7 +764,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/07/%E4%B8%80%E7%AF%87%E9%9C%80%E8%A6%81%E5%AF%86%E7%A0%81%E6%89%8D%E8%83%BD%E9%98%85%E8%AF%BB%E7%9A%84%E7%A7%81%E5%AF%86%E7%AC%94%E8%AE%B0/" data-id="cmgresmy20002bond5fsz8vgx" data-title="一篇需要密码才能阅读的私密日记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/07/%E4%B8%80%E7%AF%87%E9%9C%80%E8%A6%81%E5%AF%86%E7%A0%81%E6%89%8D%E8%83%BD%E9%98%85%E8%AF%BB%E7%9A%84%E7%A7%81%E5%AF%86%E7%AC%94%E8%AE%B0/" data-id="cmgreyhux00039sndawst8agv" data-title="一篇需要密码才能阅读的私密日记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -777,7 +831,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/05/%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E6%94%B6%E8%8E%B7%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%95%99%E8%AE%AD/" data-id="cmgresmy9000bbondfxwx103u" data-title="遇到的问题与收获的经验教训" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/05/%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E6%94%B6%E8%8E%B7%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%95%99%E8%AE%AD/" data-id="cmgreyhv3000c9sndgh6i1qlr" data-title="遇到的问题与收获的经验教训" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -828,7 +882,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/05/hello-world/" data-id="cmgresmy50005bondb1pz29ww" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/05/hello-world/" data-id="cmgreyhuw00029snd2ye29ryf" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -901,7 +955,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E8%83%BD%E8%AE%BF%E9%97%AEGitHub%E5%8D%B4%E6%97%A0%E6%B3%95Deploy/" data-id="cmgresmy10001bond1razdiic" data-title="为什么浏览网页正常而Git上传会失败？" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E8%83%BD%E8%AE%BF%E9%97%AEGitHub%E5%8D%B4%E6%97%A0%E6%B3%95Deploy/" data-id="cmgreyhuy00049sndba5a8uex" data-title="为什么浏览网页正常而Git上传会失败？" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -971,6 +1025,10 @@
           </li>
         
           <li>
+            <a href="/2025/10/14/Hexo%20%E5%8D%9A%E5%AE%A2%20PowerShell%20%E5%8F%91%E5%B8%83%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2025/10/14/SQL%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%94%A8%E6%8B%BC%E5%9B%BE%E6%B8%B8%E6%88%8F%E7%90%86%E8%A7%A3%20JOIN/">(no title)</a>
           </li>
         
@@ -980,10 +1038,6 @@
         
           <li>
             <a href="/2025/09/08/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95%20(Debugging)%20%E7%9A%84%E6%A0%B8%E5%BF%83%E6%96%B9%E6%B3%95%E4%B8%8E%E6%8A%80%E5%B7%A7/">编程学习笔记：代码调试 (Debugging) 的核心方法与技巧</a>
-          </li>
-        
-          <li>
-            <a href="/2025/09/07/%E4%B8%80%E7%AF%87%E9%9C%80%E8%A6%81%E5%AF%86%E7%A0%81%E6%89%8D%E8%83%BD%E9%98%85%E8%AF%BB%E7%9A%84%E7%A7%81%E5%AF%86%E7%AC%94%E8%AE%B0/">一篇需要密码才能阅读的私密日记</a>
           </li>
         
       </ul>
