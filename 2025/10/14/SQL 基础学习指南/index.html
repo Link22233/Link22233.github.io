@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>SQL 核心概念回顾与数据库设计原则 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="这篇笔记整合了 SQL 的基础查询要点和数据库设计的核心原则——“为什么需要分表”，前者是“如何操作”，后者是“为什么这么设计”。  第一部分：SQL 基础查询复习提纲主题: 基本的 SQL 查询 (SELECT, FROM) 使用 WHERE 进行数据筛选 使用 ORDER BY 进行结果排序 聚合函数 (COUNT, SUM, AVG)  摘要本指南涵盖了构成一条基本 SQL 查询的核心要素，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL 核心概念回顾与数据库设计原则">
+<meta property="og:url" content="http://example.com/2025/10/14/SQL%20%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="这篇笔记整合了 SQL 的基础查询要点和数据库设计的核心原则——“为什么需要分表”，前者是“如何操作”，后者是“为什么这么设计”。  第一部分：SQL 基础查询复习提纲主题: 基本的 SQL 查询 (SELECT, FROM) 使用 WHERE 进行数据筛选 使用 ORDER BY 进行结果排序 聚合函数 (COUNT, SUM, AVG)  摘要本指南涵盖了构成一条基本 SQL 查询的核心要素，">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-10-14T15:48:00.000Z">
+<meta property="article:modified_time" content="2025-10-15T03:49:49.171Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="SQL">
+<meta property="article:tag" content="数据库设计">
+<meta property="article:tag" content="数据冗余">
+<meta property="article:tag" content="SELECT">
+<meta property="article:tag" content="WHERE">
+<meta property="article:tag" content="ORDER BY">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-SQL 基础学习指南" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/10/14/SQL%20%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/" class="article-date">
+  <time class="dt-published" datetime="2025-10-14T15:48:00.000Z" itemprop="datePublished">2025-10-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/">数据库笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      SQL 核心概念回顾与数据库设计原则
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>这篇笔记整合了 SQL 的基础查询要点和数据库设计的核心原则——“为什么需要分表”，前者是“如何操作”，后者是“为什么这么设计”。</p>
+<hr>
+<h3 id="第一部分：SQL-基础查询复习提纲"><a href="#第一部分：SQL-基础查询复习提纲" class="headerlink" title="第一部分：SQL 基础查询复习提纲"></a>第一部分：SQL 基础查询复习提纲</h3><h4 id="主题"><a href="#主题" class="headerlink" title="主题:"></a><strong>主题:</strong></h4><ul>
+<li>基本的 SQL 查询 (<code>SELECT</code>, <code>FROM</code>)</li>
+<li>使用 <code>WHERE</code> 进行数据筛选</li>
+<li>使用 <code>ORDER BY</code> 进行结果排序</li>
+<li>聚合函数 (<code>COUNT</code>, <code>SUM</code>, <code>AVG</code>)</li>
+</ul>
+<h4 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a><strong>摘要</strong></h4><p>本指南涵盖了构成一条基本 SQL 查询的核心要素，包括如何从表中选择数据、如何使用条件进行筛选、如何对结果进行排序，以及如何执行如计数、求和与求平均值等基本计算。指南将特别关注 <code>ORDER BY</code> 子句中排序方向的正确使用，以及 <code>COUNT</code> 和 <code>SUM</code> 等关键聚合函数之间的区别。</p>
+<h4 id="关键概念"><a href="#关键概念" class="headerlink" title="关键概念:"></a><strong>关键概念:</strong></h4><ul>
+<li><strong><code>SELECT ... FROM ...</code> 结构</strong>: 这是所有查询的基础。<code>SELECT</code> 用于指定你想查看的<strong>列</strong>，而 <code>FROM</code> 用于指定数据来源的<strong>表</strong>。</li>
+<li><strong><code>WHERE</code> 子句</strong>: 像一个过滤器，它根据你设定的条件筛选出符合要求的<strong>行</strong>。你可以使用 <code>AND</code> 来组合多个必须同时满足的条件。</li>
+<li><strong><code>ORDER BY</code> 子句</strong>: 用于对最终的查询结果进行排序。这是你需要重点复习的部分：<ul>
+<li><code>ASC</code> (Ascending) 表示<strong>升序</strong>（从小到大，A-Z），这是默认的排序方式。</li>
+<li><code>DESC</code> (Descending) 表示<strong>降序</strong>（从大到小，Z-A）。</li>
+</ul>
+</li>
+<li><strong>聚合函数</strong>: 对一组值进行计算，并返回一个单一的汇总结果。理解它们的区别至关重要：<ul>
+<li><code>COUNT()</code>: 用于<strong>计数</strong>，即计算有多少行。</li>
+<li><code>SUM()</code>: 用于<strong>求和</strong>，即计算某一列数值的总和。</li>
+<li><code>AVG()</code>: 用于<strong>求平均值</strong>。</li>
+</ul>
+</li>
+</ul>
+<h4 id="词汇列表"><a href="#词汇列表" class="headerlink" title="词汇列表:"></a><strong>词汇列表:</strong></h4><ul>
+<li><strong>SELECT</strong>: 用于从数据库中选取数据的命令。</li>
+<li><strong>FROM</strong>: 指定数据来源表的子句。</li>
+<li><strong>WHERE</strong>: 用于筛选记录的子句。</li>
+<li><strong>AND</strong>: 一个逻辑运算符，要求所有连接的条件都必须为真。</li>
+<li><strong>ORDER BY</strong>: 用于对结果集进行排序的子句。</li>
+<li><strong>ASC</strong>: 升序排列的缩写。</li>
+<li><strong>DESC</strong>: 降序排列的缩写。</li>
+<li><strong>COUNT()</strong>: 返回行数的聚合函数。</li>
+<li><strong>SUM()</strong>: 返回数值列总和的聚合函数。</li>
+<li><strong>AVG()</strong>: 返回数值列平均值的聚合函数。</li>
+</ul>
+<h4 id="关键问题"><a href="#关键问题" class="headerlink" title="关键问题:"></a><strong>关键问题:</strong></h4><ul>
+<li><code>DESC</code> 和 <code>ASC</code> 在 <code>ORDER BY</code> 子句中分别代表什么意思？哪一个是默认的？</li>
+<li>什么时候应该使用 <code>COUNT(*)</code>，什么时候应该使用 <code>SUM(column_name)</code>？请举例说明。</li>
+<li>请尝试编写一条查询：从 <code>Products</code> 表中找出所有价格高于 3.00 的产品，并按产品名称 (<code>ProductName</code>) 的字母倒序排列。</li>
+</ul>
+<hr>
+<h3 id="第二部分：为什么需要分表（避免数据冗余）"><a href="#第二部分：为什么需要分表（避免数据冗余）" class="headerlink" title="第二部分：为什么需要分表（避免数据冗余）"></a>第二部分：为什么需要分表（避免数据冗余）</h3><p>将所有信息都塞进一个大表，在个人使用、数据量小的情况下很方便。但当数据量变大、或者需要多人协作、长期维护时，“大表模式”就会带来三个非常严重的问题，我们称之为“更新异常”、“插入异常”和“删除异常”。</p>
+<p>假设我们把客户和订单信息合并成一个大表，然后客户“张三”又下了一个新订单：</p>
+<p><strong>合并后的大表（不好的设计）:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">OrderID</th>
+<th align="left">CustomerID</th>
+<th align="left">CustomerName</th>
+<th align="left">OrderDate</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">101</td>
+<td align="left">张三</td>
+<td align="left">2025-10-12</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">102</td>
+<td align="left">李四</td>
+<td align="left">2025-10-13</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">101</td>
+<td align="left">张三</td>
+<td align="left">2025-10-14</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">101</td>
+<td align="left">张三</td>
+<td align="left">2025-10-15</td>
+</tr>
+</tbody></table>
+<p>你看，<strong>“张三”这个名字被重复存储了3次</strong>。这就是问题的根源。</p>
+<h4 id="1-数据冗余和更新异常-Update-Anomaly"><a href="#1-数据冗余和更新异常-Update-Anomaly" class="headerlink" title="1. 数据冗余和更新异常 (Update Anomaly)"></a><strong>1. 数据冗余和更新异常 (Update Anomaly)</strong></h4><ul>
+<li><strong>问题</strong>: 如果有一天“张三”改名叫“张伟”了。你需要找到<strong>所有</strong>他下过的订单，然后把每一行的 <code>CustomerName</code> 都从“张三”改成“张伟”。如果漏改了一行，数据库里的数据就不一致了，有的订单是“张三”的，有的是“张伟”的，你就搞不清状况了。</li>
+<li><strong>分表如何解决</strong>: 在分表设计中（<code>Customers</code> 表和 <code>Orders</code> 表），你只需要去 <code>Customers</code> 表里，把 <code>CustomerID</code> 为 101 的那<strong>一行</strong>的名字改成“张伟”即可。所有 <code>Orders</code> 表中引用了 <code>CustomerID</code> 101 的订单，都会自动关联到这个新名字上。<strong>只改一处，永久生效</strong>。</li>
+</ul>
+<h4 id="2-插入异常-Insertion-Anomaly"><a href="#2-插入异常-Insertion-Anomaly" class="headerlink" title="2. 插入异常 (Insertion Anomaly)"></a><strong>2. 插入异常 (Insertion Anomaly)</strong></h4><ul>
+<li><strong>问题</strong>: 如果我们想添加一个新客户“王五”，但他还没有下任何订单。在这个大表里，你就没法添加他了。因为 <code>OrderID</code> 和 <code>OrderDate</code> 都是空的，这行数据是不完整的，可能会违反表的设计约束。</li>
+<li><strong>分表如何解决</strong>: 你可以直接在 <code>Customers</code> 表里添加一行 <code>(103, &#39;王五&#39;)</code>，完全没问题。他可以存在于客户列表里，直到他下第一个订单为止。</li>
+</ul>
+<h4 id="3-删除异常-Deletion-Anomaly"><a href="#3-删除异常-Deletion-Anomaly" class="headerlink" title="3. 删除异常 (Deletion Anomaly)"></a><strong>3. 删除异常 (Deletion Anomaly)</strong></h4><ul>
+<li><strong>问题</strong>: 客户“李四”只有一个订单。如果因为某种原因，我们要删除这个订单（比如订单取消了），那么在大表里，我们就得删除 <code>OrderID</code> 为 2 的这一整行。结果是什么？<strong>我们把“李四”这个客户的信息也一起删除了！</strong> 他从我们的系统里消失了。</li>
+<li><strong>分表如何解决</strong>: 你只需要从 <code>Orders</code> 表里删除 <code>OrderID</code> 为 2 的记录。<code>Customers</code> 表完全不受影响，“李四”依然是我们的客户。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/10/14/SQL%20%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/" data-id="cmgrgd7wn00015knd3dtj6fxv" data-title="SQL 核心概念回顾与数据库设计原则" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ORDER-BY/" rel="tag">ORDER BY</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SELECT/" rel="tag">SELECT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WHERE/" rel="tag">WHERE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%86%97%E4%BD%99/" rel="tag">数据冗余</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" rel="tag">数据库设计</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/10/15/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          算法学习笔记：二分查找的两种写法与细节
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/10/14/Hexo%20%E5%8D%9A%E5%AE%A2%20PowerShell%20%E5%8F%91%E5%B8%83%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%92%E9%94%99/">技术排错</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/">数据库笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">算法笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Debugging/" rel="tag">Debugging</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ORDER-BY/" rel="tag">ORDER BY</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SELECT/" rel="tag">SELECT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/" rel="tag">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS-Code/" rel="tag">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WHERE/" rel="tag">WHERE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" rel="tag">二分查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%86%97%E4%BD%99/" rel="tag">数据冗余</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" rel="tag">数据库设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%81%E5%AF%86/" rel="tag">私密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%AF%E5%8F%A320/" rel="tag">端口20</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%AF%E5%8F%A3443/" rel="tag">端口443</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" rel="tag">编程基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/" rel="tag">网络问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" rel="tag">防火墙</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Debugging/" style="font-size: 10px;">Debugging</a> <a href="/tags/Git/" style="font-size: 20px;">Git</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 10px;">LeetCode</a> <a href="/tags/ORDER-BY/" style="font-size: 10px;">ORDER BY</a> <a href="/tags/SELECT/" style="font-size: 10px;">SELECT</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/VS-Code/" style="font-size: 10px;">VS Code</a> <a href="/tags/WHERE/" style="font-size: 10px;">WHERE</a> <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" style="font-size: 10px;">二分查找</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%86%97%E4%BD%99/" style="font-size: 10px;">数据冗余</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">数据库设计</a> <a href="/tags/%E7%A7%81%E5%AF%86/" style="font-size: 10px;">私密</a> <a href="/tags/%E7%AB%AF%E5%8F%A320/" style="font-size: 10px;">端口20</a> <a href="/tags/%E7%AB%AF%E5%8F%A3443/" style="font-size: 10px;">端口443</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/" style="font-size: 20px;">网络问题</a> <a href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" style="font-size: 10px;">防火墙</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/10/">October 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/10/15/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">算法学习笔记：二分查找的两种写法与细节</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/14/SQL%20%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/">SQL 核心概念回顾与数据库设计原则</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/14/Hexo%20%E5%8D%9A%E5%AE%A2%20PowerShell%20%E5%8F%91%E5%B8%83%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/14/SQL%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%94%A8%E6%8B%BC%E5%9B%BE%E6%B8%B8%E6%88%8F%E7%90%86%E8%A7%A3%20JOIN/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/09/08/%E7%AB%AF%E5%8F%A3443%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3SSH%E8%BF%9E%E6%8E%A5%E8%B6%85%E6%97%B6%E9%97%AE%E9%A2%98/">排错实录：端口443如何解决SSH连接超时问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
