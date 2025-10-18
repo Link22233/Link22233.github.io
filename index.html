@@ -71,6 +71,142 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-我的 DP 探险实录：从“为什么”到“我懂了”" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/10/18/%E6%88%91%E7%9A%84%20DP%20%E6%8E%A2%E9%99%A9%E5%AE%9E%E5%BD%95%EF%BC%9A%E4%BB%8E%E2%80%9C%E4%B8%BA%E4%BB%80%E4%B9%88%E2%80%9D%E5%88%B0%E2%80%9C%E6%88%91%E6%87%82%E4%BA%86%E2%80%9D/" class="article-date">
+  <time class="dt-published" datetime="2025-10-18T05:30:00.000Z" itemprop="datePublished">2025-10-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">算法笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/10/18/%E6%88%91%E7%9A%84%20DP%20%E6%8E%A2%E9%99%A9%E5%AE%9E%E5%BD%95%EF%BC%9A%E4%BB%8E%E2%80%9C%E4%B8%BA%E4%BB%80%E4%B9%88%E2%80%9D%E5%88%B0%E2%80%9C%E6%88%91%E6%87%82%E4%BA%86%E2%80%9D/">我的 DP 探险实录：从“为什么”到“我懂了”</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>大家好，我刚刚经历了一场酣畅淋漓的“思维战斗”，对手是——动态规划（DP）。我决定把这次宝贵的经历写下来。这篇笔记并非总结，而是一份忠实还原我学习过程的对话实录。它将包含我提出的每一个问题，以及那些最终让我豁然 KAI 朗的、未经编辑的回答。</p>
+<h3 id="探险起点：一张看似简单的“藏宝图”"><a href="#探险起点：一张看似简单的“藏宝图”" class="headerlink" title="探险起点：一张看似简单的“藏宝图”"></a>探险起点：一张看似简单的“藏宝图”</h3><p>我拿到的题目是这样的：</p>
+<blockquote>
+<p>有 n 只怪物，编号从 1 到 n。对于每只怪物，你都可以选择“放走”或“击败”。</p>
+<ul>
+<li><strong>放走</strong>第 i 只怪物：获得 i 点经验。</li>
+<li><strong>击败</strong>第 i 只怪物：获得 a[i] 点经验，并额外获得 <code>(x % 10) * a[i]</code> 点经验，其中 x 是你到目前为止总共击败的怪物数量（包括这一只）。</li>
+</ul>
+<p><strong>目标：</strong> 找到你最多可以获得的总经验值。</p>
+</blockquote>
+<hr>
+<h3 id="序章：拨开迷雾——我们到底需要什么工具？"><a href="#序章：拨开迷雾——我们到底需要什么工具？" class="headerlink" title="序章：拨开迷雾——我们到底需要什么工具？"></a>序章：拨开迷雾——我们到底需要什么工具？</h3><p>这是我们对话的最早阶段，我们试图弄清楚这个问题的本质。</p>
+<blockquote>
+<p><strong>我的问题：</strong> “为了能算出击败怪物能得多少经验，我们需要知道一个什么关键信息呢？”<br><strong>我当时的回答是：</strong> “怪物血量 a[i]”。</p>
+</blockquote>
+<p><strong>引导我的回答：</strong></p>
+<p>你说得对，怪物血量 a[i] 肯定是需要的。但我们再仔细看看击败怪物的规则：“额外获得 (x mod 10) * a[i] 点经验值，x 为击败怪物数量”。这里的 x 是什么？它是固定的吗，还是会随着我们的选择而变化？</p>
+<blockquote>
+<p><strong>我的问题：</strong> （在意识到 x 是“击败过的数量”后）“这种‘一步一步解决，并且每一步都依赖于之前步骤的结果’的思路，通常指向哪种经典的算法思想？”<br><strong>我当时的回答是：</strong> “递归”。</p>
+</blockquote>
+<p><strong>让我明白的回答：</strong></p>
+<p>递归是一个非常好的思路！这说明你已经看到了这个问题“向前依赖”的特性。当一个问题可以被分解成子问题，并且子问题的解可以被重复使用时，单纯的递归可能会很慢。我们有一种更优化的方法，它本质上是聪明的递归，通过记录和重用子问题的答案来避免重复计算。这个方法叫什么呢？它和“动态”有关。</p>
+<p>在引导下，我得出了答案：“动态规划”。</p>
+<hr>
+<h3 id="第一站：艰难地绘制地图——定义-dp-状态"><a href="#第一站：艰难地绘制地图——定义-dp-状态" class="headerlink" title="第一站：艰难地绘制地图——定义 dp 状态"></a>第一站：艰难地绘制地图——定义 dp 状态</h3><p>确定了要用 DP，但我立刻卡在了最基础的一步。</p>
+<blockquote>
+<p><strong>我的问题：</strong> “在动态规划里，最关键的第一步是定义‘状态’。Dp[i][j] 这个格子里应该存放什么数值，才能最终帮我们找到答案呢？”<br><strong>我当时的回答是：</strong> “我不懂了”。</p>
+</blockquote>
+<p><strong>让我明白的回答：</strong></p>
+<p>没问题，定义状态是动态规划里最关键也最需要思考的一步。我们一起把它弄清楚。我们这个问题的最终目标是什么？是不是要求一个“最多可以获得的经验值”？那么，我们的 dp 表就应该用来记录这个值。所以，<code>dp[i][j]</code> 就代表：<strong>在考虑了前 i 只怪物，并且总共击败了 j 只的情况下，我们能获得的最大经验值是多少</strong>。</p>
+<blockquote>
+<p><strong>我的问题：</strong> （在计算“放走”的情况时）“我已经弄不清各个字母代表什么了。”</p>
+</blockquote>
+<p><strong>让我明白的回答：</strong></p>
+<p>当然，这些字母确实容易搞混。我们放慢速度，把它们弄清楚。记住我们的定义：<code>dp[i][j]</code> &#x3D; 考虑完前 i 只怪物，并且总共击败了 j 只时的最高总经验。现在，我们只专注于一个选择：<strong>放走</strong>第 i 只怪物。如果到第 i 只怪物为止，我们总共击败了 j 只怪物，而第 i 只又是被我们放走的。这意味着，在我们处理完前面 i-1 只怪物时，我们<strong>已经</strong>击败了 j 只。</p>
+<hr>
+<h3 id="第二站：搭建我的“算法实验室”——从理论到实践"><a href="#第二站：搭建我的“算法实验室”——从理论到实践" class="headerlink" title="第二站：搭建我的“算法实验室”——从理论到实践"></a>第二站：搭建我的“算法实验室”——从理论到实践</h3><p>在深入思考 DP 的核心逻辑之前，我首先在如何将理论付诸实践上遇到了一系列问题。</p>
+<blockquote>
+<p><strong>我的问题：</strong> “我需要单独写函数该怎么写？我想模拟 LeetCode 模式。”</p>
+</blockquote>
+<p><strong>让我明白的回答：</strong></p>
+<p>这是一个非常好的问题！这正是 LeetCode 和普通编程练习最大的区别。在 LeetCode 上，你不需要写 <code>main</code> 方法，而是要填充一个已经定义好的函数。</p>
+<h4 id="LeetCode-的代码结构"><a href="#LeetCode-的代码结构" class="headerlink" title="LeetCode 的代码结构"></a>LeetCode 的代码结构</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">long</span> <span class="title function_">maxExperience</span><span class="params">(<span class="type">int</span> n, <span class="type">long</span>[] a)</span> &#123;</span><br><span class="line">        <span class="comment">// 你的代码写在这里</span></span><br><span class="line">        <span class="comment">// 最后，你需要返回一个 long 类型的结果</span></span><br><span class="line">        <span class="comment">// return ...;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">**总结一下转变：**</span><br><span class="line"></span><br><span class="line">- **输入**：从 `Scanner` 读取 -&gt; 从函数参数 `n` 和 `a` 获取。</span><br><span class="line">    </span><br><span class="line">- **输出**：从 `System.out.println()` 打印 -&gt; 用 `<span class="keyword">return</span> maxExperience;` 返回。</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">&gt; **我的问题：** “那我怎么在本地测试这段 LeetCode 代码呢？”</span><br><span class="line"></span><br><span class="line">**让我明白的回答（测试分离模式）：**</span><br><span class="line"></span><br><span class="line">你不能直接运行 `Solution.java`，因为它没有 `main` 方法。你需要创建另一个文件来“扮演” LeetCode 的角色：调用你的 `Solution` 类。</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> 保持 `Solution.java` 文件不变。</span><br><span class="line">    </span><br><span class="line"><span class="number">2.</span> 在同一个文件夹下，新建一个文件，比如叫 `Main.java`。</span><br><span class="line">    </span><br><span class="line"><span class="number">3.</span> 把测试代码粘贴到 `Main.java` 中，运行 `Main.java` 文件。</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">&gt; **我的问题：** “为什么我运行 Main.java 报错了？提示 `错误: 找不到符号 Solution`”</span><br><span class="line"></span><br><span class="line">**让我明白的回答：**</span><br><span class="line"></span><br><span class="line">你遇到了一个非常经典，每个 Java 程序员都肯定会遇到的错误！这不是你算法逻辑的问题，而是 Java 文件编译方式的问题。这句报错的“人话”翻译就是：“我在编译 `Main.java`，读到 `<span class="type">Solution</span> <span class="variable">solution</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Solution</span>();` 的时候，我完全不认识 `Solution` 是个什么东西。”</span><br><span class="line"></span><br><span class="line">最简单的解决方法 (推荐)</span><br><span class="line"></span><br><span class="line">在 VS Code 中，使用编辑器自带的**“Run”按钮**，而不是在下方的终端里手动输入编译命令。直接点击 main 方法上方的 <span class="string">&quot;Run&quot;</span>。IDE 会足够智能地帮我们编译所有相关的文件。</span><br><span class="line"></span><br><span class="line">&gt; **我的问题：** “我怎么看到 dp 表格的具体情况？”</span><br><span class="line"></span><br><span class="line">**让我明白的回答（调试器的威力）：**</span><br><span class="line"></span><br><span class="line">绝对可以，而且这正是调试器（Debugger）最强大的功能之一！</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> **设置断点 (Breakpoint)**： 在代码行的行号左边，用鼠标单击一下，就会出现一个红点。最好的位置是在双重循环的内部。</span><br><span class="line">    </span><br><span class="line"><span class="number">2.</span> **启动调试**： 不要点击“Run”按钮，而是要选择“运行和调试”（通常快捷键是 F5）。</span><br><span class="line">    </span><br><span class="line"><span class="number">3.</span> **查看 dp 表**： 程序在断点处暂停后，在 VS Code 的左侧**“变量 (VARIABLES)”**窗口中，找到你的 `dp` 数组。点击箭头展开它，你就可以看到它所有的行和列！</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">&gt; **我的问题：** “为什么我在调试器里看到的 dp 表，和手画的带表头的表格不一样？还有一堆巨大的负数？”</span><br><span class="line"></span><br><span class="line">**让我明白的回答：**</span><br><span class="line"></span><br><span class="line">你的观察完全正确。根本原因在于：一个是给计算机看的“原始数据” 🖥️，另一个是给我了们人类看的“格式化报告” 📖。</span><br><span class="line"></span><br><span class="line">而那些巨大的负数，是因为你的断点设在了循环中间，程序暂停时，dp 表的填充只进行到了一半！ 那些负数（`Long.MIN_VALUE`）是你设置的初始值，代表“这个格子还没轮到计算”。你看到的不是错误，而是动态规划**正在施工中的样子**！</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">### 第三站：探寻法则——最深刻的思辨之旅</span><br><span class="line"></span><br><span class="line">在解决了实践操作问题后，我开始深入思考 DP 的核心逻辑。</span><br><span class="line"></span><br><span class="line">&gt; **我的问题：** “我不知道为什么要用 `max()` 函数，dp 难道不是记录我选择击败或放走后的结果吗？”</span><br><span class="line"></span><br><span class="line">**让我明白的回答：**</span><br><span class="line"></span><br><span class="line">你这个想法非常接近核心了！你说得对，dp 表确实记录了结果，但它记录的不是一个随便的结果，而是一个**“最优”**的结果。</span><br><span class="line"></span><br><span class="line">我们把你的想法拆解一下，看看会发生什么。</span><br><span class="line"></span><br><span class="line">假设我们不用 Math.max()，而是让 dp 表记录所有可能路径的结果。当我们要计算“处理完<span class="number">3</span>只怪，击败<span class="number">2</span>只”的最高分时，有多少种可能的路径呢？</span><br><span class="line"></span><br><span class="line">- 路径<span class="number">1</span>: 击败-击败-放走</span><br><span class="line">    </span><br><span class="line">- 路径<span class="number">2</span>: 击败-放走-击败</span><br><span class="line">    </span><br><span class="line">- 路径<span class="number">3</span>: 放走-击败-击败</span><br><span class="line">    </span><br><span class="line">    我们需要把这<span class="number">3</span>条路的得分全都分别算一遍，然后比较大小。这还只是 dp[<span class="number">3</span>][<span class="number">2</span>] 一个格子。当我们计算 dp[n][j] 时，需要追溯的路径数量会像爆炸一样增多，算法就变得非常非常慢了。</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">**`Math.max()` 的魔法 ✨**</span><br><span class="line"></span><br><span class="line">Math.max() 让我们避免了这种麻烦。它让我们的 dp 表变得更“聪明”。</span><br><span class="line"></span><br><span class="line">dp[i][j] 记录的不是：“我通过‘放走’这条路来到了 (i,j) 这个状态”。</span><br><span class="line"></span><br><span class="line">它记录的是：“不管你是怎么来的（可能是放走，也可能是击败），所有能到达 (i, j) 这个状态的路径中，最高分就是我记录的这个数。”</span><br><span class="line"></span><br><span class="line">再用那个十字路口的比喻：</span><br><span class="line"></span><br><span class="line">- `exp_let_go` 是一条通往 `(i, j)` 这个目的地的路。</span><br><span class="line">    </span><br><span class="line">- exp_defeat 是另一条通往同一个目的地 (i, j) 的路。</span><br><span class="line">    </span><br><span class="line">    dp[i][j] 这个格子，就像是目的地 (i, j) 的一块冠军奖牌。我们不关心冠军是怎么跑来的，我们只把奖牌发给那个分数最高的路径。Math.max() 就是那个裁判，它比较了两条路的分数，然后把冠军分数刻在了奖牌上。</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">这样，当下一个人（`dp[i+<span class="number">1</span>][...]`）需要参考这个目的地的分数时，他不需要知道复杂的历史，只需要看一眼奖牌上的分数，因为他知道那已经是这里的最高记录了。</span><br><span class="line"></span><br><span class="line">所以，dp 表记录的确实是选择之后的结果，但它非常聪明地**只记录了那个最优的结果，扔掉了所有不好的选择**，这就是动态规划高效的秘密。</span><br><span class="line"></span><br><span class="line">&gt; **我的问题：** “那些不好的选择怎么抛弃的？我还能在 dp 表里找到‘放走-放走-放走’的分数吗？”</span><br><span class="line"></span><br><span class="line">**让我明白的回答：**</span><br><span class="line"></span><br><span class="line">绝佳的问题！这能让我们彻底看清 dp 表的本质。</span><br><span class="line"></span><br><span class="line">答案是：是的，你绝对可以在最终的 dp 表里找到“放走-放走-放走”这条路径的分数！ 它就藏在 dp 表的一个特定格子里。</span><br><span class="line"></span><br><span class="line">我们来追踪一下这条路径在 dp 表上的“地址”：</span><br><span class="line"></span><br><span class="line">- 第<span class="number">1</span>步：放走第<span class="number">1</span>只怪 -&gt; 它的分数被记录在 `dp[<span class="number">1</span>][<span class="number">0</span>]`。</span><br><span class="line">    </span><br><span class="line">- 第<span class="number">2</span>步：放走第<span class="number">2</span>只怪 -&gt; 它的分数被记录在 `dp[<span class="number">2</span>][<span class="number">0</span>]`。</span><br><span class="line">    </span><br><span class="line">- 第<span class="number">3</span>步：放走第<span class="number">3</span>只怪 -&gt; 它的最终分数被记录在 `dp[<span class="number">3</span>][<span class="number">0</span>]`。</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">最终的 dp 表中 `dp[<span class="number">3</span>][<span class="number">0</span>]` 的值正好是 <span class="number">6</span>。</span><br><span class="line"></span><br><span class="line">那么，这是否和我之前说的“坏选择会被抛弃”矛盾呢？</span><br><span class="line"></span><br><span class="line">一点也不矛盾，这反而完美地解释了 DP 的原理！</span><br><span class="line"></span><br><span class="line">`dp[i][j]` 记录的是：所有能够到达 `(i, j)` 这个状态的路径中，分数最高的那条路的分数。</span><br><span class="line"></span><br><span class="line">对于 `dp[<span class="number">3</span>][<span class="number">0</span>]` 这个格子，要达到“处理<span class="number">3</span>只怪，击败<span class="number">0</span>只”的状态，有且**仅有**“放走-放走-放走”这一条路。没有其他竞争者。所以它自己就是冠军，它的分数 <span class="number">6</span> 就被记录了下来。</span><br><span class="line"></span><br><span class="line">但是对于 `dp[<span class="number">2</span>][<span class="number">1</span>]` 这个格子，要达到“处理<span class="number">2</span>只怪，击败<span class="number">1</span>只”的状态，我们发现了两条路：</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> 击败-放走，分数为 <span class="number">12</span>。</span><br><span class="line">    </span><br><span class="line"><span class="number">2.</span> 放走-击败，分数为 <span class="number">7</span>。</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">在这里，`Math.max()` 充当了裁判，它选择了 <span class="number">12</span> 这条路，把分数 <span class="number">12</span> 写入了 `dp[<span class="number">2</span>][<span class="number">1</span>]`，而分数 <span class="number">7</span> 和它背后的那条 `放走-击败` 路径，就被永远地**抛弃**了。</span><br><span class="line"></span><br><span class="line">&gt; **我的问题：** “那‘放走-击败-放走’的路径是不是找不到了？”</span><br><span class="line"></span><br><span class="line">**让我明白的回答：**</span><br><span class="line"></span><br><span class="line">你说得完全正确。</span><br><span class="line"></span><br><span class="line">“放走-击败-放走”这条特定路径的真实分数，在最终的 dp 表里是找不到的。</span><br><span class="line"></span><br><span class="line">你已经触及到了动态规划最核心的“剪枝”思想。我们来当一次侦探，看看这条路径是在哪里“消失”的。</span><br><span class="line"></span><br><span class="line">**案件重演：一条路径的消失**</span><br><span class="line"></span><br><span class="line">- **起点**： 我们要追踪的路径是 `放走 - 击败 - 放走`。</span><br><span class="line">    </span><br><span class="line">- **第二步**：处理第<span class="number">2</span>只怪，选择【击败】。这条路径现在要从 `(i=<span class="number">1</span>, j=<span class="number">0</span>)` 前往 `(i=<span class="number">2</span>, j=<span class="number">1</span>)`。我们计算一下它的得分：`dp[<span class="number">1</span>][<span class="number">0</span>] + a[<span class="number">1</span>] + (<span class="number">1</span> % <span class="number">10</span>) * a[<span class="number">1</span>] = <span class="number">1</span> + <span class="number">3</span> + <span class="number">1</span>*<span class="number">3</span> = <span class="number">7</span>分`。</span><br><span class="line">    </span><br><span class="line">- **关键时刻来了！** 此时，还有另一条路径也到达了 `(i=<span class="number">2</span>, j=<span class="number">1</span>)` 这个目的地，那就是 `击败 - 放走` 路径，它的得分是 **<span class="number">12</span>分**。</span><br><span class="line">    </span><br><span class="line">- **审判时刻 (Math.max)**：在 `dp[<span class="number">2</span>][<span class="number">1</span>]` 这个格子上，两条路径相遇了。裁判 `Math.max(<span class="number">12</span>, <span class="number">7</span>)` 宣布：<span class="number">12</span>分胜出！</span><br><span class="line">    </span><br><span class="line">- **结果**：于是，数字 <span class="number">12</span> 被写入了 `dp[<span class="number">2</span>][<span class="number">1</span>]`。而我们那条路径得到的 <span class="number">7</span> 分，以及它背后的历史 `放走-击败`，就在这一刻被彻底抛弃了。它输掉了比赛，没有资格被记录下来。</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">&gt; **我的问题：** “那如果另一个给怪的情况下‘放走-击败-放走’的分数更高怎么办，它不就被放弃了吗？” &amp; “我还是不太理解。”</span><br><span class="line"></span><br><span class="line">**让我明白的回答（登山的故事）：**</span><br><span class="line"></span><br><span class="line">这是动态规划最神奇也最反直觉的地方。如果“放走-击败-放走”这条路在未来有潜力获得更高分，它就**绝对不会被放弃**。</span><br><span class="line"></span><br><span class="line">这里的奥秘在于，动态规划基于一个非常重要的原则，叫做**“最优子结构”**。用大白话说就是：</span><br><span class="line"></span><br><span class="line">&gt; 一个最优的全局策略，它的每一个局部步骤也必然是这个局部的最优策略。</span><br><span class="line"></span><br><span class="line">**登山故事的续集：公平的未来**</span><br><span class="line"></span><br><span class="line">你和你的朋友，肩并肩地站在 `站(<span class="number">2</span>, <span class="number">1</span>)`。</span><br><span class="line"></span><br><span class="line">- 你口袋里有 <span class="number">12</span> 个宝物。</span><br><span class="line">    </span><br><span class="line">- 你朋友口袋里只有 <span class="number">7</span> 个宝物。</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">**关键问题：谁的未来更有希望？**</span><br><span class="line"></span><br><span class="line">从 `站(<span class="number">2</span>, <span class="number">1</span>)` 出发，前往山顶的剩下的路，对于你和你朋友来说，是**完全一模一样的**。如果你们下一步都走平坦小路，都会额外获得 +<span class="number">3</span> 分。</span><br><span class="line"></span><br><span class="line">- 你的总分会变成 `<span class="number">12</span> + <span class="number">3</span> = <span class="number">15</span>`。</span><br><span class="line">    </span><br><span class="line">- 你朋友的总分会变成 `<span class="number">7</span> + <span class="number">3</span> = <span class="number">10</span>`。</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">因为你朋友在到达 `站(<span class="number">2</span>, <span class="number">1</span>)` 时就已经落后了，并且未来的道路对你们是公平的，所以他没有任何机会再反超你了。他过去犯下的“错误选择”所导致的差距，是永远无法弥补的。</span><br><span class="line"></span><br><span class="line">这就是 `Math.max()` 能够“放心”抛弃坏选择的底气所在。它所解决的问题满足一个叫做**“无后效性”**的原则：一旦某个状态确定了，那么这个状态之前的历史就不会再影响未来的决策。</span><br><span class="line"></span><br><span class="line">&gt; **我的问题：** “但是dp[<span class="number">2</span>,<span class="number">1</span>]本身不就是在未来会被抛弃的路径吗？”</span><br><span class="line"></span><br><span class="line">**让我明白的回答（分站冠军 vs. 全程总冠军）：**</span><br><span class="line"></span><br><span class="line">这是一个绝妙的问题！你说的完全正确！`dp[<span class="number">2</span>,<span class="number">1</span>]` 这个格子本身，确实可能位于一条最终被抛弃的宏观路径上。</span><br><span class="line"></span><br><span class="line">这恰好是两个不同层面的“胜利”。我们必须区分：</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> **子问题的冠军** (一个格子的值)</span><br><span class="line">    </span><br><span class="line"><span class="number">2.</span> **全局问题的总冠军** (最终答案)</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">**登山故事的最终章：分站冠军 vs. 全程总冠军**</span><br><span class="line"></span><br><span class="line">dp[<span class="number">2</span>,<span class="number">1</span>] = <span class="number">12</span>。这是所有能够到达 站(<span class="number">2</span>, <span class="number">1</span>) 的路线中，最快的那条路线的成绩。我们称之为 “站(<span class="number">2</span>, <span class="number">1</span>) 分站冠军”。</span><br><span class="line"></span><br><span class="line">dp[<span class="number">2</span>,<span class="number">2</span>] = <span class="number">19</span>。这是所有能够到达 站(<span class="number">2</span>, <span class="number">2</span>) 的路线中，最快的那条路线的成绩。我们称之为 “站(<span class="number">2</span>, <span class="number">2</span>) 分站冠军”。</span><br><span class="line"></span><br><span class="line">当我们站在山顶回望时，我们发现，那个最终赢得全程总冠军的人，他选择的路线根本就**没有经过 `站(<span class="number">2</span>, <span class="number">1</span>)`**！他走的是经过 `站(<span class="number">2</span>, <span class="number">2</span>)` 的那条路。</span><br><span class="line"></span><br><span class="line">总结：</span><br><span class="line"></span><br><span class="line">dp 表格的伟大之处在于，它不预设哪条路是最好的。它非常公平地计算出了每一个可能子状态的最优解（每一个分站冠军），把它们全都记录下来。然后，它再利用这些已经算好的、可靠的“分站冠军”成绩，去构建下一阶段的比赛，最终决出唯一的“全程总冠军”。我们必须算出 dp[<span class="number">2</span>,<span class="number">1</span>] 的值，即使它最后没被用上。因为在没算完之前，我们无法预知最终的冠军路径会不会经过它。</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">### 我的藏宝图（最终代码）</span><br><span class="line"></span><br><span class="line">Java</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>import java.util.Arrays;</p>
+<p>class Solution {<br>    public long maxExperience(int n, long[] a) {<br>        &#x2F;&#x2F; 我的记分板：dp[i][j] -&gt; 处理完前 i 只怪，击败 j 只的最高分<br>        long[][] dp &#x3D; new long[n + 1][n + 1];</p>
+<pre><code>    // 初始化记分板，所有格子都标记为“不可达”
+    for (long[] row : dp) &#123;
+        Arrays.fill(row, Long.MIN_VALUE);
+    &#125;
+    
+    // 探险的起点：游戏开始前，经验为0
+    dp[0][0] = 0;
+    
+    // 开始一关一关地填写记分板
+    for (int i = 1; i &lt;= n; i++) &#123;
+        // 计算第 i 关的所有可能状态（击败 0 次到 i 次）
+        for (int j = 0; j &lt;= i; j++) &#123;
+            
+            // 决策点：我该如何到达 (i, j) 这个状态？
+
+            // 路径1：从 (i-1, j) 走“放走”路线过来
+            long exp_let_go = Long.MIN_VALUE;
+            if (dp[i-1][j] != Long.MIN_VALUE) &#123; // 确保起点可达
+                exp_let_go = dp[i-1][j] + i;
+            &#125;
+
+            // 路径2：从 (i-1, j-1) 走“击败”路线过来
+            long exp_defeat = Long.MIN_VALUE;
+            if (j &gt; 0 &amp;&amp; dp[i-1][j-1] != Long.MIN_VALUE) &#123; // 确保起点可达，且至少击败了1次
+                exp_defeat = dp[i-1][j-1] + a[i-1] + (j % 10) * a[i-1];
+            &#125;
+            
+            // 裁判上场！选出到达 (i,j) 的分站冠军分数
+            dp[i][j] = Math.max(exp_let_go, exp_defeat);
+        &#125;
+    &#125;
+
+    // 终点线：比较所有终点站的分站冠军，找出全程总冠军
+    long maxResult = 0;
+    for (int j = 0; j &lt;= n; j++) &#123;
+        maxResult = Math.max(maxResult, dp[n][j]);
+    &#125;
+    
+    return maxResult;
+&#125;
+</code></pre>
+<p>}</p>
+<pre><code>
+### 探险总结
+
+这次经历让我明白，学习算法最有效的方式就是不断地追问“为什么”。每一个看似愚蠢的问题，背后都可能隐藏着对核心概念的误解。只有把这些问题都解决了，知识才能真正为你所有。希望我这份详尽的“踩坑”与“顿悟”实录，能对你有所帮助。
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/10/18/%E6%88%91%E7%9A%84%20DP%20%E6%8E%A2%E9%99%A9%E5%AE%9E%E5%BD%95%EF%BC%9A%E4%BB%8E%E2%80%9C%E4%B8%BA%E4%BB%80%E4%B9%88%E2%80%9D%E5%88%B0%E2%80%9C%E6%88%91%E6%87%82%E4%BA%86%E2%80%9D/" data-id="cmgwkcbzp000gvsnd44qt9d7i" data-title="我的 DP 探险实录：从“为什么”到“我懂了”" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/" rel="tag">问题求解</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-二分查找" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/10/15/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="article-date">
@@ -163,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/15/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" data-id="cmgrqkjej000dasndg86v11uu" data-title="算法学习笔记：二分查找的两种写法与细节" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/10/15/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" data-id="cmgwkcbzp000evsnd02mhhvcp" data-title="算法学习笔记：二分查找的两种写法与细节" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -224,7 +360,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/15/SQL%20%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%20'%E8%A1%A8%E5%90%8D.%20%E5%88%97%E5%90%8D'/" data-id="cmgrqkjeg0006asnd6jt9dnu9" data-title="SQL 最佳实践：为什么推荐使用 &#39;表名. 列名&#39;" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/10/15/SQL%20%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%20'%E8%A1%A8%E5%90%8D.%20%E5%88%97%E5%90%8D'/" data-id="cmgwkcbzl0005vsndanvtfcrx" data-title="SQL 最佳实践：为什么推荐使用 &#39;表名. 列名&#39;" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -287,7 +423,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/15/WAPI%E4%B8%8EWIFI/" data-id="cmgrqkjeg0005asnd5hwpbnfx" data-title="技术科普：什么是 WAPI 及其优缺点" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/10/15/WAPI%E4%B8%8EWIFI/" data-id="cmgwkcbzl0006vsndeqz46rkr" data-title="技术科普：什么是 WAPI 及其优缺点" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -423,7 +559,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/14/SQL%20%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/" data-id="cmgrqkjec0001asndbpqf23cy" data-title="SQL 核心概念回顾与数据库设计原则" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/10/14/SQL%20%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/" data-id="cmgwkcbzh0001vsndfahq6hch" data-title="SQL 核心概念回顾与数据库设计原则" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -489,7 +625,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/14/Hexo%20%E5%8D%9A%E5%AE%A2%20PowerShell%20%E5%8F%91%E5%B8%83%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/" data-id="cmgrqkje90000asnd7n74a5rc" data-title="Hexo 博客 PowerShell 发布完整流程笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/10/14/Hexo%20%E5%8D%9A%E5%AE%A2%20PowerShell%20%E5%8F%91%E5%B8%83%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/" data-id="cmgwkcbzd0000vsndb0u9ewcg" data-title="Hexo 博客 PowerShell 发布完整流程笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -552,7 +688,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/14/SQL%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%94%A8%E6%8B%BC%E5%9B%BE%E6%B8%B8%E6%88%8F%E7%90%86%E8%A7%A3%20JOIN/" data-id="cmgrqkjef0003asndclh38maw" data-title="SQL 学习笔记：用拼图游戏理解 JOIN" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/10/14/SQL%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%94%A8%E6%8B%BC%E5%9B%BE%E6%B8%B8%E6%88%8F%E7%90%86%E8%A7%A3%20JOIN/" data-id="cmgwkcbzj0003vsndg74z4azz" data-title="SQL 学习笔记：用拼图游戏理解 JOIN" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -640,7 +776,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/08/%E7%AB%AF%E5%8F%A3443%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3SSH%E8%BF%9E%E6%8E%A5%E8%B6%85%E6%97%B6%E9%97%AE%E9%A2%98/" data-id="cmgrqkjek000gasnd8dyuauaf" data-title="排错实录：端口443如何解决SSH连接超时问题" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/08/%E7%AB%AF%E5%8F%A3443%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3SSH%E8%BF%9E%E6%8E%A5%E8%B6%85%E6%97%B6%E9%97%AE%E9%A2%98/" data-id="cmgwkcbzq000hvsndbkt16n3o" data-title="排错实录：端口443如何解决SSH连接超时问题" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1003,7 +1139,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/08/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95%20(Debugging)%20%E7%9A%84%E6%A0%B8%E5%BF%83%E6%96%B9%E6%B3%95%E4%B8%8E%E6%8A%80%E5%B7%A7/" data-id="cmgrqkjet002easnd94km6y7g" data-title="编程学习笔记：代码调试 (Debugging) 的核心方法与技巧" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/08/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95%20(Debugging)%20%E7%9A%84%E6%A0%B8%E5%BF%83%E6%96%B9%E6%B3%95%E4%B8%8E%E6%8A%80%E5%B7%A7/" data-id="cmgwkcc05002svsndf1g019fm" data-title="编程学习笔记：代码调试 (Debugging) 的核心方法与技巧" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1048,77 +1184,12 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/07/%E4%B8%80%E7%AF%87%E9%9C%80%E8%A6%81%E5%AF%86%E7%A0%81%E6%89%8D%E8%83%BD%E9%98%85%E8%AF%BB%E7%9A%84%E7%A7%81%E5%AF%86%E7%AC%94%E8%AE%B0/" data-id="cmgrqkjei0009asnd6idfeodl" data-title="一篇需要密码才能阅读的私密日记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/07/%E4%B8%80%E7%AF%87%E9%9C%80%E8%A6%81%E5%AF%86%E7%A0%81%E6%89%8D%E8%83%BD%E9%98%85%E8%AF%BB%E7%9A%84%E7%A7%81%E5%AF%86%E7%AC%94%E8%AE%B0/" data-id="cmgwkcbzo000bvsnd7dpq0foj" data-title="一篇需要密码才能阅读的私密日记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%A7%81%E5%AF%86/" rel="tag">私密</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-遇到的问题与收获的经验教训" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/09/05/%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E6%94%B6%E8%8E%B7%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%95%99%E8%AE%AD/" class="article-date">
-  <time class="dt-published" datetime="2025-09-05T15:46:28.000Z" itemprop="datePublished">2025-09-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/05/%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E6%94%B6%E8%8E%B7%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%95%99%E8%AE%AD/">遇到的问题与收获的经验教训</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>问题：PowerShell 权限不足，禁止运行脚本<br>现象：第一次尝试安装 Hexo 时，命令就失败了，并提示 UnauthorizedAccess（未经授权的访问）。</li>
-</ol>
-<p>原因：Windows PowerShell 出于安全考虑，默认禁止执行任何脚本，而 npm 命令需要调用一个脚本。</p>
-<p>解决方案：以管理员身份打开 PowerShell，并执行 Set-ExecutionPolicy RemoteSigned 来调整安全策略。</p>
-<p>经验教训：本地开发环境需要正确配置。 操作系统自带的安全特性有时会与开发工具冲突，学会根据报错信息调整环境配置是程序员的基本功。</p>
-<ol start="2">
-<li>问题：hexo 命令无法被识别<br>现象：即使安装成功，输入 hexo init 时系统仍然提示找不到 hexo 这个命令。</li>
-</ol>
-<p>原因：npm 安装的全局工具所在的路径，没有被添加到系统的“环境变量 PATH”中，导致系统不知道去哪里找这个命令。</p>
-<p>解决方案：找到 npm 的全局路径，并手动将其添加到系统的环境变量 Path 中。</p>
-<p>经验教训：理解环境变量 PATH 的作用。 它是操作系统寻找命令的“地图”，是解决各种“命令找不到”问题的关键所在。</p>
-<ol start="3">
-<li>问题：hexo deploy 部署时网络连接被重置<br>现象：可以正常浏览 GitHub 网站，但部署时反复出现 Recv failure: Connection was reset 错误。</li>
-</ol>
-<p>原因：浏览网页（HTTPS）和用 Git 上传文件是两种完全不同的网络传输方式。后者对网络连接的稳定性要求极高，容易受到不稳定网络、防火墙或代理的干扰。</p>
-<p>解决方案：将部署方式从不稳定的 HTTPS 切换到更稳定、更专业的 SSH 协议。这需要生成 SSH 密钥并将其添加到 GitHub 账户中。</p>
-<p>经验教训：问题要对症下药。 “能上网”不代表“网络适合所有任务”。针对特定的问题（如大文件、长时间的持续传输），需要选择更合适的工具或协议（SSH）来解决。</p>
-<ol start="4">
-<li>问题：预览正常，但部署时提示 nothing to commit<br>现象：在本地用 hexo s 预览时能看到新文章，但 hexo d 部署时却提示没有改动，导致线上博客不更新。</li>
-</ol>
-<p>原因：这是典型的“构建缓存”或“脏数据”问题。本地预览可能使用了内存中的最新数据，但用于部署的 public 文件夹却是旧的、未被更新的。</p>
-<p>解决方案：使用 hexo clean 命令。这个命令会强制删除旧的 public 文件夹和缓存，确保下一次生成和部署使用的是最新的源文件。</p>
-<p>经验教训：学会清理缓存是重要的调试技巧。 当源代码和最终结果不一致时，首先要考虑是不是缓存导致的。hexo clean 是解决 Hexo 各种“玄学”问题的利器。</p>
-<p>您的核心收获<br>工作流的掌握：您已经完整地掌握了 Hexo 博客的日常工作流：hexo new -&gt; 编辑和保存 -&gt; hexo s (预览) -&gt; hexo clean &amp;&amp; hexo d (清理并发布)。</p>
-<p>调试能力的提升：您学会了如何根据报错信息一步步定位问题，从环境配置、网络协议，再到构建缓存，这套调试思路适用于未来遇到的任何技术问题。</p>
-<p>信心的建立：您从一个简单的想法开始，通过自己的努力和坚持，解决了一路上所有的技术障碍，最终成功搭建并发布了属于自己的网站。这是最有价值的收获。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/05/%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E6%94%B6%E8%8E%B7%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%95%99%E8%AE%AD/" data-id="cmgrqkjeu002fasndfytkhngx" data-title="遇到的问题与收获的经验教训" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
     </footer>
   </div>
   
@@ -1152,7 +1223,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Debugging/" rel="tag">Debugging</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JOIN/" rel="tag">JOIN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ORDER-BY/" rel="tag">ORDER BY</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PowerShell/" rel="tag">PowerShell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SELECT/" rel="tag">SELECT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/" rel="tag">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS-Code/" rel="tag">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WAPI/" rel="tag">WAPI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WHERE/" rel="tag">WHERE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WLAN/" rel="tag">WLAN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wi-Fi/" rel="tag">Wi-Fi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" rel="tag">二分查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" rel="tag">代码规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" rel="tag">入门教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" rel="tag">博客部署</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%86%97%E4%BD%99/" rel="tag">数据冗余</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" rel="tag">数据库设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" rel="tag">最佳实践</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%81%E5%AF%86/" rel="tag">私密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%AF%E5%8F%A320/" rel="tag">端口20</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%AF%E5%8F%A3443/" rel="tag">端口443</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" rel="tag">编程基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/" rel="tag">网络问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" rel="tag">防火墙</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Debugging/" rel="tag">Debugging</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JOIN/" rel="tag">JOIN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ORDER-BY/" rel="tag">ORDER BY</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PowerShell/" rel="tag">PowerShell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SELECT/" rel="tag">SELECT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/" rel="tag">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS-Code/" rel="tag">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WAPI/" rel="tag">WAPI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WHERE/" rel="tag">WHERE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WLAN/" rel="tag">WLAN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wi-Fi/" rel="tag">Wi-Fi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" rel="tag">二分查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" rel="tag">代码规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" rel="tag">入门教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" rel="tag">博客部署</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%86%97%E4%BD%99/" rel="tag">数据冗余</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" rel="tag">数据库设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" rel="tag">最佳实践</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%81%E5%AF%86/" rel="tag">私密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%AF%E5%8F%A320/" rel="tag">端口20</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%AF%E5%8F%A3443/" rel="tag">端口443</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" rel="tag">编程基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/" rel="tag">网络问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/" rel="tag">问题求解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" rel="tag">防火墙</a></li></ul>
     </div>
   </div>
 
@@ -1162,7 +1233,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Debugging/" style="font-size: 10px;">Debugging</a> <a href="/tags/Git/" style="font-size: 20px;">Git</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/JOIN/" style="font-size: 10px;">JOIN</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 10px;">LeetCode</a> <a href="/tags/ORDER-BY/" style="font-size: 10px;">ORDER BY</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/SELECT/" style="font-size: 10px;">SELECT</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/VS-Code/" style="font-size: 10px;">VS Code</a> <a href="/tags/WAPI/" style="font-size: 10px;">WAPI</a> <a href="/tags/WHERE/" style="font-size: 10px;">WHERE</a> <a href="/tags/WLAN/" style="font-size: 10px;">WLAN</a> <a href="/tags/Wi-Fi/" style="font-size: 10px;">Wi-Fi</a> <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" style="font-size: 10px;">二分查找</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" style="font-size: 10px;">代码规范</a> <a href="/tags/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" style="font-size: 10px;">入门教程</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">博客部署</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%86%97%E4%BD%99/" style="font-size: 10px;">数据冗余</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 15px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">数据库设计</a> <a href="/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" style="font-size: 10px;">最佳实践</a> <a href="/tags/%E7%A7%81%E5%AF%86/" style="font-size: 10px;">私密</a> <a href="/tags/%E7%AB%AF%E5%8F%A320/" style="font-size: 10px;">端口20</a> <a href="/tags/%E7%AB%AF%E5%8F%A3443/" style="font-size: 10px;">端口443</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 10px;">网络安全</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/" style="font-size: 15px;">网络问题</a> <a href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" style="font-size: 10px;">防火墙</a>
+      <a href="/tags/Debugging/" style="font-size: 10px;">Debugging</a> <a href="/tags/Git/" style="font-size: 20px;">Git</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/JOIN/" style="font-size: 10px;">JOIN</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 10px;">LeetCode</a> <a href="/tags/ORDER-BY/" style="font-size: 10px;">ORDER BY</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/SELECT/" style="font-size: 10px;">SELECT</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/VS-Code/" style="font-size: 10px;">VS Code</a> <a href="/tags/WAPI/" style="font-size: 10px;">WAPI</a> <a href="/tags/WHERE/" style="font-size: 10px;">WHERE</a> <a href="/tags/WLAN/" style="font-size: 10px;">WLAN</a> <a href="/tags/Wi-Fi/" style="font-size: 10px;">Wi-Fi</a> <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" style="font-size: 10px;">二分查找</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" style="font-size: 10px;">代码规范</a> <a href="/tags/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" style="font-size: 10px;">入门教程</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">博客部署</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">学习笔记</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%86%97%E4%BD%99/" style="font-size: 10px;">数据冗余</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 15px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">数据库设计</a> <a href="/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" style="font-size: 10px;">最佳实践</a> <a href="/tags/%E7%A7%81%E5%AF%86/" style="font-size: 10px;">私密</a> <a href="/tags/%E7%AB%AF%E5%8F%A320/" style="font-size: 10px;">端口20</a> <a href="/tags/%E7%AB%AF%E5%8F%A3443/" style="font-size: 10px;">端口443</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px;">算法</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 10px;">网络安全</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/" style="font-size: 15px;">网络问题</a> <a href="/tags/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/" style="font-size: 10px;">问题求解</a> <a href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" style="font-size: 10px;">防火墙</a>
     </div>
   </div>
 
@@ -1184,6 +1255,10 @@
       <ul>
         
           <li>
+            <a href="/2025/10/18/%E6%88%91%E7%9A%84%20DP%20%E6%8E%A2%E9%99%A9%E5%AE%9E%E5%BD%95%EF%BC%9A%E4%BB%8E%E2%80%9C%E4%B8%BA%E4%BB%80%E4%B9%88%E2%80%9D%E5%88%B0%E2%80%9C%E6%88%91%E6%87%82%E4%BA%86%E2%80%9D/">我的 DP 探险实录：从“为什么”到“我懂了”</a>
+          </li>
+        
+          <li>
             <a href="/2025/10/15/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">算法学习笔记：二分查找的两种写法与细节</a>
           </li>
         
@@ -1197,10 +1272,6 @@
         
           <li>
             <a href="/2025/10/14/SQL%20%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/">SQL 核心概念回顾与数据库设计原则</a>
-          </li>
-        
-          <li>
-            <a href="/2025/10/14/Hexo%20%E5%8D%9A%E5%AE%A2%20PowerShell%20%E5%8F%91%E5%B8%83%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/">Hexo 博客 PowerShell 发布完整流程笔记</a>
           </li>
         
       </ul>
