@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>DP 优化笔记：当“空间换时间”遇到内存超限 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="一份关于动态规划（DP）优化的学习笔记，重点讨论了当使用“空间换时间”策略时遇到“内存超限”（Memory Limit Exceeded）问题的解决方案，并详细解释了“滚动数组”技巧的原理和实现。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DP 优化笔记：当“空间换时间”遇到内存超限">
+<meta property="og:url" content="http://example.com/2025/10/18/DP%20%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%BD%93%E2%80%9C%E7%A9%BA%E9%97%B4%E6%8D%A2%E6%97%B6%E9%97%B4%E2%80%9D%E9%81%87%E5%88%B0%E5%86%85%E5%AD%98%E8%B6%85%E9%99%90/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一份关于动态规划（DP）优化的学习笔记，重点讨论了当使用“空间换时间”策略时遇到“内存超限”（Memory Limit Exceeded）问题的解决方案，并详细解释了“滚动数组”技巧的原理和实现。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-10-17T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-10-19T15:54:01.747Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="DP">
+<meta property="article:tag" content="算法优化">
+<meta property="article:tag" content="滚动数组">
+<meta property="article:tag" content="内存超限">
+<meta property="article:tag" content="空间复杂度">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-DP 优化笔记：当“空间换时间”遇到内存超限" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/10/18/DP%20%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%BD%93%E2%80%9C%E7%A9%BA%E9%97%B4%E6%8D%A2%E6%97%B6%E9%97%B4%E2%80%9D%E9%81%87%E5%88%B0%E5%86%85%E5%AD%98%E8%B6%85%E9%99%90/" class="article-date">
+  <time class="dt-published" datetime="2025-10-17T16:00:00.000Z" itemprop="datePublished">2025-10-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>►<a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      DP 优化笔记：当“空间换时间”遇到内存超限
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="DP-优化笔记：当“空间换时间”遇到内存超限"><a href="#DP-优化笔记：当“空间换时间”遇到内存超限" class="headerlink" title="DP 优化笔记：当“空间换时间”遇到内存超限"></a>DP 优化笔记：当“空间换时间”遇到内存超限</h3><h4 id="核心问题：动态规划不就是用空间换时间吗？为什么又不让算法用内存了呢"><a href="#核心问题：动态规划不就是用空间换时间吗？为什么又不让算法用内存了呢" class="headerlink" title="核心问题：动态规划不就是用空间换时间吗？为什么又不让算法用内存了呢"></a>核心问题：动态规划不就是用空间换时间吗？为什么又不让算法用内存了呢</h4><p>你提出了一个非常深刻的问题，这正是动态规划的核心思想。这个“交换”是有限度的，我们可以用一个比喻来理解：</p>
+<p><strong>把 DP 的“空间换时间”想象成你在一个工作台上组装一个复杂的模型。</strong></p>
+<ol>
+<li><p>**理想情况 (无限空间)**： 你有一个无限大的工作台。你可以把模型说明书的每一步（比如第1步到第100步）用到的所有零件、半成品，全都摊在桌子上。当进行到第50步时，你需要一个第49步的组件，一伸手就能拿到，非常快。这就是用巨大的空间（工作台）换来了速度（时间）。 这对应了我们最开始的 <code>dp[n+1][n+1]</code> 方案。</p>
+</li>
+<li><p>**现实情况 (有限空间)**： 现在比赛的规则是，你只有一个很小的书桌来组装模型。你不可能把100个步骤的所有零件都摊开，那样桌子会立刻被堆满，你什么也做不了。 这就是“内存超限”。判题系统给你的内存（书桌）是有限的。</p>
+</li>
+</ol>
+<p><strong>那么，聪明的做法是什么呢？</strong></p>
+<p>你会发现，在组装第50步的时候，你其实<strong>只需要</strong>第49步的那个半成品。至于第1步、第2步、甚至第48步的那些零件，你暂时都用不着了。</p>
+<p>所以，你只在桌上保留<strong>【上一步用完的组件】</strong>和<strong>【这一步正在用的零件】</strong>。每完成一步，就把更早的、暂时用不上的零件先收回盒子里。这样，你的小书桌就始终够用了。</p>
+<p>这对应的就是我们的<strong>“滚动数组”</strong>优化方案 <code>dp[2][n+1]</code>。我们没有放弃“用空间换时间”的思路（我们仍然保留了上一行的结果），而是把它优化到了一个更高效的水平——我们只保留了<strong>绝对必要</strong>的空间。</p>
+<p>现在，让我们回到状态转移的逻辑上。在计算<strong>第 <code>i</code> 行</strong>的结果时，我们唯一需要参考的是不是就是<strong>第 <code>i-1</code> 行</strong>的数据？</p>
+<hr>
+<h4 id="问题诊断：内存超限-Memory-Limit-Exceeded"><a href="#问题诊断：内存超限-Memory-Limit-Exceeded" class="headerlink" title="问题诊断：内存超限 (Memory Limit Exceeded)"></a>问题诊断：内存超限 (Memory Limit Exceeded)</h4><ul>
+<li><p><strong>根源分析</strong>：<code>long[][] dp = new long[n + 1][n + 1];</code></p>
+</li>
+<li><p>问题所在：当 n &#x3D; 200,000 时，这张 DP 表需要的总内存大约是：</p>
+<p>  200,001 * 200,001 * 8 字节 ≈ 320 GB</p>
+</li>
+<li><p><strong>结论</strong>：这个内存需求远超比赛通常几百MB的限制，导致程序被终止。</p>
+</li>
+</ul>
+<h4 id="问题：我看不懂“滚动数组”优化方案-dp-2-n-1-怎么办？"><a href="#问题：我看不懂“滚动数组”优化方案-dp-2-n-1-怎么办？" class="headerlink" title="问题：我看不懂“滚动数组”优化方案 $dp[2][n+1]$ 怎么办？"></a>问题：我看不懂“滚动数组”优化方案 $dp[2][n+1]$ 怎么办？</h4><p>没问题，我们把这个抽象的概念变得具体一点。“滚动数组”听起来很复杂，但它的思想其实非常简单。</p>
+<p>我们用一个比喻来理解：<strong>两块小黑板</strong>。</p>
+<ul>
+<li><p>**原来的方法 <code>dp[n+1][n+1]</code>**：就像我们有 n 块黑板，一块给第1只怪物用，一块给第2只用……一直到第n只。当 n 是20万时，我们就需要20万块黑板，房间（内存）肯定放不下。</p>
+</li>
+<li><p><strong>“滚动数组” <code>dp[2][n+1]</code><strong>：我们发现，在计算第 i 只怪物的情况时，其实只需要参考第 i-1 只怪物的结果就行了。于是我们说：“我们不需要20万块黑板，我们只需要</strong>两块</strong>就够了！” 我们把它们叫做<strong>黑板A</strong>和<strong>黑板B</strong>。</p>
+</li>
+</ul>
+<p>现在我们来看看这两块黑板是怎么“滚动”工作的：</p>
+<ol>
+<li><p><strong>开始 (第0步)</strong>: 我们在<strong>黑板A</strong>上写下初始状态（经验为0）。</p>
+</li>
+<li><p><strong>计算第1只怪物</strong>:</p>
+<ul>
+<li><p>我们看着<strong>黑板A</strong>（上一行的数据）。</p>
+</li>
+<li><p>根据黑板A的数据算出第1只怪的所有结果。</p>
+</li>
+<li><p>我们把这些新结果写在<strong>黑板B</strong>上。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>计算第2只怪物</strong>:</p>
+<ul>
+<li><p>现在我们只需要看<strong>黑板B</strong>了（它现在是“上一行”的数据）。</p>
+</li>
+<li><p>根据黑板B的数据算出第2只怪的所有结果。</p>
+</li>
+<li><p>我们把这些新结果写回到<strong>黑板A</strong>上（因为黑板A的旧数据已经没用了，可以擦掉）。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>计算第3只怪物</strong>:</p>
+<ul>
+<li><p>我们再回头看<strong>黑板A</strong>（它又是“上一行”了）。</p>
+</li>
+<li><p>算出结果，再写回到<strong>黑板B</strong>上。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>你看，我们就在这两块黑板之间来回擦写。一块始终保存着【上一行】的结果，另一块用来计算【当前行】的结果。这就是“滚动”的含义。</p>
+<hr>
+<p>那么在代码里，我们如何区分哪块是“当前行”，哪块是“上一行”呢？我们用了一个小技巧：**取模运算 <code>% 2</code>**。</p>
+<ul>
+<li><p>当 <code>i</code> 是 1, 3, 5… (奇数) 时, <code>i % 2</code> 的结果是 <strong>1</strong>。</p>
+</li>
+<li><p>当 <code>i</code> 是 2, 4, 6… (偶数) 时, <code>i % 2</code> 的结果是 <strong>0</strong>。</p>
+</li>
+</ul>
+<p><code>dp[0]</code> 就是黑板A，<code>dp[1]</code> 就是黑板B。<code>i % 2</code> 巧妙地帮我们决定了当前该用哪块黑板。</p>
+<p>currentRow &#x3D; i % 2;</p>
+<p>prevRow &#x3D; (i - 1) % 2;当前行 &#x3D; i % 2; 上一行 &#x3D; （i - 1） % 2;</p>
+<p>这个技巧确保了我们总能从正确的“上一行”读取数据，读取上一步的结果，然后把算出来的新结果覆盖掉更早的、已经没用的数据。</p>
+<hr>
+<h4 id="这个技巧是如何解决“内存超限”问题的？当-n-200-000-时，dp-n-1-n-1-和-dp-2-n-1-在内存占用上有什么根本性的区别？"><a href="#这个技巧是如何解决“内存超限”问题的？当-n-200-000-时，dp-n-1-n-1-和-dp-2-n-1-在内存占用上有什么根本性的区别？" class="headerlink" title="这个技巧是如何解决“内存超限”问题的？当 n &#x3D; 200,000 时，dp[n+1][n+1] 和 dp[2][n+1] 在内存占用上有什么根本性的区别？"></a>这个技巧是如何解决“内存超限”问题的？当 n &#x3D; 200,000 时，<code>dp[n+1][n+1]</code> 和 <code>dp[2][n+1]</code> 在内存占用上有什么根本性的区别？</h4><p>减少了 n-1 行 n+1 的数据的存储</p>
+<ul>
+<li><p><code>dp[n+1][n+1]</code> 方案需要存储 <code>n+1</code> 行数据。</p>
+</li>
+<li><p><code>dp[2][n+1]</code> 方案只需要存储 <code>2</code> 行数据。</p>
+</li>
+</ul>
+<p>我们减少了 <code>(n+1) - 2 = n-1</code> 行的数据存储。</p>
+<p>当 <code>n = 200,000</code> 时，这个区别是天壤之别：</p>
+<ul>
+<li><p><strong>旧方案</strong>：需要大约 <strong>320 GB</strong> 的内存。</p>
+</li>
+<li><p><strong>新方案</strong>：只需要大约 <strong>3.2 MB</strong> 的内存。</p>
+</li>
+</ul>
+<p>这就是滚动数组如何解决了“内存超限”的问题。你已经完全理解了第一个优化。</p>
+<hr>
+<p>好，现在我们可以安心地进入第二个问题了：**运行超时 (Time Limit Exceeded)**。</p>
+<p>我们成功地把内存压下来了，但程序在大数据量下还是太慢了。你认为我们代码的哪一部分是主要的“耗时大户”呢？</p>
+<hr>
+<h4 id="最终代码实现"><a href="#最终代码实现" class="headerlink" title="最终代码实现"></a>最终代码实现</h4><p>Java  爪哇岛</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">public static long maxExperience(int n, long[] a) &#123;</span><br><span class="line">    // 空间优化：只使用两行来回滚动</span><br><span class="line">    long[][] dp = new long[2][n + 1];</span><br><span class="line">    </span><br><span class="line">    // 初始化这两行</span><br><span class="line">    Arrays.fill(dp[0], Long.MIN_VALUE);</span><br><span class="line">    Arrays.fill(dp[1], Long.MIN_VALUE);</span><br><span class="line">    </span><br><span class="line">    // 起点不变，写在第0行</span><br><span class="line">    dp[0][0] = 0;</span><br><span class="line">    </span><br><span class="line">    // 状态转移</span><br><span class="line">    for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        // 计算当前行和上一行的索引</span><br><span class="line">        int currentRow = i % 2;</span><br><span class="line">        int prevRow = (i - 1) % 2;</span><br><span class="line">        </span><br><span class="line">        // (重要) 重置当前行，擦掉 i-2 行的旧数据</span><br><span class="line">        Arrays.fill(dp[currentRow], Long.MIN_VALUE);</span><br><span class="line"></span><br><span class="line">        for (int j = 0; j &lt;= i; j++) &#123;</span><br><span class="line">            long exp_let_go = Long.MIN_VALUE;</span><br><span class="line">            // 从上一行 prevRow 获取状态</span><br><span class="line">            if (dp[prevRow][j] != Long.MIN_VALUE) &#123;</span><br><span class="line">                exp_let_go = dp[prevRow][j] + i;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            long exp_defeat = Long.MIN_VALUE;</span><br><span class="line">            if (j &gt; 0 &amp;&amp; dp[prevRow][j - 1] != Long.MIN_VALUE) &#123;</span><br><span class="line">                // 从上一行 prevRow 获取状态</span><br><span class="line">                exp_defeat = dp[prevRow][j - 1] + a[i - 1] + (long)(j % 10) * a[i - 1];</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            // 结果存入当前行 currentRow</span><br><span class="line">            dp[currentRow][j] = Math.max(exp_let_go, exp_defeat);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 查找最终答案</span><br><span class="line">    int finalRow = n % 2; // 最后一行的索引是 n % 2</span><br><span class="line">    long maxResult = 0;</span><br><span class="line">    for (int j = 0; j &lt;= n; j++) &#123;</span><br><span class="line">        maxResult = Math.max(maxResult, dp[finalRow][j]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return maxResult;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>与<a target="_blank" rel="noopener" href="https://link22233.github.io/2025/10/18/%E6%88%91%E7%9A%84%20DP%20%E6%8E%A2%E9%99%A9%E5%AE%9E%E5%BD%95%EF%BC%9A%E4%BB%8E%E2%80%9C%E4%B8%BA%E4%BB%80%E4%B9%88%E2%80%9D%E5%88%B0%E2%80%9C%E6%88%91%E6%87%82%E4%BA%86%E2%80%9D/">小红打怪</a>的初始代码相比，代码里最重要的变化就是第3、5、6步：</p>
+<ul>
+<li><p>我们用 <code>i % 2</code> 巧妙地在索引 <code>0</code> 和 <code>1</code> 之间切换，模拟“滚动”的效果。</p>
+</li>
+<li><p>我们总是从 <code>prevRow</code> 读取数据，向 <code>currentRow</code> 写入新数据。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/10/18/DP%20%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%BD%93%E2%80%9C%E7%A9%BA%E9%97%B4%E6%8D%A2%E6%97%B6%E9%97%B4%E2%80%9D%E9%81%87%E5%88%B0%E5%86%85%E5%AD%98%E8%B6%85%E9%99%90/" data-id="cmgxw0zot0000cwnd9v1h6796" data-title="DP 优化笔记：当“空间换时间”遇到内存超限" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DP/" rel="tag">DP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%86%85%E5%AD%98%E8%B6%85%E9%99%90/" rel="tag">内存超限</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%BB%9A%E5%8A%A8%E6%95%B0%E7%BB%84/" rel="tag">滚动数组</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" rel="tag">空间复杂度</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96/" rel="tag">算法优化</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/10/18/%E6%88%91%E7%9A%84%20DP%20%E6%8E%A2%E9%99%A9%E5%AE%9E%E5%BD%95%EF%BC%9A%E4%BB%8E%E2%80%9C%E4%B8%BA%E4%BB%80%E4%B9%88%E2%80%9D%E5%88%B0%E2%80%9C%E6%88%91%E6%87%82%E4%BA%86%E2%80%9D/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          我的 DP 探险实录：从“为什么”到“我懂了”
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/10/15/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">算法学习笔记：二分查找的两种写法与细节</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%92%E9%94%99/">技术排错</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/">数据库笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">算法笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/" rel="tag">DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Debugging/" rel="tag">Debugging</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JOIN/" rel="tag">JOIN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ORDER-BY/" rel="tag">ORDER BY</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PowerShell/" rel="tag">PowerShell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SELECT/" rel="tag">SELECT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/" rel="tag">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS-Code/" rel="tag">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WAPI/" rel="tag">WAPI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WHERE/" rel="tag">WHERE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WLAN/" rel="tag">WLAN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wi-Fi/" rel="tag">Wi-Fi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" rel="tag">二分查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" rel="tag">代码规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" rel="tag">入门教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E5%AD%98%E8%B6%85%E9%99%90/" rel="tag">内存超限</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" rel="tag">博客部署</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%86%97%E4%BD%99/" rel="tag">数据冗余</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" rel="tag">数据库设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" rel="tag">最佳实践</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%9A%E5%8A%A8%E6%95%B0%E7%BB%84/" rel="tag">滚动数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%81%E5%AF%86/" rel="tag">私密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" rel="tag">空间复杂度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%AF%E5%8F%A320/" rel="tag">端口20</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%AF%E5%8F%A3443/" rel="tag">端口443</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96/" rel="tag">算法优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" rel="tag">编程基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/" rel="tag">网络问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/" rel="tag">问题求解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" rel="tag">防火墙</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Debugging/" style="font-size: 10px;">Debugging</a> <a href="/tags/Git/" style="font-size: 20px;">Git</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/JOIN/" style="font-size: 10px;">JOIN</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 10px;">LeetCode</a> <a href="/tags/ORDER-BY/" style="font-size: 10px;">ORDER BY</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/SELECT/" style="font-size: 10px;">SELECT</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/VS-Code/" style="font-size: 10px;">VS Code</a> <a href="/tags/WAPI/" style="font-size: 10px;">WAPI</a> <a href="/tags/WHERE/" style="font-size: 10px;">WHERE</a> <a href="/tags/WLAN/" style="font-size: 10px;">WLAN</a> <a href="/tags/Wi-Fi/" style="font-size: 10px;">Wi-Fi</a> <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" style="font-size: 10px;">二分查找</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" style="font-size: 10px;">代码规范</a> <a href="/tags/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" style="font-size: 10px;">入门教程</a> <a href="/tags/%E5%86%85%E5%AD%98%E8%B6%85%E9%99%90/" style="font-size: 10px;">内存超限</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">博客部署</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">学习笔记</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%86%97%E4%BD%99/" style="font-size: 10px;">数据冗余</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 15px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">数据库设计</a> <a href="/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" style="font-size: 10px;">最佳实践</a> <a href="/tags/%E6%BB%9A%E5%8A%A8%E6%95%B0%E7%BB%84/" style="font-size: 10px;">滚动数组</a> <a href="/tags/%E7%A7%81%E5%AF%86/" style="font-size: 10px;">私密</a> <a href="/tags/%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" style="font-size: 10px;">空间复杂度</a> <a href="/tags/%E7%AB%AF%E5%8F%A320/" style="font-size: 10px;">端口20</a> <a href="/tags/%E7%AB%AF%E5%8F%A3443/" style="font-size: 10px;">端口443</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px;">算法</a> <a href="/tags/%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96/" style="font-size: 10px;">算法优化</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 10px;">网络安全</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/" style="font-size: 15px;">网络问题</a> <a href="/tags/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/" style="font-size: 10px;">问题求解</a> <a href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" style="font-size: 10px;">防火墙</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/10/">October 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/10/19/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/18/%E6%88%91%E7%9A%84%20DP%20%E6%8E%A2%E9%99%A9%E5%AE%9E%E5%BD%95%EF%BC%9A%E4%BB%8E%E2%80%9C%E4%B8%BA%E4%BB%80%E4%B9%88%E2%80%9D%E5%88%B0%E2%80%9C%E6%88%91%E6%87%82%E4%BA%86%E2%80%9D/">我的 DP 探险实录：从“为什么”到“我懂了”</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/18/DP%20%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%BD%93%E2%80%9C%E7%A9%BA%E9%97%B4%E6%8D%A2%E6%97%B6%E9%97%B4%E2%80%9D%E9%81%87%E5%88%B0%E5%86%85%E5%AD%98%E8%B6%85%E9%99%90/">DP 优化笔记：当“空间换时间”遇到内存超限</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/15/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">算法学习笔记：二分查找的两种写法与细节</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/15/SQL%20%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%20'%E8%A1%A8%E5%90%8D.%20%E5%88%97%E5%90%8D'/">SQL 最佳实践：为什么推荐使用 &#39;表名. 列名&#39;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
