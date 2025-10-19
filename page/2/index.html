@@ -1,746 +1,520 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
   
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="link22233">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://example.com/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="link22233">
+<meta name="twitter:card" content="summary_large_image">
   
   
   
-<link rel="stylesheet" href="/css/style.css">
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
 
   
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
-
 <meta name="generator" content="Hexo 7.3.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-          <a class="main-nav-link" href="/">Home</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
         
-      </nav>
-      <nav id="sub-nav">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
         
         
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-编程学习笔记：代码调试 (Debugging) 的核心方法与技巧" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/09/08/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95%20(Debugging)%20%E7%9A%84%E6%A0%B8%E5%BF%83%E6%96%B9%E6%B3%95%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="article-date">
-  <time class="dt-published" datetime="2025-09-08T05:38:00.000Z" itemprop="datePublished">2025-09-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/08/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95%20(Debugging)%20%E7%9A%84%E6%A0%B8%E5%BF%83%E6%96%B9%E6%B3%95%E4%B8%8E%E6%8A%80%E5%B7%A7/">编程学习笔记：代码调试 (Debugging) 的核心方法与技巧</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="第一部分：核心思想——你和计算机的“误会”"><a href="#第一部分：核心思想——你和计算机的“误会”" class="headerlink" title="第一部分：核心思想——你和计算机的“误会”"></a><strong>第一部分：核心思想——你和计算机的“误会”</strong></h3><p>在你开始学习具体的技巧之前，一定要先理解这篇文章的核心思想，这非常非常重要：</p>
-<blockquote>
-<p><strong>当程序没有按你的预期运行时，几乎总是因为你对代码的理解和计算机实际执行的情况之间存在“误会”。代码永远是忠实地执行你写下的指令，而不是你脑子里想的那个指令。</strong></p>
-</blockquote>
-<p>Debug的过程，其实就是通过各种方法，去<strong>看清楚代码实际上是怎么一步一步执行的</strong>，从而找到你和计算机之间的那个“误会”到底在哪里。</p>
-<hr>
-<h3 id="第二部分：Debug-的四种层次"><a href="#第二部分：Debug-的四种层次" class="headerlink" title="第二部分：Debug 的四种层次"></a><strong>第二部分：Debug 的四种层次</strong></h3><p>文章提到了四种从易到难的 Debug 方法，帮你建立一个完整的概念：</p>
-<ol>
-<li><p><strong>直接读代码（人肉 Debug）</strong>：这是最基本的方法，通过一遍一遍地读代码，试图在脑子里模拟程序的运行，找出逻辑漏洞。对于初学者来说，这可能比较困难。</p>
-</li>
-<li><p><strong>求助 AI 工具</strong>：像 ChatGPT 这样的工具很强大，可以直接把有问题的代码丢给它，让它帮你找 bug 或者提供思路。这是一个很现代、很高效的方法。</p>
-</li>
-<li><p><strong>打印日志（打点观察）</strong>：<strong>这是我们这节课的重点！</strong> 通过在代码的关键位置插入打印语句（比如 <code>System.out.println</code>），输出变量的值或者程序的执行路径。这个方法虽然看起来“笨”，但极其有效。</p>
-</li>
-<li><p><strong>使用 IDE 的断点调试</strong>：这是最专业、最强大的方法，你可以在代码的任何地方设置一个“断点”，让程序运行到那里就暂停，然后你可以检查所有变量的状态，再单步执行。</p>
-</li>
-</ol>
-<p>这篇教程的重点，就是教你如何精通第3种方法——<strong>“打印日志”</strong>，因为它能帮你深刻理解代码的执行流程。</p>
-<hr>
-<h3 id="第三部分：核心技巧——如何通过“打印”来破案"><a href="#第三部分：核心技巧——如何通过“打印”来破案" class="headerlink" title="第三部分：核心技巧——如何通过“打印”来破案"></a><strong>第三部分：核心技巧——如何通过“打印”来破案</strong></h3><p>接下来，我们来看文章里的几个关键案例，学习在不同场景下应该在哪里“打印”，打印什么内容。</p>
-<h4 id="案例一：循环-for-循环"><a href="#案例一：循环-for-循环" class="headerlink" title="案例一：循环 (for 循环)"></a><strong>案例一：循环 (<code>for</code> 循环)</strong></h4><ul>
-<li><p><strong>问题</strong>：循环的结果不对，不知道是循环次数错了，还是里面的计算错了。</p>
-</li>
-<li><p><strong>解决方法</strong>：在 <code>for</code> 循环<strong>内部</strong>打印出每一轮循环中，你最关心的那个变量的值。</p>
-<p>  Java</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// for循环内部出现问题建议</span><br><span class="line">for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">    // 核心逻辑</span><br><span class="line">    System.out.println(&quot;在第 &quot; + i + &quot; 次循环时，变量X的值是: &quot; + x); // &lt;-- 在这里打印</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(&quot;循环结束&quot;); // &lt;-- 在循环外打印，确认循环是否正常结束</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>学习要点</strong>：通过在循环体内打印，你可以清晰地看到每一次迭代中变量的变化过程，一下子就能定位到是哪一轮出了问题。</p>
-</li>
-</ul>
-<h4 id="案例二：链表或-while-循环"><a href="#案例二：链表或-while-循环" class="headerlink" title="案例二：链表或 while 循环"></a><strong>案例二：链表或 <code>while</code> 循环</strong></h4><ul>
-<li><p><strong>问题</strong>：处理链表时，指针飞了，或者循环没有在预期的位置停下来。</p>
-</li>
-<li><p><strong>解决方法</strong>：在 <code>while</code> 循环<strong>内部</strong>，打印出当前节点的值，甚至下一个节点的值。</p>
-<p>  Java</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">while (list != null) &#123;</span><br><span class="line">    // 核心操作</span><br><span class="line">    System.out.println(&quot;当前节点值: &quot; + list.val + &quot; | 下一个节点是: &quot; + list.next); // &lt;-- 打印关键信息</span><br><span class="line">    list = list.next;</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(&quot;循环结束后，list的值是: &quot; + list); // &lt;-- 检查结束时的状态</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>学习要点</strong>：对于链表、树这类数据结构，最重要的是观察“指针”或“引用”的变化。打印它们可以帮你追踪整个遍历过程。<br>  想象一下，<code>list</code> 这个变量不是一个普通变量，而是一个<strong>聚光灯</strong>。它的任务就是照亮链表中的某一个节点。</p>
-</li>
-</ul>
-<p><code>list = list.next;</code> 这行代码的作用就是，把聚光灯从<strong>当前照亮的节点</strong>，移动到<strong>下一个节点</strong>去。</p>
-<p><strong>那么，“指针飞了”是什么意思？</strong></p>
-<p>就是这个聚光灯突然不听你指挥了！可能它照着照着，突然“唰”一下跳到了一个很远的、错误的节点上，或者“啪”一下熄灭了（变成了 <code>null</code>），而此时它后面明明还有很多节点没照亮。</p>
-<p><strong>为什么 <code>println</code> 那么好用？</strong></p>
-<p><code>System.out.println(&quot;当前节点值: &quot; + list.val + &quot; | 下一个节点是: &quot; + list.next);</code></p>
-<p>这行代码就像是给聚光灯装了一个“状态播报器”。在聚光灯<strong>移动之前</strong>，它会大声喊出两件事：</p>
-<ol>
-<li><p><strong><code>&quot;当前节点值: &quot; + list.val</code></strong>: “报告！我现在正照着值为 <code>[val]</code> 的节点！” —— 这让你确定聚光灯当前的位置是正确的。</p>
-</li>
-<li><p><strong><code>&quot;下一个节点是: &quot; + list.next</code></strong>: “报告！我下一步准备移动到 <code>[next]</code> 这个位置去！” —— <strong>这才是关键！</strong> 它让你提前看到了聚光灯的<strong>移动目标</strong>。</p>
-</li>
-</ol>
-<p><strong>举个例子：</strong> 假设你期望的输出是 <code>1 -&gt; 2 -&gt; 3</code>。</p>
-<ul>
-<li><p>当聚光灯照着 <code>1</code> 时，它播报：“我现在照着 1，下一步要去 2”。 <strong>（正常）</strong></p>
-</li>
-<li><p>然后聚光灯移动，照着 <code>2</code>，它播报：“我现在照着 2，下一步要去 3”。 <strong>（正常）</strong></p>
-</li>
-<li><p>突然，聚光灯照着 <code>3</code>，它播报：“我现在照着 3，下一步要去 null”。 <strong>（正常，到达终点）</strong></p>
-</li>
-</ul>
-<p>但如果，照着 <code>2</code> 的时候，它突然播报：“我现在照着 2，下一步要去 null”。 你一下子就抓到问题了！根本不需要等到循环结束，你就知道在节点 <code>2</code> 这里，它的 <code>next</code> 指针出错了，导致链表“断”了。</p>
-<p>这就是为什么这行 <code>println</code> 能帮你“预判”错误，抓住那个让聚光灯“飞了”的瞬间。</p>
-<h4 id="案例三：条件判断-if-语句"><a href="#案例三：条件判断-if-语句" class="headerlink" title="案例三：条件判断 (if 语句)"></a><strong>案例三：条件判断 (<code>if</code> 语句)</strong></h4><ul>
-<li><p><strong>问题</strong>：不确定程序到底有没有进入 <code>if</code> 的分支。</p>
-</li>
-<li><p><strong>解决方法</strong>：在 <code>if</code> 代码块<strong>内部</strong>放一个打印语句。</p>
-<p>  Java</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (condition) &#123;</span><br><span class="line">    System.out.println(&quot;程序成功进入了这个 if 分支&quot;); // &lt;-- 打印一个标记</span><br><span class="line">    // 核心逻辑</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>学习要点</strong>：如果你的控制台打印出了这句话，就证明条件判断为真，代码进来了。如果没打印，那就说明是 <code>condition</code> 本身出了问题。</p>
-</li>
-</ul>
-<h4 id="案例四：递归"><a href="#案例四：递归" class="headerlink" title="案例四：递归"></a><strong>案例四：递归</strong></h4><ul>
-<li><p><strong>问题</strong>：递归太抽象，不知道函数是怎么一层一层调用，又怎么一层一层返回的。</p>
-</li>
-<li><p><strong>解决方法</strong>：在递归函数的<strong>开头</strong>（进入下一层前）和<strong>结尾</strong>（返回上一层后）分别打印信息。</p>
-<p>  Java</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">void recursiveFunction(Node root) &#123;</span><br><span class="line">    if (root == null) return;</span><br><span class="line"></span><br><span class="line">    System.out.println(&quot;进入节点: &quot; + root.val); // &lt;-- 递归调用前打印（前序遍历位置）</span><br><span class="line"></span><br><span class="line">    recursiveFunction(root.left); // 递归调用</span><br><span class="line"></span><br><span class="line">    System.out.println(&quot;离开节点: &quot; + root.val); // &lt;-- 递归调用后打印（后序遍历位置）</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>学习要点</strong>：通过这种方式，你可以清晰地看到递归的“深入”和“回溯”过程，这对于理解递归的执行顺序至关重要。</p>
-</li>
-</ul>
-<h3 id="案例四：递归和“进入-离开”-我们用“迷宫探险家”来理解"><a href="#案例四：递归和“进入-离开”-我们用“迷宫探险家”来理解" class="headerlink" title=". 案例四：递归和“进入&#x2F;离开” (我们用“迷宫探险家”来理解)"></a><strong>. 案例四：递归和“进入&#x2F;离开” (我们用“迷宫探险家”来理解)</strong></h3><p>想象一棵树是一个复杂的迷宫，而你的递归函数 <code>recursiveFunction</code> 就是一个<strong>探险家</strong>。</p>
-<ul>
-<li><p><strong><code>System.out.println(&quot;进入节点: &quot; + root.val);</code></strong> 这相当于探险家每到达迷宫中的一个<strong>新路口</strong>（一个节点），他就会用对讲机向你报告：“<strong>报告！我已到达 [val] 号路口！</strong>” 这个报告发生在他<strong>决定要继续深入探索</strong>（比如先走左边通道）<strong>之前</strong>。</p>
-</li>
-<li><p><strong><code>recursiveFunction(root.left);</code></strong> 这是探险家接到的指令：“从当前路口，进入左边的通道，把左边所有通道都走一遍。”</p>
-</li>
-<li><p><strong><code>System.out.println(&quot;离开节点: &quot; + root.val);</code></strong> 这相当于探险家<strong>已经把左边所有通道（以及分支、死路）全部探索完毕，并且回到了</strong>当前这个路口<strong>时</strong>，他再次用对讲机向你报告：“<strong>报告！我已经把 [val] 号路口的左边区域全部探索完毕，现在返回到了 [val] 号路口！</strong>”</p>
-</li>
-</ul>
-<p><strong>把这些报告连起来看，会发生什么？</strong></p>
-<p>假设树是这样：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  A</span><br><span class="line"> / \</span><br><span class="line">B   C</span><br></pre></td></tr></table></figure>
-
-<p>你的控制台会打印出这样的日志：</p>
-<ol>
-<li><p>进入节点: A <em>(探险家到达 A)</em></p>
-</li>
-<li><p>进入节点: B <em>(他从 A 进入左边，到达 B)</em></p>
-</li>
-<li><p>离开节点: B <em>(B 的左右都没路了，他探索完 B，返回 A)</em></p>
-</li>
-<li><p>进入节点: C <em>(他回到 A 后，接到指令，进入右边，到达 C)</em></p>
-</li>
-<li><p>离开节点: C <em>(C 探索完毕，返回 A)</em></p>
-</li>
-<li><p>离开节点: A <em>(A 的左右两边都探索完毕了，他彻底离开 A)</em></p>
-</li>
-</ol>
-<h2 id="看到了吗？通过“进入”和“离开”的配对打印，你就能完美地追踪出探险家在迷宫里的完整足迹，清清楚楚地看到他是如何深入，又是如何一步步返回（回溯）的。这就是理解递归执行顺序的关键。"><a href="#看到了吗？通过“进入”和“离开”的配对打印，你就能完美地追踪出探险家在迷宫里的完整足迹，清清楚楚地看到他是如何深入，又是如何一步步返回（回溯）的。这就是理解递归执行顺序的关键。" class="headerlink" title="看到了吗？通过“进入”和“离开”的配对打印，你就能完美地追踪出探险家在迷宫里的完整足迹，清清楚楚地看到他是如何深入，又是如何一步步返回（回溯）的。这就是理解递归执行顺序的关键。"></a>看到了吗？通过“进入”和“离开”的配对打印，你就能<strong>完美地追踪</strong>出探险家在迷宫里的完整足迹，清清楚楚地看到他是如何深入，又是如何一步步<strong>返回（回溯）</strong>的。这就是理解递归执行顺序的关键。</h2><h3 id="总结：这节课你学到了什么？"><a href="#总结：这节课你学到了什么？" class="headerlink" title="总结：这节课你学到了什么？"></a><strong>总结：这节课你学到了什么？</strong></h3><ol>
-<li><p><strong>端正心态</strong>：Debug 不是和计算机吵架，而是去理解它到底是怎么执行你的代码的。</p>
-</li>
-<li><p><strong>掌握核心武器</strong>：学会使用 <code>System.out.println()</code> 这种最简单直接的方法来观察程序的内部状态。</p>
-</li>
-<li><p><strong>培养“盘感”</strong>：这种“笨办法”用多了，你对代码的执行流程会越来越敏感，慢慢地就能培养出一种直觉，以后看代码就能猜到哪里容易出错了。</p>
-</li>
-</ol>
-<p>我们这堂课就来学习一下这个强大的功能。我们把它称为**断点调试 (Breakpoint Debugging)**。</p>
-<hr>
-<h3 id="核心概念：让程序“暂停”，让你“检查”"><a href="#核心概念：让程序“暂停”，让你“检查”" class="headerlink" title="核心概念：让程序“暂停”，让你“检查”"></a><strong>核心概念：让程序“暂停”，让你“检查”</strong></h3><p>想象一下，<code>println</code> 就像是在程序运行时，让变量自己大声喊出它的值。而断点调试，则更像是你拥有了<strong>“时间暂停”</strong>的超能力。</p>
-<p>你可以在代码的任何一行设置一个“暂停点”（也就是<strong>断点</strong>），当程序运行到这里时，它会立刻“冻结”，然后IDE会把当前程序的所有状态，包括所有变量的值，都清清楚楚地展示给你。</p>
-<hr>
-<h3 id="如何操作：三步学会断点调试"><a href="#如何操作：三步学会断点调试" class="headerlink" title="如何操作：三步学会断点调试"></a><strong>如何操作：三步学会断点调试</strong></h3><p>在 VS 或 VS Code 里操作起来非常直观，主要就这几个步骤：</p>
-<h4 id="第一步：设置断点-Set-a-Breakpoint"><a href="#第一步：设置断点-Set-a-Breakpoint" class="headerlink" title="第一步：设置断点 (Set a Breakpoint)"></a><strong>第一步：设置断点 (Set a Breakpoint)</strong></h4><p>在你想要程序暂停的那一行代码旁边，行号的左边，用鼠标<strong>点击一下</strong>。通常会出现一个<strong>红色的圆点</strong>。这就代表你在这里设置了一个断点。</p>
-<ul>
-<li><strong>什么时候设？</strong> 通常设在你怀疑有问题的代码行，或者是一个循环的开始、一个关键的 <code>if</code> 判断之前。</li>
-</ul>
-<h4 id="第二步：启动调试模式-Start-Debugging"><a href="#第二步：启动调试模式-Start-Debugging" class="headerlink" title="第二步：启动调试模式 (Start Debugging)"></a><strong>第二步：启动调试模式 (Start Debugging)</strong></h4><p>这一步很关键！你<strong>不能</strong>用平常的“运行”按钮。你需要找到并点击那个带有<strong>“虫子”图标 🐞</strong> 或者明确写着<strong>“调试” (Debug)</strong> 的启动按钮。</p>
-<ul>
-<li><p>在大多数 IDE 中，快捷键是 <code>F5</code>。</p>
-</li>
-<li><p>程序会开始运行，然后在它遇到的第一个断点处自动暂停。</p>
-</li>
-</ul>
-<h4 id="第三步：观察变量并控制程序"><a href="#第三步：观察变量并控制程序" class="headerlink" title="第三步：观察变量并控制程序"></a><strong>第三步：观察变量并控制程序</strong></h4><p>一旦程序在断点处暂停，IDE 的界面会发生一些变化，通常会弹出几个新窗口，让你大显身手：</p>
-<ol>
-<li><p><strong>观察变量的值 (Inspecting Variables):</strong></p>
-<ul>
-<li><p><strong>变量窗口 (Variables Panel):</strong> 在左侧的调试面板中，会有一个“变量”区域，它会自动列出当前作用域内所有变量的实时值。你可以一层层展开对象或数组，查看里面的具体内容。</p>
-</li>
-<li><p><strong>鼠标悬停 (Hover):</strong> 这是最快的方法！直接在你的代码编辑器里，把鼠标光标移动到任何一个变量名上，稍等片刻，它的当前值就会弹出来。</p>
-</li>
-<li><p><strong>监视窗口 (Watch Panel):</strong> 你还可以把一些你特别关心的变量（甚至是一个表达式，比如 <code>a + b</code>）添加到“监视”窗口，这样无论程序走到哪里，只要这个变量存在，它的值都会被重点监控。</p>
-</li>
-</ul>
-</li>
-<li><p><strong>控制程序的执行流程 (Controlling the Flow):</strong> 在程序暂停时，调试工具栏上会出现几个像播放器一样的按钮，它们是你的“遥控器”：</p>
-<ul>
-<li><p><strong>继续 (Continue &#x2F; <code>F5</code>)</strong>: 让程序继续运行，直到遇到下一个断点或者程序结束。</p>
-</li>
-<li><p><strong>单步跳过 (Step Over &#x2F; <code>F10</code>)</strong>: 执行当前这一行代码，然后停在<strong>下一行</strong>。如果当前行是一个函数调用，它会执行完整个函数，但<strong>不会</strong>进入函数内部。</p>
-</li>
-<li><p><strong>单步调试 (Step Into &#x2F; <code>F11</code>)</strong>: 执行当前这一行。如果这一行是一个函数调用，它会<strong>进入</strong>到那个函数的内部，并停在函数的第一行。这对于追踪一个函数内部的问题非常有用。</p>
-</li>
-<li><p><strong>单步跳出 (Step Out &#x2F; <code>Shift+F11</code>)</strong>: 如果你已经进入了一个函数，这个按钮会执行完这个函数剩下的所有代码，然后返回到调用它的地方。</p>
-</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h3 id="总结：println-vs-断点调试"><a href="#总结：println-vs-断点调试" class="headerlink" title="总结：println vs. 断点调试"></a><strong>总结：<code>println</code> vs. 断点调试</strong></h3><p>现在你已经学会了两种强大的 Debug 方法，那应该在什么时候用哪个呢？</p>
-<ul>
-<li><p><strong>用 <code>println</code> 的场景:</strong></p>
-<ul>
-<li><p>问题比较简单，只想快速验证一个变量的值。</p>
-</li>
-<li><p>在一些不支持断点调试的环境中（比如某些服务器日志）。</p>
-</li>
-<li><p>调试和时间相关或者多线程的问题时，因为断点会让程序暂停，可能会改变问题的表现。</p>
-</li>
-</ul>
-</li>
-<li><p><strong>用断点调试的场景:</strong></p>
-<ul>
-<li><p><strong>绝大多数情况！</strong> 尤其是问题比较复杂，涉及很多变量和函数调用时。</p>
-</li>
-<li><p>当你想理解一段陌生代码的完整执行流程时。</p>
-</li>
-<li><p>当你需要检查大型对象或复杂数据结构的内容时。</p>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>掌握 IDE 的断点调试功能，是每一个程序员从入门到专业的必经之路。</strong> 它的强大之处在于，它让你能真正地“看”到代码在执行，而不是靠“猜”。<br>当你调试的变量是一个链表或者一棵树时，IDE 的调试器会展现出它真正强大的地方。它<strong>不会</strong>只给你显示一个毫无意义的内存地址。</p>
-<p>简单来说：<strong>调试器会用一个可以“展开”和“折叠”的视图，完美地把链表或树的结构给你呈现出来。</strong></p>
-<p>我们来分别看一下这两种情况。</p>
-<hr>
-<h3 id="情况一：当变量是一个链表-Linked-List"><a href="#情况一：当变量是一个链表-Linked-List" class="headerlink" title="情况一：当变量是一个链表 (Linked List)"></a><strong>情况一：当变量是一个链表 (Linked List)</strong></h3><p>假设你有一个链表，你在代码里有一个指向链表头部的变量，比如叫 <code>head</code>。当你在断点处停下来时，你会这样做：</p>
-<ol>
-<li><p><strong>找到头节点</strong>：在调试器的“变量”窗口里，你会找到 <code>head</code> 这个变量。它旁边会有一个小小的三角形 <code>▶</code> 或者加号 <code>+</code>。</p>
-</li>
-<li><p><strong>展开第一个节点</strong>：你点击那个小三角形，<code>head</code> 变量就会被展开。你会看到这个节点内部的成员，比如它的值 <code>val</code> 和指向下一个节点的指针 <code>next</code>。</p>
-</li>
-<li><p><strong>顺藤摸瓜，查看下一个节点</strong>：现在，最神奇的地方来了！那个 <code>next</code> 指针本身也是一个可以展开的对象。你继续点击 <code>next</code> 旁边的 <code>▶</code>，调试器就会为你展示<strong>第二个节点</strong>的内容（它的 <code>val</code> 和它的 <code>next</code>）。</p>
-</li>
-<li><p><strong>一步步“走”完整个链表</strong>：你可以像这样，一层一层地点开 <code>next</code> -&gt; <code>next</code> -&gt; <code>next</code>… 就好像亲手把这个链条一环一环地解开一样。</p>
-</li>
-</ol>
-<p>这个过程看起来会是这样：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">▼ head: ListNode (object)</span><br><span class="line">  |-- val: 1</span><br><span class="line">  ▼ next: ListNode (object)</span><br><span class="line">    |-- val: 2</span><br><span class="line">    ▼ next: ListNode (object)</span><br><span class="line">      |-- val: 3</span><br><span class="line">      |-- next: null  &lt;-- 你会清晰地看到链表的末尾！</span><br></pre></td></tr></table></figure>
-
-<p><strong>优点：</strong></p>
-<ul>
-<li><p><strong>结构清晰</strong>：你能直观地看到节点是如何一个接一个连接起来的。</p>
-</li>
-<li><p><strong>轻松发现断链</strong>：如果某个节点的 <code>next</code> 意外地变成了 <code>null</code>，或者指向了一个错误的节点，你会立刻发现。</p>
-</li>
-<li><p><strong>识别循环链表</strong>：如果你不停地展开 <code>next</code>，发现又回到了之前的某个节点，那你就找到了一个环！</p>
-</li>
-</ul>
-<hr>
-<h3 id="情况二：当变量是一棵树-Tree"><a href="#情况二：当变量是一棵树-Tree" class="headerlink" title="情况二：当变量是一棵树 (Tree)"></a><strong>情况二：当变量是一棵树 (Tree)</strong></h3><p>调试树的逻辑和链表非常类似，只不过从“一维”的链条变成了“二维”的结构。</p>
-<p>假设你有一个指向树根的变量 <code>root</code>。</p>
-<ol>
-<li><p><strong>找到根节点</strong>：在“变量”窗口里找到 <code>root</code> 变量。</p>
-</li>
-<li><p><strong>展开根节点</strong>：点击 <code>root</code> 旁边的 <code>▶</code>，你会看到根节点的值 <code>val</code>，以及它的两个孩子：<code>left</code> 指针和 <code>right</code> 指针。</p>
-</li>
-<li><p><strong>探索子树</strong>：<code>left</code> 和 <code>right</code> 本身也是可以展开的节点对象！</p>
-<ul>
-<li><p>如果你想探索<strong>左子树</strong>，你就去展开 <code>left</code> 指针。</p>
-</li>
-<li><p>如果你想探索<strong>右子树</strong>，你就去展开 <code>right</code> 指针。</p>
-</li>
-</ul>
-</li>
-</ol>
-<p><strong>这个过程就像是在一个文件管理器里一层一层地点开文件夹</strong>，你可以随心所欲地探索树的任何一个分支。</p>
-<p>看起来会是这样：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">▼ root: TreeNode (object)</span><br><span class="line">  |-- val: 10</span><br><span class="line">  ▼ left: TreeNode (object)</span><br><span class="line">  | |-- val: 5</span><br><span class="line">  | |-- left: null</span><br><span class="line">  | |-- right: null</span><br><span class="line">  ▼ right: TreeNode (object)</span><br><span class="line">    |-- val: 15</span><br><span class="line">    ▼ left: TreeNode (object)</span><br><span class="line">    | |-- val: 12</span><br><span class="line">    | |-- ...</span><br><span class="line">    |-- right: null</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="高级技巧：配合“调用栈-Call-Stack-”理解递归"><a href="#高级技巧：配合“调用栈-Call-Stack-”理解递归" class="headerlink" title="高级技巧：配合“调用栈 (Call Stack)”理解递归"></a><strong>高级技巧：配合“调用栈 (Call Stack)”理解递归</strong></h3><p>当你调试树的遍历、搜索等递归算法时，还有一个大杀器——**“调用栈”窗口 (Call Stack)**。</p>
-<ul>
-<li><p><strong>它是什么</strong>：这个窗口会显示当前所有正在执行中的函数调用链。</p>
-</li>
-<li><p><strong>怎么用</strong>：当你用递归遍历一棵树时，每进入一层递归（比如从 <code>root</code> 调用 <code>traverse(root.left)</code>），调用栈里就会增加一层。每当一个递归调用返回时，调用栈就会减少一层。</p>
-</li>
-<li><p><strong>为什么强大</strong>：通过观察调用栈，你可以<strong>一目了然地知道当前你递归到了树的哪个节点，以及你是怎么一步步走到这里的</strong>。这对于理解复杂的递归过程，比如回溯算法，有着不可替代的作用。</p>
-</li>
-</ul>
-<p><strong>总结一下：</strong></p>
-<p>对于链表和树这种由指针&#x2F;引用连接起来的数据结构，IDE 调试器是<strong>最强大、最直观</strong>的分析工具。它通过<strong>可展开的视图</strong>让你能手动遍历整个数据结构，并通过<strong>调用栈</strong>让你能看清递归的轨迹。</p>
-<h3 id="高级技巧：调用栈-Call-Stack-我们用“任务清单”来理解"><a href="#高级技巧：调用栈-Call-Stack-我们用“任务清单”来理解" class="headerlink" title="高级技巧：调用栈 (Call Stack) (我们用“任务清单”来理解)"></a><strong>高级技巧：调用栈 (Call Stack) (我们用“任务清单”来理解)</strong></h3><p>想象一下，你有一个非常聪明的助理，你给他派发任务。这个助理桌子上有一个<strong>“任务清单”</strong>，规则是：</p>
-<ul>
-<li><p>新任务来了，就压在清单的<strong>最上面</strong>。</p>
-</li>
-<li><p>他永远只做清单<strong>最顶上</strong>的那个任务。</p>
-</li>
-<li><p>做完了最顶上的任务，就把这个任务划掉，然后开始做下面的那个。</p>
-</li>
-</ul>
-<p>这个“任务清单”就是**调用栈 (Call Stack)**。每一个函数调用，就是一个任务。</p>
-<p><strong>用上面那个探险家的例子：</strong></p>
-<ol>
-<li><p><strong><code>main</code> 函数启动</strong>：你在清单上写下第一个任务：“开始探险 (<code>main</code> 函数)”。</p>
-<ul>
-<li><p><strong>清单:</strong></p>
-<ul>
-<li><code>main</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>**<code>main</code> 调用 <code>recursiveFunction(A)</code>**：你又写了个新任务“探索 A 路口”压在上面。助理开始做这个新任务。</p>
-<ul>
-<li><p><strong>清单:</strong></p>
-<ul>
-<li><p><code>recursiveFunction(A)</code></p>
-</li>
-<li><p><code>main</code></p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>**在 <code>A</code> 任务中，调用 <code>recursiveFunction(B)</code>**：助理还没做完 <code>A</code> 的任务（他还要探索右边呢），但指令让他先探索 <code>B</code>。于是你又压上一个新任务“探索 B 路口”。</p>
-<ul>
-<li><p><strong>清单:</strong></p>
-<ul>
-<li><p><code>recursiveFunction(B)</code></p>
-</li>
-<li><p><code>recursiveFunction(A)</code></p>
-</li>
-<li><p><code>main</code></p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong><code>B</code> 任务完成</strong>：B 路口探索完了（左右没路），助理把“探索 B 路口”这个任务从清单上划掉。</p>
-<ul>
-<li><p><strong>清单:</strong></p>
-<ul>
-<li><p><code>recursiveFunction(A)</code></p>
-</li>
-<li><p><code>main</code></p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>回到 <code>A</code> 任务</strong>：助理一看，清单最顶上的是“探索 A 路口”，他想起来了：“哦对，我刚才 A 的左边探索完了，现在该探索右边了”。</p>
-</li>
-</ol>
-<p><strong>调用栈窗口在 IDE 里的作用</strong>，就是<strong>实时给你展示这张“任务清单”</strong>。</p>
-<p>当你设置断点，程序暂停时，你看一眼调用栈窗口，就能知道：</p>
-<ul>
-<li><p><strong>当前在执行哪个任务？</strong> (清单最顶上的那个)</p>
-</li>
-<li><p><strong>这个任务是被谁派发的？</strong> (清单上它下面的那个)</p>
-</li>
-<li><p><strong>整个任务链条是怎样的？</strong> (看整个清单)</p>
-</li>
-</ul>
-<p>这让你在复杂的递归调用中，永远不会迷失方向，能瞬间明白“我从哪里来，现在在哪里，要到哪里去”。</p>
-<p>9&#x2F;9readed once</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/08/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95%20(Debugging)%20%E7%9A%84%E6%A0%B8%E5%BF%83%E6%96%B9%E6%B3%95%E4%B8%8E%E6%8A%80%E5%B7%A7/" data-id="cmgxw0zp7000mcwnd8kl5at61" data-title="编程学习笔记：代码调试 (Debugging) 的核心方法与技巧" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Debugging/" rel="tag">Debugging</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VS-Code/" rel="tag">VS Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" rel="tag">编程基础</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-一篇需要密码才能阅读的私密笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/09/07/%E4%B8%80%E7%AF%87%E9%9C%80%E8%A6%81%E5%AF%86%E7%A0%81%E6%89%8D%E8%83%BD%E9%98%85%E8%AF%BB%E7%9A%84%E7%A7%81%E5%AF%86%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time class="dt-published" datetime="2025-09-07T03:00:00.000Z" itemprop="datePublished">2025-09-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/07/%E4%B8%80%E7%AF%87%E9%9C%80%E8%A6%81%E5%AF%86%E7%A0%81%E6%89%8D%E8%83%BD%E9%98%85%E8%AF%BB%E7%9A%84%E7%A7%81%E5%AF%86%E7%AC%94%E8%AE%B0/">一篇需要密码才能阅读的私密日记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        Here's something encrypted, password is required to continue reading.
-        
-          <p class="article-more-link">
-            <a href="/2025/09/07/%E4%B8%80%E7%AF%87%E9%9C%80%E8%A6%81%E5%AF%86%E7%A0%81%E6%89%8D%E8%83%BD%E9%98%85%E8%AF%BB%E7%9A%84%E7%A7%81%E5%AF%86%E7%AC%94%E8%AE%B0/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/07/%E4%B8%80%E7%AF%87%E9%9C%80%E8%A6%81%E5%AF%86%E7%A0%81%E6%89%8D%E8%83%BD%E9%98%85%E8%AF%BB%E7%9A%84%E7%A7%81%E5%AF%86%E7%AC%94%E8%AE%B0/" data-id="cmgxw0zp4000dcwnd82la04n4" data-title="一篇需要密码才能阅读的私密日记" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%A7%81%E5%AF%86/" rel="tag">私密</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-遇到的问题与收获的经验教训" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/09/05/%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E6%94%B6%E8%8E%B7%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%95%99%E8%AE%AD/" class="article-date">
-  <time class="dt-published" datetime="2025-09-05T15:46:28.000Z" itemprop="datePublished">2025-09-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/05/%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E6%94%B6%E8%8E%B7%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%95%99%E8%AE%AD/">遇到的问题与收获的经验教训</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>问题：PowerShell 权限不足，禁止运行脚本<br>现象：第一次尝试安装 Hexo 时，命令就失败了，并提示 UnauthorizedAccess（未经授权的访问）。</li>
-</ol>
-<p>原因：Windows PowerShell 出于安全考虑，默认禁止执行任何脚本，而 npm 命令需要调用一个脚本。</p>
-<p>解决方案：以管理员身份打开 PowerShell，并执行 Set-ExecutionPolicy RemoteSigned 来调整安全策略。</p>
-<p>经验教训：本地开发环境需要正确配置。 操作系统自带的安全特性有时会与开发工具冲突，学会根据报错信息调整环境配置是程序员的基本功。</p>
-<ol start="2">
-<li>问题：hexo 命令无法被识别<br>现象：即使安装成功，输入 hexo init 时系统仍然提示找不到 hexo 这个命令。</li>
-</ol>
-<p>原因：npm 安装的全局工具所在的路径，没有被添加到系统的“环境变量 PATH”中，导致系统不知道去哪里找这个命令。</p>
-<p>解决方案：找到 npm 的全局路径，并手动将其添加到系统的环境变量 Path 中。</p>
-<p>经验教训：理解环境变量 PATH 的作用。 它是操作系统寻找命令的“地图”，是解决各种“命令找不到”问题的关键所在。</p>
-<ol start="3">
-<li>问题：hexo deploy 部署时网络连接被重置<br>现象：可以正常浏览 GitHub 网站，但部署时反复出现 Recv failure: Connection was reset 错误。</li>
-</ol>
-<p>原因：浏览网页（HTTPS）和用 Git 上传文件是两种完全不同的网络传输方式。后者对网络连接的稳定性要求极高，容易受到不稳定网络、防火墙或代理的干扰。</p>
-<p>解决方案：将部署方式从不稳定的 HTTPS 切换到更稳定、更专业的 SSH 协议。这需要生成 SSH 密钥并将其添加到 GitHub 账户中。</p>
-<p>经验教训：问题要对症下药。 “能上网”不代表“网络适合所有任务”。针对特定的问题（如大文件、长时间的持续传输），需要选择更合适的工具或协议（SSH）来解决。</p>
-<ol start="4">
-<li>问题：预览正常，但部署时提示 nothing to commit<br>现象：在本地用 hexo s 预览时能看到新文章，但 hexo d 部署时却提示没有改动，导致线上博客不更新。</li>
-</ol>
-<p>原因：这是典型的“构建缓存”或“脏数据”问题。本地预览可能使用了内存中的最新数据，但用于部署的 public 文件夹却是旧的、未被更新的。</p>
-<p>解决方案：使用 hexo clean 命令。这个命令会强制删除旧的 public 文件夹和缓存，确保下一次生成和部署使用的是最新的源文件。</p>
-<p>经验教训：学会清理缓存是重要的调试技巧。 当源代码和最终结果不一致时，首先要考虑是不是缓存导致的。hexo clean 是解决 Hexo 各种“玄学”问题的利器。</p>
-<p>您的核心收获<br>工作流的掌握：您已经完整地掌握了 Hexo 博客的日常工作流：hexo new -&gt; 编辑和保存 -&gt; hexo s (预览) -&gt; hexo clean &amp;&amp; hexo d (清理并发布)。</p>
-<p>调试能力的提升：您学会了如何根据报错信息一步步定位问题，从环境配置、网络协议，再到构建缓存，这套调试思路适用于未来遇到的任何技术问题。</p>
-<p>信心的建立：您从一个简单的想法开始，通过自己的努力和坚持，解决了一路上所有的技术障碍，最终成功搭建并发布了属于自己的网站。这是最有价值的收获。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/05/%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E6%94%B6%E8%8E%B7%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%95%99%E8%AE%AD/" data-id="cmgxw0zp8000qcwndfzh3czbk" data-title="遇到的问题与收获的经验教训" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-为什么我能访问GitHub却无法Deploy" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/09/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E8%83%BD%E8%AE%BF%E9%97%AEGitHub%E5%8D%B4%E6%97%A0%E6%B3%95Deploy/" class="article-date">
-  <time class="dt-published" datetime="2025-09-05T03:23:00.000Z" itemprop="datePublished">2025-09-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%92%E9%94%99/">技术排错</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E8%83%BD%E8%AE%BF%E9%97%AEGitHub%E5%8D%B4%E6%97%A0%E6%B3%95Deploy/">为什么浏览网页正常而Git上传会失败？</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>简单来说：<strong>浏览网页和用 Git 上传文件，虽然目的地都是 GitHub，但它们走的“网络通道”和“数据传输方式”是完全不同的。</strong></p>
-<p>我们可以用一个比喻来理解：</p>
-<ul>
-<li><p><strong>浏览 GitHub 网页</strong>：就像是<strong>寄一封信</strong>。这个动作非常快，数据量很小。即使中间邮路上有一个小坑洼（网络瞬间抖动），邮车也能轻松绕过去，信很快就送到了。</p>
-</li>
-<li><p><strong>用 <code>hexo deploy</code> (Git Push) 上传</strong>：这就像是<strong>开一辆大型集装箱卡车搬家</strong>。您需要把所有家当（整个网站的文件）一次性、持续不断地运送到目的地。这个过程有几个特点：</p>
-<ol>
-<li><p><strong>持续时间长</strong>：上传过程需要几十秒甚至更久，而不是像打开网页那样一瞬间。</p>
-</li>
-<li><p><strong>数据量大</strong>：您上传的是整个网站，数据量远大于看一个网页。</p>
-</li>
-<li><p><strong>对稳定性要求极高</strong>：在“搬家”的整个过程中，公路（网络连接）必须全程保持通畅。哪怕只是出现一个瞬间的“断裂”（<code>Connection was reset</code>），整个卡车（上传进程）就会“翻车”，任务失败。</p>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="为什么能上网，但上传会失败？"><a href="#为什么能上网，但上传会失败？" class="headerlink" title="为什么能上网，但上传会失败？"></a>为什么能上网，但上传会失败？</h3><ol>
-<li><p><strong>网络稳定性问题</strong>：您的网络在“寄信”（浏览网页）时看起来没问题，但在“开卡车”（长时间上传）时，任何微小的丢包或延迟都可能导致连接超时而被切断。<code>curl 28 Recv failure: Connection was reset</code> 这个错误，本质上就是一个<strong>超时或连接中断</strong>的错误。</p>
-</li>
-<li><p><strong>防火墙或网络代理的干扰</strong>：很多网络环境（比如公司、学校，甚至一些网络运营商）的防火墙，对于“寄信”这种普通网页浏览行为会完全放行。但是，当它们检测到一个长时间、大流量的加密上传时，可能会认为这是一种“可疑行为”并主动切断它，以确保网络安全。</p>
-</li>
-</ol>
-<h3 id="这就是为什么我建议您换用-SSH-的原因"><a href="#这就是为什么我建议您换用-SSH-的原因" class="headerlink" title="这就是为什么我建议您换用 SSH 的原因"></a>这就是为什么我建议您换用 SSH 的原因</h3><p>继续用上面的比喻：</p>
-<ul>
-<li><p>您现在用的 <code>https://</code> 方式上传，就像是走一条<strong>公共高速公路</strong>。路上车多，检查站也多（防火墙），容易出问题。</p>
-</li>
-<li><p>而我建议您换用的 <code>SSH</code> 方式，就相当于您和 GitHub 之间建立了一条<strong>VIP 私人隧道</strong>。这条线路更稳定、更受信任，专门用于这种“搬家式”的数据传输，很少会受到外界干扰。</p>
-</li>
-</ul>
-<p><strong>总结：</strong> 所以，虽然您的网络可以浏览网页，但在大文件持续上传时可能不稳定。请您尝试一下我上一步给出的【<strong>切换到 SSH</strong>】的完整方案，这有 99% 的概率能彻底解决您遇到的这个网络问题。 </p>
-<p>检查是否修改，md</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E8%83%BD%E8%AE%BF%E9%97%AEGitHub%E5%8D%B4%E6%97%A0%E6%B3%95Deploy/" data-id="cmgxw0zp5000ecwndcqha8jww" data-title="为什么浏览网页正常而Git上传会失败？" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/" rel="tag">网络问题</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-  </nav>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%92%E9%94%99/">技术排错</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/">数据库笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">算法笔记</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/" rel="tag">DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Debugging/" rel="tag">Debugging</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JOIN/" rel="tag">JOIN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ORDER-BY/" rel="tag">ORDER BY</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PowerShell/" rel="tag">PowerShell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SELECT/" rel="tag">SELECT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/" rel="tag">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS-Code/" rel="tag">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WAPI/" rel="tag">WAPI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WHERE/" rel="tag">WHERE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WLAN/" rel="tag">WLAN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wi-Fi/" rel="tag">Wi-Fi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" rel="tag">二分查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" rel="tag">代码规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" rel="tag">入门教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E5%AD%98%E8%B6%85%E9%99%90/" rel="tag">内存超限</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" rel="tag">博客部署</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%86%97%E4%BD%99/" rel="tag">数据冗余</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" rel="tag">数据库设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" rel="tag">最佳实践</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%9A%E5%8A%A8%E6%95%B0%E7%BB%84/" rel="tag">滚动数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%81%E5%AF%86/" rel="tag">私密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" rel="tag">空间复杂度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%AF%E5%8F%A320/" rel="tag">端口20</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%AF%E5%8F%A3443/" rel="tag">端口443</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96/" rel="tag">算法优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" rel="tag">编程基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/" rel="tag">网络问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/" rel="tag">问题求解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" rel="tag">防火墙</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Debugging/" style="font-size: 10px;">Debugging</a> <a href="/tags/Git/" style="font-size: 20px;">Git</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/JOIN/" style="font-size: 10px;">JOIN</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 10px;">LeetCode</a> <a href="/tags/ORDER-BY/" style="font-size: 10px;">ORDER BY</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/SELECT/" style="font-size: 10px;">SELECT</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/VS-Code/" style="font-size: 10px;">VS Code</a> <a href="/tags/WAPI/" style="font-size: 10px;">WAPI</a> <a href="/tags/WHERE/" style="font-size: 10px;">WHERE</a> <a href="/tags/WLAN/" style="font-size: 10px;">WLAN</a> <a href="/tags/Wi-Fi/" style="font-size: 10px;">Wi-Fi</a> <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" style="font-size: 10px;">二分查找</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" style="font-size: 10px;">代码规范</a> <a href="/tags/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" style="font-size: 10px;">入门教程</a> <a href="/tags/%E5%86%85%E5%AD%98%E8%B6%85%E9%99%90/" style="font-size: 10px;">内存超限</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">博客部署</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">学习笔记</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%86%97%E4%BD%99/" style="font-size: 10px;">数据冗余</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 15px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">数据库设计</a> <a href="/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" style="font-size: 10px;">最佳实践</a> <a href="/tags/%E6%BB%9A%E5%8A%A8%E6%95%B0%E7%BB%84/" style="font-size: 10px;">滚动数组</a> <a href="/tags/%E7%A7%81%E5%AF%86/" style="font-size: 10px;">私密</a> <a href="/tags/%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" style="font-size: 10px;">空间复杂度</a> <a href="/tags/%E7%AB%AF%E5%8F%A320/" style="font-size: 10px;">端口20</a> <a href="/tags/%E7%AB%AF%E5%8F%A3443/" style="font-size: 10px;">端口443</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px;">算法</a> <a href="/tags/%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96/" style="font-size: 10px;">算法优化</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 10px;">网络安全</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/" style="font-size: 15px;">网络问题</a> <a href="/tags/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/" style="font-size: 10px;">问题求解</a> <a href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" style="font-size: 10px;">防火墙</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/10/">October 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2025/10/19/hello-world/">Hello World</a>
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
           </li>
+          
         
-          <li>
-            <a href="/2025/10/18/%E6%88%91%E7%9A%84%20DP%20%E6%8E%A2%E9%99%A9%E5%AE%9E%E5%BD%95%EF%BC%9A%E4%BB%8E%E2%80%9C%E4%B8%BA%E4%BB%80%E4%B9%88%E2%80%9D%E5%88%B0%E2%80%9C%E6%88%91%E6%87%82%E4%BA%86%E2%80%9D/">我的 DP 探险实录：从“为什么”到“我懂了”</a>
-          </li>
         
-          <li>
-            <a href="/2025/10/18/DP%20%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%BD%93%E2%80%9C%E7%A9%BA%E9%97%B4%E6%8D%A2%E6%97%B6%E9%97%B4%E2%80%9D%E9%81%87%E5%88%B0%E5%86%85%E5%AD%98%E8%B6%85%E9%99%90/">DP 优化笔记：当“空间换时间”遇到内存超限</a>
-          </li>
-        
-          <li>
-            <a href="/2025/10/15/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">算法学习笔记：二分查找的两种写法与细节</a>
-          </li>
-        
-          <li>
-            <a href="/2025/10/15/SQL%20%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%20'%E8%A1%A8%E5%90%8D.%20%E5%88%97%E5%90%8D'/">SQL 最佳实践：为什么推荐使用 &#39;表名. 列名&#39;</a>
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
     </div>
   </div>
+</nav>
 
   
-</aside>
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="An elegant Material-Design theme for Hexo"></span>
+          
+        </div>
+
         
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
+
       
-      &copy; 2025 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
     </div>
   </div>
-</footer>
+</div>
 
-    </div>
-    <nav id="mobile-nav">
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/09/07/hello-world/" target="_self">
+          Hello World
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/09/07/hello-world/" target="_self">
+        <div>
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-09-07 11:00" pubdate>
+              2025-09-07
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/09/07/%E4%B8%80%E7%AF%87%E9%9C%80%E8%A6%81%E5%AF%86%E7%A0%81%E6%89%8D%E8%83%BD%E9%98%85%E8%AF%BB%E7%9A%84%E7%A7%81%E5%AF%86%E7%AC%94%E8%AE%B0/" target="_self">
+          一篇需要密码才能阅读的私密日记
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/09/07/%E4%B8%80%E7%AF%87%E9%9C%80%E8%A6%81%E5%AF%86%E7%A0%81%E6%89%8D%E8%83%BD%E9%98%85%E8%AF%BB%E7%9A%84%E7%A7%81%E5%AF%86%E7%AC%94%E8%AE%B0/" target="_self">
+        <div>
+          Here's something encrypted, password is required to continue reading.
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-09-07 11:00" pubdate>
+              2025-09-07
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%A7%81%E5%AF%86/">#私密</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/09/05/%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E6%94%B6%E8%8E%B7%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%95%99%E8%AE%AD/" target="_self">
+          遇到的问题与收获的经验教训
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/09/05/%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E6%94%B6%E8%8E%B7%E7%9A%84%E7%BB%8F%E9%AA%8C%E6%95%99%E8%AE%AD/" target="_self">
+        <div>
+          问题：PowerShell 权限不足，禁止运行脚本现象：第一次尝试安装 Hexo 时，命令就失败了，并提示 UnauthorizedAccess（未经授权的访问）。  原因：Windows PowerShell 出于安全考虑，默认禁止执行任何脚本，而 npm 命令需要调用一个脚本。 解决方案：以管理员身份打开 PowerShell，并执行 Set-ExecutionPolicy RemoteSi
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-09-05 23:46" pubdate>
+              2025-09-05
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/09/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E8%83%BD%E8%AE%BF%E9%97%AEGitHub%E5%8D%B4%E6%97%A0%E6%B3%95Deploy/" target="_self">
+          为什么浏览网页正常而Git上传会失败？
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/09/05/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E8%83%BD%E8%AE%BF%E9%97%AEGitHub%E5%8D%B4%E6%97%A0%E6%B3%95Deploy/" target="_self">
+        <div>
+          简单来说：浏览网页和用 Git 上传文件，虽然目的地都是 GitHub，但它们走的“网络通道”和“数据传输方式”是完全不同的。 我们可以用一个比喻来理解：  浏览 GitHub 网页：就像是寄一封信。这个动作非常快，数据量很小。即使中间邮路上有一个小坑洼（网络瞬间抖动），邮车也能轻松绕过去，信很快就送到了。  用 hexo deploy (Git Push) 上传：这就像是开一辆大型集装箱卡车搬家
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-09-05 11:23" pubdate>
+              2025-09-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
   
-    <a href="/" class="mobile-nav-link">Home</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%92%E9%94%99/" class="category-chain-item">技术排错</a>
   
-</nav>
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Hexo/">#Hexo</a>
+            
+              <a href="/tags/Git/">#Git</a>
+            
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/">#网络问题</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     
 
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
 
-<script src="/js/script.js"></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
 
 
-  </div>
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

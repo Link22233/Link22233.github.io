@@ -1,1248 +1,954 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
   
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="link22233">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="link22233">
+<meta name="twitter:card" content="summary_large_image">
   
   
   
-<link rel="stylesheet" href="/css/style.css">
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
 
   
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
-
 <meta name="generator" content="Hexo 7.3.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-          <a class="main-nav-link" href="/">Home</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
         
-      </nav>
-      <nav id="sub-nav">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
         
         
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/10/19/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2025-10-18T17:51:57.252Z" itemprop="datePublished">2025-10-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/10/19/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/19/hello-world/" data-id="cmgxw0zp3000acwndaju33tns" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-我的 DP 探险实录：从“为什么”到“我懂了”" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/10/18/%E6%88%91%E7%9A%84%20DP%20%E6%8E%A2%E9%99%A9%E5%AE%9E%E5%BD%95%EF%BC%9A%E4%BB%8E%E2%80%9C%E4%B8%BA%E4%BB%80%E4%B9%88%E2%80%9D%E5%88%B0%E2%80%9C%E6%88%91%E6%87%82%E4%BA%86%E2%80%9D/" class="article-date">
-  <time class="dt-published" datetime="2025-10-18T05:30:00.000Z" itemprop="datePublished">2025-10-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">算法笔记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/10/18/%E6%88%91%E7%9A%84%20DP%20%E6%8E%A2%E9%99%A9%E5%AE%9E%E5%BD%95%EF%BC%9A%E4%BB%8E%E2%80%9C%E4%B8%BA%E4%BB%80%E4%B9%88%E2%80%9D%E5%88%B0%E2%80%9C%E6%88%91%E6%87%82%E4%BA%86%E2%80%9D/">我的 DP 探险实录：从“为什么”到“我懂了”</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>大家好，我刚刚经历了一场酣畅淋漓的“思维战斗”，对手是——动态规划（DP）。我决定把这次宝贵的经历写下来。这篇笔记并非总结，而是一份忠实还原我学习过程的对话实录。它将包含我提出的每一个问题，以及那些最终让我豁然 KAI 朗的、未经编辑的回答。</p>
-<h3 id="探险起点：一张看似简单的“藏宝图”"><a href="#探险起点：一张看似简单的“藏宝图”" class="headerlink" title="探险起点：一张看似简单的“藏宝图”"></a>探险起点：一张看似简单的“藏宝图”</h3><p>我拿到的题目是这样的：</p>
-<blockquote>
-<p>有 n 只怪物，编号从 1 到 n。对于每只怪物，你都可以选择“放走”或“击败”。</p>
-<ul>
-<li><strong>放走</strong>第 i 只怪物：获得 i 点经验。</li>
-<li><strong>击败</strong>第 i 只怪物：获得 a[i] 点经验，并额外获得 <code>(x % 10) * a[i]</code> 点经验，其中 x 是你到目前为止总共击败的怪物数量（包括这一只）。</li>
-</ul>
-<p><strong>目标：</strong> 找到你最多可以获得的总经验值。</p>
-</blockquote>
-<hr>
-<h3 id="序章：拨开迷雾——我们到底需要什么工具？"><a href="#序章：拨开迷雾——我们到底需要什么工具？" class="headerlink" title="序章：拨开迷雾——我们到底需要什么工具？"></a>序章：拨开迷雾——我们到底需要什么工具？</h3><p>这是我们对话的最早阶段，我们试图弄清楚这个问题的本质。</p>
-<blockquote>
-<p><strong>我的问题：</strong> “为了能算出击败怪物能得多少经验，我们需要知道一个什么关键信息呢？”<br><strong>我当时的回答是：</strong> “怪物血量 a[i]”。</p>
-</blockquote>
-<p><strong>引导我的回答：</strong></p>
-<p>你说得对，怪物血量 a[i] 肯定是需要的。但我们再仔细看看击败怪物的规则：“额外获得 (x mod 10) * a[i] 点经验值，x 为击败怪物数量”。这里的 x 是什么？它是固定的吗，还是会随着我们的选择而变化？</p>
-<blockquote>
-<p><strong>我的问题：</strong> （在意识到 x 是“击败过的数量”后）“这种‘一步一步解决，并且每一步都依赖于之前步骤的结果’的思路，通常指向哪种经典的算法思想？”<br><strong>我当时的回答是：</strong> “递归”。</p>
-</blockquote>
-<p><strong>让我明白的回答：</strong></p>
-<p>递归是一个非常好的思路！这说明你已经看到了这个问题“向前依赖”的特性。当一个问题可以被分解成子问题，并且子问题的解可以被重复使用时，单纯的递归可能会很慢。我们有一种更优化的方法，它本质上是聪明的递归，通过记录和重用子问题的答案来避免重复计算。这个方法叫什么呢？它和“动态”有关。</p>
-<p>在引导下，我得出了答案：“动态规划”。</p>
-<hr>
-<h3 id="第一站：艰难地绘制地图——定义-dp-状态"><a href="#第一站：艰难地绘制地图——定义-dp-状态" class="headerlink" title="第一站：艰难地绘制地图——定义 dp 状态"></a>第一站：艰难地绘制地图——定义 dp 状态</h3><p>确定了要用 DP，但我立刻卡在了最基础的一步。</p>
-<blockquote>
-<p><strong>我的问题：</strong> “在动态规划里，最关键的第一步是定义‘状态’。Dp[i][j] 这个格子里应该存放什么数值，才能最终帮我们找到答案呢？”<br><strong>我当时的回答是：</strong> “我不懂了”。</p>
-</blockquote>
-<p><strong>让我明白的回答：</strong></p>
-<p>没问题，定义状态是动态规划里最关键也最需要思考的一步。我们一起把它弄清楚。我们这个问题的最终目标是什么？是不是要求一个“最多可以获得的经验值”？那么，我们的 dp 表就应该用来记录这个值。所以，<code>dp[i][j]</code> 就代表：<strong>在考虑了前 i 只怪物，并且总共击败了 j 只的情况下，我们能获得的最大经验值是多少</strong>。</p>
-<blockquote>
-<p><strong>我的问题：</strong> （在计算“放走”的情况时）“我已经弄不清各个字母代表什么了。”</p>
-</blockquote>
-<p><strong>让我明白的回答：</strong></p>
-<p>当然，这些字母确实容易搞混。我们放慢速度，把它们弄清楚。记住我们的定义：<code>dp[i][j]</code> &#x3D; 考虑完前 i 只怪物，并且总共击败了 j 只时的最高总经验。现在，我们只专注于一个选择：<strong>放走</strong>第 i 只怪物。如果到第 i 只怪物为止，我们总共击败了 j 只怪物，而第 i 只又是被我们放走的。这意味着，在我们处理完前面 i-1 只怪物时，我们<strong>已经</strong>击败了 j 只。</p>
-<hr>
-<h3 id="第二站：搭建我的“算法实验室”——从理论到实践"><a href="#第二站：搭建我的“算法实验室”——从理论到实践" class="headerlink" title="第二站：搭建我的“算法实验室”——从理论到实践"></a>第二站：搭建我的“算法实验室”——从理论到实践</h3><p>在深入思考 DP 的核心逻辑之前，我首先在如何将理论付诸实践上遇到了一系列问题。</p>
-<blockquote>
-<p><strong>我的问题：</strong> “我需要单独写函数该怎么写？我想模拟 LeetCode 模式。”</p>
-</blockquote>
-<p><strong>让我明白的回答：</strong></p>
-<p>这是一个非常好的问题！这正是 LeetCode 和普通编程练习最大的区别。在 LeetCode 上，你不需要写 <code>main</code> 方法，而是要填充一个已经定义好的函数。</p>
-<h4 id="LeetCode-的代码结构"><a href="#LeetCode-的代码结构" class="headerlink" title="LeetCode 的代码结构"></a>LeetCode 的代码结构</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">long</span> <span class="title function_">maxExperience</span><span class="params">(<span class="type">int</span> n, <span class="type">long</span>[] a)</span> &#123;</span><br><span class="line">        <span class="comment">// 你的代码写在这里</span></span><br><span class="line">        <span class="comment">// 最后，你需要返回一个 long 类型的结果</span></span><br><span class="line">        <span class="comment">// return ...;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>总结一下转变：</strong></p>
-<ul>
-<li><p><strong>输入</strong>：从 <code>Scanner</code> 读取 -&gt; 从函数参数 <code>n</code> 和 <code>a</code> 获取。</p>
-</li>
-<li><p><strong>输出</strong>：从 <code>System.out.println()</code> 打印 -&gt; 用 <code>return maxExperience;</code> 返回。</p>
-</li>
-</ul>
-<blockquote>
-<p><strong>我的问题：</strong> “那我怎么在本地测试这段 LeetCode 代码呢？”</p>
-</blockquote>
-<p><strong>让我明白的回答（测试分离模式）：</strong></p>
-<p>你不能直接运行 <code>Solution.java</code>，因为它没有 <code>main</code> 方法。你需要创建另一个文件来“扮演” LeetCode 的角色：调用你的 <code>Solution</code> 类。</p>
-<ol>
-<li><p>保持 <code>Solution.java</code> 文件不变。</p>
-</li>
-<li><p>在同一个文件夹下，新建一个文件，比如叫 <code>Main.java</code>。</p>
-</li>
-<li><p>把测试代码粘贴到 <code>Main.java</code> 中，运行 <code>Main.java</code> 文件。</p>
-</li>
-</ol>
-<blockquote>
-<p><strong>我的问题：</strong> “为什么我运行 Main.java 报错了？提示 <code>错误: 找不到符号 Solution</code>”</p>
-</blockquote>
-<p><strong>让我明白的回答：</strong></p>
-<p>你遇到了一个非常经典，每个 Java 程序员都肯定会遇到的错误！这不是你算法逻辑的问题，而是 Java 文件编译方式的问题。这句报错的“人话”翻译就是：“我在编译 <code>Main.java</code>，读到 <code>Solution solution = new Solution();</code> 的时候，我完全不认识 <code>Solution</code> 是个什么东西。”</p>
-<p>最简单的解决方法 (推荐)</p>
-<p>在 VS Code 中，使用编辑器自带的<strong>“Run”按钮</strong>，而不是在下方的终端里手动输入编译命令。直接点击 main 方法上方的 “Run”。IDE 会足够智能地帮我们编译所有相关的文件。</p>
-<blockquote>
-<p><strong>我的问题：</strong> “我怎么看到 dp 表格的具体情况？”</p>
-</blockquote>
-<p><strong>让我明白的回答（调试器的威力）：</strong></p>
-<p>绝对可以，而且这正是调试器（Debugger）最强大的功能之一！</p>
-<ol>
-<li><p>**设置断点 (Breakpoint)**： 在代码行的行号左边，用鼠标单击一下，就会出现一个红点。最好的位置是在双重循环的内部。</p>
-</li>
-<li><p><strong>启动调试</strong>： 不要点击“Run”按钮，而是要选择“运行和调试”（通常快捷键是 F5）。</p>
-</li>
-<li><p><strong>查看 dp 表</strong>： 程序在断点处暂停后，在 VS Code 的左侧<strong>“变量 (VARIABLES)”</strong>窗口中，找到你的 <code>dp</code> 数组。点击箭头展开它，你就可以看到它所有的行和列！</p>
-</li>
-</ol>
-<blockquote>
-<p><strong>我的问题：</strong> “为什么我在调试器里看到的 dp 表，和手画的带表头的表格不一样？还有一堆巨大的负数？”</p>
-</blockquote>
-<p><strong>让我明白的回答：</strong></p>
-<p>你的观察完全正确。根本原因在于：一个是给计算机看的“原始数据” 🖥️，另一个是给我了们人类看的“格式化报告” 📖。</p>
-<p>而那些巨大的负数，是因为你的断点设在了循环中间，程序暂停时，dp 表的填充只进行到了一半！ 那些负数（<code>Long.MIN_VALUE</code>）是你设置的初始值，代表“这个格子还没轮到计算”。你看到的不是错误，而是动态规划<strong>正在施工中的样子</strong>！</p>
-<hr>
-<h3 id="第三站：探寻法则——最深刻的思辨之旅"><a href="#第三站：探寻法则——最深刻的思辨之旅" class="headerlink" title="第三站：探寻法则——最深刻的思辨之旅"></a>第三站：探寻法则——最深刻的思辨之旅</h3><p>在解决了实践操作问题后，我开始深入思考 DP 的核心逻辑。</p>
-<blockquote>
-<p><strong>我的问题：</strong> “我不知道为什么要用 <code>max()</code> 函数，dp 难道不是记录我选择击败或放走后的结果吗？”</p>
-</blockquote>
-<p><strong>让我明白的回答：</strong></p>
-<p>你这个想法非常接近核心了！你说得对，dp 表确实记录了结果，但它记录的不是一个随便的结果，而是一个<strong>“最优”</strong>的结果。</p>
-<p>我们把你的想法拆解一下，看看会发生什么。</p>
-<p>假设我们不用 Math.max()，而是让 dp 表记录所有可能路径的结果。当我们要计算“处理完3只怪，击败2只”的最高分时，有多少种可能的路径呢？</p>
-<ul>
-<li><p>路径1: 击败-击败-放走</p>
-</li>
-<li><p>路径2: 击败-放走-击败</p>
-</li>
-<li><p>路径3: 放走-击败-击败</p>
-<p>  我们需要把这3条路的得分全都分别算一遍，然后比较大小。这还只是 dp[3][2] 一个格子。当我们计算 dp[n][j] 时，需要追溯的路径数量会像爆炸一样增多，算法就变得非常非常慢了。</p>
-</li>
-</ul>
-<p><strong><code>Math.max()</code> 的魔法 ✨</strong></p>
-<p>Math.max() 让我们避免了这种麻烦。它让我们的 dp 表变得更“聪明”。</p>
-<p>dp[i][j] 记录的不是：“我通过‘放走’这条路来到了 (i,j) 这个状态”。</p>
-<p>它记录的是：“不管你是怎么来的（可能是放走，也可能是击败），所有能到达 (i, j) 这个状态的路径中，最高分就是我记录的这个数。”</p>
-<p>再用那个十字路口的比喻：</p>
-<ul>
-<li><p><code>exp_let_go</code> 是一条通往 <code>(i, j)</code> 这个目的地的路。</p>
-</li>
-<li><p>exp_defeat 是另一条通往同一个目的地 (i, j) 的路。</p>
-<p>  dp[i][j] 这个格子，就像是目的地 (i, j) 的一块冠军奖牌。我们不关心冠军是怎么跑来的，我们只把奖牌发给那个分数最高的路径。Math.max() 就是那个裁判，它比较了两条路的分数，然后把冠军分数刻在了奖牌上。</p>
-</li>
-</ul>
-<p>这样，当下一个人（<code>dp[i+1][...]</code>）需要参考这个目的地的分数时，他不需要知道复杂的历史，只需要看一眼奖牌上的分数，因为他知道那已经是这里的最高记录了。</p>
-<p>所以，dp 表记录的确实是选择之后的结果，但它非常聪明地<strong>只记录了那个最优的结果，扔掉了所有不好的选择</strong>，这就是动态规划高效的秘密。</p>
-<blockquote>
-<p><strong>我的问题：</strong> “那些不好的选择怎么抛弃的？我还能在 dp 表里找到‘放走-放走-放走’的分数吗？”</p>
-</blockquote>
-<p><strong>让我明白的回答：</strong></p>
-<p>绝佳的问题！这能让我们彻底看清 dp 表的本质。</p>
-<p>答案是：是的，你绝对可以在最终的 dp 表里找到“放走-放走-放走”这条路径的分数！ 它就藏在 dp 表的一个特定格子里。</p>
-<p>我们来追踪一下这条路径在 dp 表上的“地址”：</p>
-<ul>
-<li><p>第1步：放走第1只怪 -&gt; 它的分数被记录在 <code>dp[1][0]</code>。</p>
-</li>
-<li><p>第2步：放走第2只怪 -&gt; 它的分数被记录在 <code>dp[2][0]</code>。</p>
-</li>
-<li><p>第3步：放走第3只怪 -&gt; 它的最终分数被记录在 <code>dp[3][0]</code>。</p>
-</li>
-</ul>
-<p>最终的 dp 表中 <code>dp[3][0]</code> 的值正好是 6。</p>
-<p>那么，这是否和我之前说的“坏选择会被抛弃”矛盾呢？</p>
-<p>一点也不矛盾，这反而完美地解释了 DP 的原理！</p>
-<p><code>dp[i][j]</code> 记录的是：所有能够到达 <code>(i, j)</code> 这个状态的路径中，分数最高的那条路的分数。</p>
-<p>对于 <code>dp[3][0]</code> 这个格子，要达到“处理3只怪，击败0只”的状态，有且<strong>仅有</strong>“放走-放走-放走”这一条路。没有其他竞争者。所以它自己就是冠军，它的分数 6 就被记录了下来。</p>
-<p>但是对于 <code>dp[2][1]</code> 这个格子，要达到“处理2只怪，击败1只”的状态，我们发现了两条路：</p>
-<ol>
-<li><p>击败-放走，分数为 12。</p>
-</li>
-<li><p>放走-击败，分数为 7。</p>
-</li>
-</ol>
-<p>在这里，<code>Math.max()</code> 充当了裁判，它选择了 12 这条路，把分数 12 写入了 <code>dp[2][1]</code>，而分数 7 和它背后的那条 <code>放走-击败</code> 路径，就被永远地<strong>抛弃</strong>了。</p>
-<blockquote>
-<p><strong>我的问题：</strong> “那‘放走-击败-放走’的路径是不是找不到了？”</p>
-</blockquote>
-<p><strong>让我明白的回答：</strong></p>
-<p>你说得完全正确。</p>
-<p>“放走-击败-放走”这条特定路径的真实分数，在最终的 dp 表里是找不到的。</p>
-<p>你已经触及到了动态规划最核心的“剪枝”思想。我们来当一次侦探，看看这条路径是在哪里“消失”的。</p>
-<p><strong>案件重演：一条路径的消失</strong></p>
-<ul>
-<li><p><strong>起点</strong>： 我们要追踪的路径是 <code>放走 - 击败 - 放走</code>。</p>
-</li>
-<li><p><strong>第二步</strong>：处理第2只怪，选择【击败】。这条路径现在要从 <code>(i=1, j=0)</code> 前往 <code>(i=2, j=1)</code>。我们计算一下它的得分：<code>dp[1][0] + a[1] + (1 % 10) * a[1] = 1 + 3 + 1*3 = 7分</code>。</p>
-</li>
-<li><p><strong>关键时刻来了！</strong> 此时，还有另一条路径也到达了 <code>(i=2, j=1)</code> 这个目的地，那就是 <code>击败 - 放走</code> 路径，它的得分是 <strong>12分</strong>。</p>
-</li>
-<li><p>**审判时刻 (Math.max)**：在 <code>dp[2][1]</code> 这个格子上，两条路径相遇了。裁判 <code>Math.max(12, 7)</code> 宣布：12分胜出！</p>
-</li>
-<li><p><strong>结果</strong>：于是，数字 12 被写入了 <code>dp[2][1]</code>。而我们那条路径得到的 7 分，以及它背后的历史 <code>放走-击败</code>，就在这一刻被彻底抛弃了。它输掉了比赛，没有资格被记录下来。</p>
-</li>
-</ul>
-<blockquote>
-<p><strong>我的问题：</strong> “那如果另一个给怪的情况下‘放走-击败-放走’的分数更高怎么办，它不就被放弃了吗？” &amp; “我还是不太理解。”</p>
-</blockquote>
-<p><strong>让我明白的回答（登山的故事）：</strong></p>
-<p>这是动态规划最神奇也最反直觉的地方。如果“放走-击败-放走”这条路在未来有潜力获得更高分，它就<strong>绝对不会被放弃</strong>。</p>
-<p>这里的奥秘在于，动态规划基于一个非常重要的原则，叫做<strong>“最优子结构”</strong>。用大白话说就是：</p>
-<blockquote>
-<p>一个最优的全局策略，它的每一个局部步骤也必然是这个局部的最优策略。</p>
-</blockquote>
-<p><strong>登山故事的续集：公平的未来</strong></p>
-<p>你和你的朋友，肩并肩地站在 <code>站(2, 1)</code>。</p>
-<ul>
-<li><p>你口袋里有 12 个宝物。</p>
-</li>
-<li><p>你朋友口袋里只有 7 个宝物。</p>
-</li>
-</ul>
-<p><strong>关键问题：谁的未来更有希望？</strong></p>
-<p>从 <code>站(2, 1)</code> 出发，前往山顶的剩下的路，对于你和你朋友来说，是<strong>完全一模一样的</strong>。如果你们下一步都走平坦小路，都会额外获得 +3 分。</p>
-<ul>
-<li><p>你的总分会变成 <code>12 + 3 = 15</code>。</p>
-</li>
-<li><p>你朋友的总分会变成 <code>7 + 3 = 10</code>。</p>
-</li>
-</ul>
-<p>因为你朋友在到达 <code>站(2, 1)</code> 时就已经落后了，并且未来的道路对你们是公平的，所以他没有任何机会再反超你了。他过去犯下的“错误选择”所导致的差距，是永远无法弥补的。</p>
-<p>这就是 <code>Math.max()</code> 能够“放心”抛弃坏选择的底气所在。它所解决的问题满足一个叫做<strong>“无后效性”</strong>的原则：一旦某个状态确定了，那么这个状态之前的历史就不会再影响未来的决策。</p>
-<blockquote>
-<p><strong>我的问题：</strong> “但是dp[2,1]本身不就是在未来会被抛弃的路径吗？”</p>
-</blockquote>
-<p><strong>让我明白的回答（分站冠军 vs. 全程总冠军）：</strong></p>
-<p>这是一个绝妙的问题！你说的完全正确！<code>dp[2,1]</code> 这个格子本身，确实可能位于一条最终被抛弃的宏观路径上。</p>
-<p>这恰好是两个不同层面的“胜利”。我们必须区分：</p>
-<ol>
-<li><p><strong>子问题的冠军</strong> (一个格子的值)</p>
-</li>
-<li><p><strong>全局问题的总冠军</strong> (最终答案)</p>
-</li>
-</ol>
-<p><strong>登山故事的最终章：分站冠军 vs. 全程总冠军</strong></p>
-<p>dp[2,1] &#x3D; 12。这是所有能够到达 站(2, 1) 的路线中，最快的那条路线的成绩。我们称之为 “站(2, 1) 分站冠军”。</p>
-<p>dp[2,2] &#x3D; 19。这是所有能够到达 站(2, 2) 的路线中，最快的那条路线的成绩。我们称之为 “站(2, 2) 分站冠军”。</p>
-<p>当我们站在山顶回望时，我们发现，那个最终赢得全程总冠军的人，他选择的路线根本就**没有经过 <code>站(2, 1)</code>**！他走的是经过 <code>站(2, 2)</code> 的那条路。</p>
-<p>总结：</p>
-<p>dp 表格的伟大之处在于，它不预设哪条路是最好的。它非常公平地计算出了每一个可能子状态的最优解（每一个分站冠军），把它们全都记录下来。然后，它再利用这些已经算好的、可靠的“分站冠军”成绩，去构建下一阶段的比赛，最终决出唯一的“全程总冠军”。我们必须算出 dp[2,1] 的值，即使它最后没被用上。因为在没算完之前，我们无法预知最终的冠军路径会不会经过它。</p>
-<hr>
-<h3 id="我的藏宝图（最终代码）"><a href="#我的藏宝图（最终代码）" class="headerlink" title="我的藏宝图（最终代码）"></a>我的藏宝图（最终代码）</h3><p>Java</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">class Solution &#123;</span><br><span class="line">    public long maxExperience(int n, long[] a) &#123;</span><br><span class="line">        // 我的记分板：dp[i][j] -&gt; 处理完前 i 只怪，击败 j 只的最高分</span><br><span class="line">        long[][] dp = new long[n + 1][n + 1];</span><br><span class="line">        </span><br><span class="line">        // 初始化记分板，所有格子都标记为“不可达”</span><br><span class="line">        for (long[] row : dp) &#123;</span><br><span class="line">            Arrays.fill(row, Long.MIN_VALUE);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        // 探险的起点：游戏开始前，经验为0</span><br><span class="line">        dp[0][0] = 0;</span><br><span class="line">        </span><br><span class="line">        // 开始一关一关地填写记分板</span><br><span class="line">        for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">            // 计算第 i 关的所有可能状态（击败 0 次到 i 次）</span><br><span class="line">            for (int j = 0; j &lt;= i; j++) &#123;</span><br><span class="line">                </span><br><span class="line">                // 决策点：我该如何到达 (i, j) 这个状态？</span><br><span class="line"></span><br><span class="line">                // 路径1：从 (i-1, j) 走“放走”路线过来</span><br><span class="line">                long exp_let_go = Long.MIN_VALUE;</span><br><span class="line">                if (dp[i-1][j] != Long.MIN_VALUE) &#123; // 确保起点可达</span><br><span class="line">                    exp_let_go = dp[i-1][j] + i;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                // 路径2：从 (i-1, j-1) 走“击败”路线过来</span><br><span class="line">                long exp_defeat = Long.MIN_VALUE;</span><br><span class="line">                if (j &gt; 0 &amp;&amp; dp[i-1][j-1] != Long.MIN_VALUE) &#123; // 确保起点可达，且至少击败了1次</span><br><span class="line">                    exp_defeat = dp[i-1][j-1] + a[i-1] + (j % 10) * a[i-1];</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                // 裁判上场！选出到达 (i,j) 的分站冠军分数</span><br><span class="line">                dp[i][j] = Math.max(exp_let_go, exp_defeat);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 终点线：比较所有终点站的分站冠军，找出全程总冠军</span><br><span class="line">        long maxResult = 0;</span><br><span class="line">        for (int j = 0; j &lt;= n; j++) &#123;</span><br><span class="line">            maxResult = Math.max(maxResult, dp[n][j]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return maxResult;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="探险总结"><a href="#探险总结" class="headerlink" title="探险总结"></a>探险总结</h3><p>这次经历让我明白，学习算法最有效的方式就是不断地追问“为什么”。每一个看似愚蠢的问题，背后都可能隐藏着对核心概念的误解。只有把这些问题都解决了，知识才能真正为你所有。希望我这份详尽的“踩坑”与“顿悟”实录，能对你有所帮助。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/18/%E6%88%91%E7%9A%84%20DP%20%E6%8E%A2%E9%99%A9%E5%AE%9E%E5%BD%95%EF%BC%9A%E4%BB%8E%E2%80%9C%E4%B8%BA%E4%BB%80%E4%B9%88%E2%80%9D%E5%88%B0%E2%80%9C%E6%88%91%E6%87%82%E4%BA%86%E2%80%9D/" data-id="cmgxw0zp5000hcwnd2itkdgri" data-title="我的 DP 探险实录：从“为什么”到“我懂了”" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/" rel="tag">问题求解</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-DP 优化笔记：当“空间换时间”遇到内存超限" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/10/18/DP%20%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%BD%93%E2%80%9C%E7%A9%BA%E9%97%B4%E6%8D%A2%E6%97%B6%E9%97%B4%E2%80%9D%E9%81%87%E5%88%B0%E5%86%85%E5%AD%98%E8%B6%85%E9%99%90/" class="article-date">
-  <time class="dt-published" datetime="2025-10-17T16:00:00.000Z" itemprop="datePublished">2025-10-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>►<a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/10/18/DP%20%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%BD%93%E2%80%9C%E7%A9%BA%E9%97%B4%E6%8D%A2%E6%97%B6%E9%97%B4%E2%80%9D%E9%81%87%E5%88%B0%E5%86%85%E5%AD%98%E8%B6%85%E9%99%90/">DP 优化笔记：当“空间换时间”遇到内存超限</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <hr>
-<h3 id="DP-优化笔记：当“空间换时间”遇到内存超限"><a href="#DP-优化笔记：当“空间换时间”遇到内存超限" class="headerlink" title="DP 优化笔记：当“空间换时间”遇到内存超限"></a>DP 优化笔记：当“空间换时间”遇到内存超限</h3><h4 id="核心问题：动态规划不就是用空间换时间吗？为什么又不让算法用内存了呢"><a href="#核心问题：动态规划不就是用空间换时间吗？为什么又不让算法用内存了呢" class="headerlink" title="核心问题：动态规划不就是用空间换时间吗？为什么又不让算法用内存了呢"></a>核心问题：动态规划不就是用空间换时间吗？为什么又不让算法用内存了呢</h4><p>你提出了一个非常深刻的问题，这正是动态规划的核心思想。这个“交换”是有限度的，我们可以用一个比喻来理解：</p>
-<p><strong>把 DP 的“空间换时间”想象成你在一个工作台上组装一个复杂的模型。</strong></p>
-<ol>
-<li><p>**理想情况 (无限空间)**： 你有一个无限大的工作台。你可以把模型说明书的每一步（比如第1步到第100步）用到的所有零件、半成品，全都摊在桌子上。当进行到第50步时，你需要一个第49步的组件，一伸手就能拿到，非常快。这就是用巨大的空间（工作台）换来了速度（时间）。 这对应了我们最开始的 <code>dp[n+1][n+1]</code> 方案。</p>
-</li>
-<li><p>**现实情况 (有限空间)**： 现在比赛的规则是，你只有一个很小的书桌来组装模型。你不可能把100个步骤的所有零件都摊开，那样桌子会立刻被堆满，你什么也做不了。 这就是“内存超限”。判题系统给你的内存（书桌）是有限的。</p>
-</li>
-</ol>
-<p><strong>那么，聪明的做法是什么呢？</strong></p>
-<p>你会发现，在组装第50步的时候，你其实<strong>只需要</strong>第49步的那个半成品。至于第1步、第2步、甚至第48步的那些零件，你暂时都用不着了。</p>
-<p>所以，你只在桌上保留<strong>【上一步用完的组件】</strong>和<strong>【这一步正在用的零件】</strong>。每完成一步，就把更早的、暂时用不上的零件先收回盒子里。这样，你的小书桌就始终够用了。</p>
-<p>这对应的就是我们的<strong>“滚动数组”</strong>优化方案 <code>dp[2][n+1]</code>。我们没有放弃“用空间换时间”的思路（我们仍然保留了上一行的结果），而是把它优化到了一个更高效的水平——我们只保留了<strong>绝对必要</strong>的空间。</p>
-<p>现在，让我们回到状态转移的逻辑上。在计算<strong>第 <code>i</code> 行</strong>的结果时，我们唯一需要参考的是不是就是<strong>第 <code>i-1</code> 行</strong>的数据？</p>
-<hr>
-<h4 id="问题诊断：内存超限-Memory-Limit-Exceeded"><a href="#问题诊断：内存超限-Memory-Limit-Exceeded" class="headerlink" title="问题诊断：内存超限 (Memory Limit Exceeded)"></a>问题诊断：内存超限 (Memory Limit Exceeded)</h4><ul>
-<li><p><strong>根源分析</strong>：<code>long[][] dp = new long[n + 1][n + 1];</code></p>
-</li>
-<li><p>问题所在：当 n &#x3D; 200,000 时，这张 DP 表需要的总内存大约是：</p>
-<p>  200,001 * 200,001 * 8 字节 ≈ 320 GB</p>
-</li>
-<li><p><strong>结论</strong>：这个内存需求远超比赛通常几百MB的限制，导致程序被终止。</p>
-</li>
-</ul>
-<h4 id="问题：我看不懂“滚动数组”优化方案-dp-2-n-1-怎么办？"><a href="#问题：我看不懂“滚动数组”优化方案-dp-2-n-1-怎么办？" class="headerlink" title="问题：我看不懂“滚动数组”优化方案 $dp[2][n+1]$ 怎么办？"></a>问题：我看不懂“滚动数组”优化方案 $dp[2][n+1]$ 怎么办？</h4><p>没问题，我们把这个抽象的概念变得具体一点。“滚动数组”听起来很复杂，但它的思想其实非常简单。</p>
-<p>我们用一个比喻来理解：<strong>两块小黑板</strong>。</p>
-<ul>
-<li><p>**原来的方法 <code>dp[n+1][n+1]</code>**：就像我们有 n 块黑板，一块给第1只怪物用，一块给第2只用……一直到第n只。当 n 是20万时，我们就需要20万块黑板，房间（内存）肯定放不下。</p>
-</li>
-<li><p><strong>“滚动数组” <code>dp[2][n+1]</code><strong>：我们发现，在计算第 i 只怪物的情况时，其实只需要参考第 i-1 只怪物的结果就行了。于是我们说：“我们不需要20万块黑板，我们只需要</strong>两块</strong>就够了！” 我们把它们叫做<strong>黑板A</strong>和<strong>黑板B</strong>。</p>
-</li>
-</ul>
-<p>现在我们来看看这两块黑板是怎么“滚动”工作的：</p>
-<ol>
-<li><p><strong>开始 (第0步)</strong>: 我们在<strong>黑板A</strong>上写下初始状态（经验为0）。</p>
-</li>
-<li><p><strong>计算第1只怪物</strong>:</p>
-<ul>
-<li><p>我们看着<strong>黑板A</strong>（上一行的数据）。</p>
-</li>
-<li><p>根据黑板A的数据算出第1只怪的所有结果。</p>
-</li>
-<li><p>我们把这些新结果写在<strong>黑板B</strong>上。</p>
-</li>
-</ul>
-</li>
-<li><p><strong>计算第2只怪物</strong>:</p>
-<ul>
-<li><p>现在我们只需要看<strong>黑板B</strong>了（它现在是“上一行”的数据）。</p>
-</li>
-<li><p>根据黑板B的数据算出第2只怪的所有结果。</p>
-</li>
-<li><p>我们把这些新结果写回到<strong>黑板A</strong>上（因为黑板A的旧数据已经没用了，可以擦掉）。</p>
-</li>
-</ul>
-</li>
-<li><p><strong>计算第3只怪物</strong>:</p>
-<ul>
-<li><p>我们再回头看<strong>黑板A</strong>（它又是“上一行”了）。</p>
-</li>
-<li><p>算出结果，再写回到<strong>黑板B</strong>上。</p>
-</li>
-</ul>
-</li>
-</ol>
-<p>你看，我们就在这两块黑板之间来回擦写。一块始终保存着【上一行】的结果，另一块用来计算【当前行】的结果。这就是“滚动”的含义。</p>
-<hr>
-<p>那么在代码里，我们如何区分哪块是“当前行”，哪块是“上一行”呢？我们用了一个小技巧：**取模运算 <code>% 2</code>**。</p>
-<ul>
-<li><p>当 <code>i</code> 是 1, 3, 5… (奇数) 时, <code>i % 2</code> 的结果是 <strong>1</strong>。</p>
-</li>
-<li><p>当 <code>i</code> 是 2, 4, 6… (偶数) 时, <code>i % 2</code> 的结果是 <strong>0</strong>。</p>
-</li>
-</ul>
-<p><code>dp[0]</code> 就是黑板A，<code>dp[1]</code> 就是黑板B。<code>i % 2</code> 巧妙地帮我们决定了当前该用哪块黑板。</p>
-<p>currentRow &#x3D; i % 2;</p>
-<p>prevRow &#x3D; (i - 1) % 2;当前行 &#x3D; i % 2; 上一行 &#x3D; （i - 1） % 2;</p>
-<p>这个技巧确保了我们总能从正确的“上一行”读取数据，读取上一步的结果，然后把算出来的新结果覆盖掉更早的、已经没用的数据。</p>
-<hr>
-<h4 id="这个技巧是如何解决“内存超限”问题的？当-n-200-000-时，dp-n-1-n-1-和-dp-2-n-1-在内存占用上有什么根本性的区别？"><a href="#这个技巧是如何解决“内存超限”问题的？当-n-200-000-时，dp-n-1-n-1-和-dp-2-n-1-在内存占用上有什么根本性的区别？" class="headerlink" title="这个技巧是如何解决“内存超限”问题的？当 n &#x3D; 200,000 时，dp[n+1][n+1] 和 dp[2][n+1] 在内存占用上有什么根本性的区别？"></a>这个技巧是如何解决“内存超限”问题的？当 n &#x3D; 200,000 时，<code>dp[n+1][n+1]</code> 和 <code>dp[2][n+1]</code> 在内存占用上有什么根本性的区别？</h4><p>减少了 n-1 行 n+1 的数据的存储</p>
-<ul>
-<li><p><code>dp[n+1][n+1]</code> 方案需要存储 <code>n+1</code> 行数据。</p>
-</li>
-<li><p><code>dp[2][n+1]</code> 方案只需要存储 <code>2</code> 行数据。</p>
-</li>
-</ul>
-<p>我们减少了 <code>(n+1) - 2 = n-1</code> 行的数据存储。</p>
-<p>当 <code>n = 200,000</code> 时，这个区别是天壤之别：</p>
-<ul>
-<li><p><strong>旧方案</strong>：需要大约 <strong>320 GB</strong> 的内存。</p>
-</li>
-<li><p><strong>新方案</strong>：只需要大约 <strong>3.2 MB</strong> 的内存。</p>
-</li>
-</ul>
-<p>这就是滚动数组如何解决了“内存超限”的问题。你已经完全理解了第一个优化。</p>
-<hr>
-<p>好，现在我们可以安心地进入第二个问题了：**运行超时 (Time Limit Exceeded)**。</p>
-<p>我们成功地把内存压下来了，但程序在大数据量下还是太慢了。你认为我们代码的哪一部分是主要的“耗时大户”呢？</p>
-<hr>
-<h4 id="最终代码实现"><a href="#最终代码实现" class="headerlink" title="最终代码实现"></a>最终代码实现</h4><p>Java  爪哇岛</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">public static long maxExperience(int n, long[] a) &#123;</span><br><span class="line">    // 空间优化：只使用两行来回滚动</span><br><span class="line">    long[][] dp = new long[2][n + 1];</span><br><span class="line">    </span><br><span class="line">    // 初始化这两行</span><br><span class="line">    Arrays.fill(dp[0], Long.MIN_VALUE);</span><br><span class="line">    Arrays.fill(dp[1], Long.MIN_VALUE);</span><br><span class="line">    </span><br><span class="line">    // 起点不变，写在第0行</span><br><span class="line">    dp[0][0] = 0;</span><br><span class="line">    </span><br><span class="line">    // 状态转移</span><br><span class="line">    for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        // 计算当前行和上一行的索引</span><br><span class="line">        int currentRow = i % 2;</span><br><span class="line">        int prevRow = (i - 1) % 2;</span><br><span class="line">        </span><br><span class="line">        // (重要) 重置当前行，擦掉 i-2 行的旧数据</span><br><span class="line">        Arrays.fill(dp[currentRow], Long.MIN_VALUE);</span><br><span class="line"></span><br><span class="line">        for (int j = 0; j &lt;= i; j++) &#123;</span><br><span class="line">            long exp_let_go = Long.MIN_VALUE;</span><br><span class="line">            // 从上一行 prevRow 获取状态</span><br><span class="line">            if (dp[prevRow][j] != Long.MIN_VALUE) &#123;</span><br><span class="line">                exp_let_go = dp[prevRow][j] + i;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            long exp_defeat = Long.MIN_VALUE;</span><br><span class="line">            if (j &gt; 0 &amp;&amp; dp[prevRow][j - 1] != Long.MIN_VALUE) &#123;</span><br><span class="line">                // 从上一行 prevRow 获取状态</span><br><span class="line">                exp_defeat = dp[prevRow][j - 1] + a[i - 1] + (long)(j % 10) * a[i - 1];</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            // 结果存入当前行 currentRow</span><br><span class="line">            dp[currentRow][j] = Math.max(exp_let_go, exp_defeat);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 查找最终答案</span><br><span class="line">    int finalRow = n % 2; // 最后一行的索引是 n % 2</span><br><span class="line">    long maxResult = 0;</span><br><span class="line">    for (int j = 0; j &lt;= n; j++) &#123;</span><br><span class="line">        maxResult = Math.max(maxResult, dp[finalRow][j]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return maxResult;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>与<a target="_blank" rel="noopener" href="https://link22233.github.io/2025/10/18/%E6%88%91%E7%9A%84%20DP%20%E6%8E%A2%E9%99%A9%E5%AE%9E%E5%BD%95%EF%BC%9A%E4%BB%8E%E2%80%9C%E4%B8%BA%E4%BB%80%E4%B9%88%E2%80%9D%E5%88%B0%E2%80%9C%E6%88%91%E6%87%82%E4%BA%86%E2%80%9D/">小红打怪</a>的初始代码相比，代码里最重要的变化就是第3、5、6步：</p>
-<ul>
-<li><p>我们用 <code>i % 2</code> 巧妙地在索引 <code>0</code> 和 <code>1</code> 之间切换，模拟“滚动”的效果。</p>
-</li>
-<li><p>我们总是从 <code>prevRow</code> 读取数据，向 <code>currentRow</code> 写入新数据。</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/18/DP%20%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%BD%93%E2%80%9C%E7%A9%BA%E9%97%B4%E6%8D%A2%E6%97%B6%E9%97%B4%E2%80%9D%E9%81%87%E5%88%B0%E5%86%85%E5%AD%98%E8%B6%85%E9%99%90/" data-id="cmgxw0zot0000cwnd9v1h6796" data-title="DP 优化笔记：当“空间换时间”遇到内存超限" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DP/" rel="tag">DP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%86%85%E5%AD%98%E8%B6%85%E9%99%90/" rel="tag">内存超限</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%BB%9A%E5%8A%A8%E6%95%B0%E7%BB%84/" rel="tag">滚动数组</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" rel="tag">空间复杂度</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96/" rel="tag">算法优化</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-二分查找" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/10/15/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="article-date">
-  <time class="dt-published" datetime="2025-10-15T03:00:00.000Z" itemprop="datePublished">2025-10-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">算法笔记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/10/15/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">算法学习笔记：二分查找的两种写法与细节</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>好的同学，我们来看新的内容：<strong>二分查找</strong>。</p>
-<p>这是一个非常经典且高效的算法，但同时它也是一个“细节是魔鬼”的算法。很多人觉得懂了，但一写就错。你提供的这篇文章，作者“代码随想录”把二分查找的精髓讲得非常透彻。</p>
-<p>他提出了一个核心观点：<strong>写二分查找，最重要的是要搞清楚你定义的区间是“闭”的还是“开”的，然后所有的细节都围绕这个定义来展开，形成统一的逻辑。</strong></p>
-<p>我们来学习文章中提到的两种主要写法。</p>
-<hr>
-<h3 id="写法一：左闭右闭区间-left-right"><a href="#写法一：左闭右闭区间-left-right" class="headerlink" title="写法一：左闭右闭区间 [left, right]"></a>写法一：左闭右闭区间 <code>[left, right]</code></h3><p>这是最常见也最符合我们直觉的一种写法。</p>
-<ol>
-<li><p><strong>区间定义</strong>：我们的查找范围是 <code>[left, right]</code>，这意味着 <code>left</code> 和 <code>right</code> 这两个端点都是可以取到的有效值。</p>
-<ul>
-<li><code>left = 0</code>, <code>right = nums.length - 1</code></li>
-</ul>
-</li>
-<li><p><strong>循环条件</strong>：因为 <code>left</code> 和 <code>right</code> 相等时是有意义的（比如数组只有一个元素 <code>[5]</code>，此时 <code>left=0</code>, <code>right=0</code>，这个区间是有效的），所以循环条件应该是 <code>while (left &lt;= right)</code>。</p>
-</li>
-<li><p>**中间值 <code>mid</code>**：<code>int mid = left + ((right - left) / 2);</code></p>
-<ul>
-<li><em>小提示：这样写是为了防止 <code>left + right</code> 的值过大导致整数溢出，效果等同于 <code>(left + right) / 2</code>，但更稳妥。</em></li>
-</ul>
-</li>
-<li><p><strong>如何移动边界</strong>：这是最关键的细节！</p>
-<ul>
-<li>如果 <code>nums[mid] &gt; target</code>，说明 <code>target</code> 在 <code>mid</code> 的左边。因为我们当前的区间是 <code>[left, right]</code>，所以 <code>target</code> 可能的范围是 <code>[left, mid - 1]</code>。因此，下一步应该是 <code>right = mid - 1</code>。</li>
-<li>如果 <code>nums[mid] &lt; target</code>，说明 <code>target</code> 在 <code>mid</code> 的右边，可能的范围是 <code>[mid + 1, right]</code>。因此，下一步应该是 <code>left = mid + 1</code>。</li>
-<li>如果 <code>nums[mid] == target</code>，恭喜，找到了，直接返回 <code>mid</code> 就行。</li>
-</ul>
-</li>
-</ol>
-<p><strong>总结 <code>[left, right]</code> 写法的要点</strong>：</p>
-<ul>
-<li>循环条件是 <code>while (left &lt;= right)</code>。</li>
-<li>因为 <code>mid</code> 已经被检查过了，所以移动边界时要跳过 <code>mid</code>，即 <code>right = mid - 1</code> 和 <code>left = mid + 1</code>。</li>
-</ul>
-<hr>
-<h3 id="写法二：左闭右开区间-left-right"><a href="#写法二：左闭右开区间-left-right" class="headerlink" title="写法二：左闭右开区间 [left, right)"></a>写法二：左闭右开区间 <code>[left, right)</code></h3><p>这种写法在处理一些边界问题时有奇效，也值得我们掌握。</p>
-<ol>
-<li><p><strong>区间定义</strong>：我们的查找范围是 <code>[left, right)</code>，这意味着 <code>left</code> 可以取到，但 <code>right</code> <strong>不能</strong>取到，它只是一个边界。</p>
-<ul>
-<li><code>left = 0</code>, <code>right = nums.length</code> (注意，这里 <code>right</code> 的初始值和第一种写法不同)</li>
-</ul>
-</li>
-<li><p><strong>循环条件</strong>：因为 <code>left</code> 和 <code>right</code> 相等时，区间 <code>[left, left)</code> 是一个空区间，没有意义，所以循环条件应该是 <code>while (left &lt; right)</code>。当 <code>left == right</code> 时，循环就应该停止。</p>
-</li>
-<li><p>**中间值 <code>mid</code>**：<code>int mid = left + ((right - left) / 2);</code> (计算方法不变)</p>
-</li>
-<li><p><strong>如何移动边界</strong>：</p>
-<ul>
-<li>如果 <code>nums[mid] &gt; target</code>，说明 <code>target</code> 在 <code>mid</code> 的左边。因为我们的右边界 <code>right</code> 是开区间，所以 <code>target</code> 的可能范围是 <code>[left, mid)</code>。因此，下一步应该是 <code>right = mid</code>。</li>
-<li>如果 <code>nums[mid] &lt; target</code>，说明 <code>target</code> 在 <code>mid</code> 的右边，可能的范围是 <code>[mid + 1, right)</code>。因此，下一步应该是 <code>left = mid + 1</code>。</li>
-<li>如果 <code>nums[mid] == target</code>，找到了，直接返回 <code>mid</code>。</li>
-</ul>
-</li>
-</ol>
-<p><strong>总结 <code>[left, right)</code> 写法的要点</strong>：</p>
-<ul>
-<li>循环条件是 <code>while (left &lt; right)</code>。</li>
-<li>移动左边界时，因为 <code>mid</code> 已经检查过了，所以还是 <code>left = mid + 1</code>。</li>
-<li>移动右边界时，因为 <code>right</code> 本身就是取不到的，所以新的右边界可以直接设为 <code>mid</code>，即 <code>right = mid</code>。</li>
-</ul>
-<hr>
-<h3 id="额外需要关注的知识点"><a href="#额外需要关注的知识点" class="headerlink" title="额外需要关注的知识点"></a>额外需要关注的知识点</h3><ol>
-<li><strong>前提条件</strong>：二分查找能使用的<strong>前提</strong>是：<strong>数组有序</strong>，并且数组中<strong>没有重复元素</strong>（如果有重复元素，查找逻辑会更复杂一些</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/15/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" data-id="cmgxw0zp6000jcwnd2yiy80xj" data-title="算法学习笔记：二分查找的两种写法与细节" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" rel="tag">二分查找</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-SQL 最佳实践：为什么推荐使用 &#39;表名. 列名&#39;" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/10/15/SQL%20%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%20'%E8%A1%A8%E5%90%8D.%20%E5%88%97%E5%90%8D'/" class="article-date">
-  <time class="dt-published" datetime="2025-10-14T20:34:01.000Z" itemprop="datePublished">2025-10-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/10/15/SQL%20%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%20'%E8%A1%A8%E5%90%8D.%20%E5%88%97%E5%90%8D'/">SQL 最佳实践：为什么推荐使用 &#39;表名. 列名&#39;</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="核心问题"><a href="#核心问题" class="headerlink" title="核心问题"></a>核心问题</h3><p>为什么要把 <code>OrderID</code> 写成 <code>Orders.OrderID</code>？</p>
-<h3 id="直接答案"><a href="#直接答案" class="headerlink" title="直接答案"></a>直接答案</h3><p><strong>为了避免混淆并让代码更清晰，尤其是在多个关联表拥有相同列名时。</strong></p>
-<hr>
-<h3 id="详细解释"><a href="#详细解释" class="headerlink" title="详细解释"></a>详细解释</h3><h4 id="1-避免歧义-最主要的原因-⚠️"><a href="#1-避免歧义-最主要的原因-⚠️" class="headerlink" title="1. 避免歧义 (最主要的原因) ⚠️"></a>1. 避免歧义 (最主要的原因) ⚠️</h4><ul>
-<li><p><strong>问题</strong>: 想象一下，如果 <code>Customers</code> 表和 <code>Orders</code> 表里都有一个叫做 <code>ID</code> 的列。</p>
-<ul>
-<li><code>Customers</code> 表里的 <code>ID</code> 是客户 ID。</li>
-<li><code>Orders</code> 表里的 <code>ID</code> 是订单 ID。</li>
-</ul>
-<p>如果你写 <code>SELECT ID FROM ...</code>，数据库就不知道你到底想要哪个表的 <code>ID</code>。它会立即报错，告诉你 “列名 <code>ID</code> 有歧-义 (ambiguous)”。</p>
-</li>
-<li><p><strong>解决方法</strong>: 通过写 <code>SELECT Customers.ID, Orders.ID FROM ...</code>，你就明确地告诉了数据库你想要的是哪个表里的 <code>ID</code>，歧义就此消失。</p>
-</li>
-</ul>
-<h4 id="2-提高代码可读性-👓"><a href="#2-提高代码可读性-👓" class="headerlink" title="2. 提高代码可读性 👓"></a>2. 提高代码可读性 👓</h4><ul>
-<li>当你或你的同事几个月后再回来看一段复杂的 SQL 查询时，<code>Customers.CustomerName</code> 和 <code>Orders.OrderDate</code> 这样的写法能让读者立刻明白每个数据字段的来源。</li>
-<li>这使得复杂的查询逻辑更容易被理解和后期维护。</li>
-</ul>
-<h4 id="3-这是一个专业的编程习惯-👍"><a href="#3-这是一个专业的编程习惯-👍" class="headerlink" title="3. 这是一个专业的编程习惯 👍"></a>3. 这是一个专业的编程习惯 👍</h4><ul>
-<li>虽然在我们之前的简单例子</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/15/SQL%20%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%20'%E8%A1%A8%E5%90%8D.%20%E5%88%97%E5%90%8D'/" data-id="cmgxw0zp10006cwndgpzvh8f7" data-title="SQL 最佳实践：为什么推荐使用 &#39;表名. 列名&#39;" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" rel="tag">代码规范</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" rel="tag">最佳实践</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-WAPI与WIFI" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/10/15/WAPI%E4%B8%8EWIFI/" class="article-date">
-  <time class="dt-published" datetime="2025-10-14T20:17:12.000Z" itemprop="datePublished">2025-10-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/10/15/WAPI%E4%B8%8EWIFI/">技术科普：什么是 WAPI 及其优缺点</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="核心优缺点摘要"><a href="#核心优缺点摘要" class="headerlink" title="核心优缺点摘要"></a>核心优缺点摘要</h3><blockquote>
-<p><strong>优点:</strong> 安全性高，为无线局域网提供更强的身份认证和数据保密机制，适用于对安全有较高要求的场景。</p>
-<p><strong>缺点:</strong> 对普通用户影响不大，开启和关闭通常感觉不到明显差异，且可能增加设备耗电，因此如果对安全性没有特殊要求，可以选择不开启。</p>
-</blockquote>
-<hr>
-<h3 id="什么是-WAPI？"><a href="#什么是-WAPI？" class="headerlink" title="什么是 WAPI？"></a>什么是 WAPI？</h3><p>WAPI 的全称是 <strong>无线局域网鉴别与保密基础结构</strong> (WLAN Authentication and Privacy Infrastructure)，是中国提出的无线安全标准，旨在提高无线网络（WLAN）的安全性。</p>
-<p>它通过双向认证、更强的加密算法（如 SMS 4）和公钥密码技术，来保护用户身份和数据传输安全。WAPI 是一种独立于 Wi-Fi (802.11) 标准的安全协议，但在硬件上是兼容的，可以通过软件切换来使用。</p>
-<h3 id="主要功能与特点"><a href="#主要功能与特点" class="headerlink" title="主要功能与特点"></a>主要功能与特点</h3><ul>
-<li><p><strong>双向认证</strong><br>与常见的 Wi-Fi 单向认证不同，WAPI 允许终端和接入点（AP）之间相互验证身份，极大地提高了连接的安全性。</p>
-</li>
-<li><p><strong>强大的加密机制</strong><br>使用 SMS 4 等公认的强加密算法，能有效保护数据在无线传输过程中的私密性，防止被窃听和破解。</p>
-</li>
-<li><p><strong>公钥密码技术</strong><br>利用数字证书进行身份认证，确保接入网络的设备和服务器都是合法的，防止“钓鱼”热点或非法接入。</p>
-</li>
-<li><p><strong>包含两种主要协议</strong></p>
-<ul>
-<li><strong>WAI (无线局域网鉴别基础结构)</strong>: 负责身份鉴别和密钥管理。</li>
-<li><strong>WPI (无线局域网保密基础结构)</strong>: 负责数据加密和数据鉴别。</li>
-</ul>
-</li>
-<li><p><strong>中国强制标准</strong><br>WAPI 是中国无线局域网安全强制性标准中的一个核心安全机制。</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/15/WAPI%E4%B8%8EWIFI/" data-id="cmgxw0zp30009cwndd0sle1yv" data-title="技术科普：什么是 WAPI 及其优缺点" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WAPI/" rel="tag">WAPI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WLAN/" rel="tag">WLAN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Wi-Fi/" rel="tag">Wi-Fi</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-SQL 基础学习指南" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/10/14/SQL%20%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/" class="article-date">
-  <time class="dt-published" datetime="2025-10-14T15:48:00.000Z" itemprop="datePublished">2025-10-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/">数据库笔记</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/10/14/SQL%20%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/">SQL 核心概念回顾与数据库设计原则</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>这篇笔记整合了 SQL 的基础查询要点和数据库设计的核心原则——“为什么需要分表”，前者是“如何操作”，后者是“为什么这么设计”。</p>
-<hr>
-<h3 id="第一部分：SQL-基础查询复习提纲"><a href="#第一部分：SQL-基础查询复习提纲" class="headerlink" title="第一部分：SQL 基础查询复习提纲"></a>第一部分：SQL 基础查询复习提纲</h3><h4 id="主题"><a href="#主题" class="headerlink" title="主题:"></a><strong>主题:</strong></h4><ul>
-<li>基本的 SQL 查询 (<code>SELECT</code>, <code>FROM</code>)</li>
-<li>使用 <code>WHERE</code> 进行数据筛选</li>
-<li>使用 <code>ORDER BY</code> 进行结果排序</li>
-<li>聚合函数 (<code>COUNT</code>, <code>SUM</code>, <code>AVG</code>)</li>
-</ul>
-<h4 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a><strong>摘要</strong></h4><p>本指南涵盖了构成一条基本 SQL 查询的核心要素，包括如何从表中选择数据、如何使用条件进行筛选、如何对结果进行排序，以及如何执行如计数、求和与求平均值等基本计算。指南将特别关注 <code>ORDER BY</code> 子句中排序方向的正确使用，以及 <code>COUNT</code> 和 <code>SUM</code> 等关键聚合函数之间的区别。</p>
-<h4 id="关键概念"><a href="#关键概念" class="headerlink" title="关键概念:"></a><strong>关键概念:</strong></h4><ul>
-<li><strong><code>SELECT ... FROM ...</code> 结构</strong>: 这是所有查询的基础。<code>SELECT</code> 用于指定你想查看的<strong>列</strong>，而 <code>FROM</code> 用于指定数据来源的<strong>表</strong>。</li>
-<li><strong><code>WHERE</code> 子句</strong>: 像一个过滤器，它根据你设定的条件筛选出符合要求的<strong>行</strong>。你可以使用 <code>AND</code> 来组合多个必须同时满足的条件。</li>
-<li><strong><code>ORDER BY</code> 子句</strong>: 用于对最终的查询结果进行排序。这是你需要重点复习的部分：<ul>
-<li><code>ASC</code> (Ascending) 表示<strong>升序</strong>（从小到大，A-Z），这是默认的排序方式。</li>
-<li><code>DESC</code> (Descending) 表示<strong>降序</strong>（从大到小，Z-A）。</li>
-</ul>
-</li>
-<li><strong>聚合函数</strong>: 对一组值进行计算，并返回一个单一的汇总结果。理解它们的区别至关重要：<ul>
-<li><code>COUNT()</code>: 用于<strong>计数</strong>，即计算有多少行。</li>
-<li><code>SUM()</code>: 用于<strong>求和</strong>，即计算某一列数值的总和。</li>
-<li><code>AVG()</code>: 用于<strong>求平均值</strong>。</li>
-</ul>
-</li>
-</ul>
-<h4 id="词汇列表"><a href="#词汇列表" class="headerlink" title="词汇列表:"></a><strong>词汇列表:</strong></h4><ul>
-<li><strong>SELECT</strong>: 用于从数据库中选取数据的命令。</li>
-<li><strong>FROM</strong>: 指定数据来源表的子句。</li>
-<li><strong>WHERE</strong>: 用于筛选记录的子句。</li>
-<li><strong>AND</strong>: 一个逻辑运算符，要求所有连接的条件都必须为真。</li>
-<li><strong>ORDER BY</strong>: 用于对结果集进行排序的子句。</li>
-<li><strong>ASC</strong>: 升序排列的缩写。</li>
-<li><strong>DESC</strong>: 降序排列的缩写。</li>
-<li><strong>COUNT()</strong>: 返回行数的聚合函数。</li>
-<li><strong>SUM()</strong>: 返回数值列总和的聚合函数。</li>
-<li><strong>AVG()</strong>: 返回数值列平均值的聚合函数。</li>
-</ul>
-<h4 id="关键问题"><a href="#关键问题" class="headerlink" title="关键问题:"></a><strong>关键问题:</strong></h4><ul>
-<li><code>DESC</code> 和 <code>ASC</code> 在 <code>ORDER BY</code> 子句中分别代表什么意思？哪一个是默认的？</li>
-<li>什么时候应该使用 <code>COUNT(*)</code>，什么时候应该使用 <code>SUM(column_name)</code>？请举例说明。</li>
-<li>请尝试编写一条查询：从 <code>Products</code> 表中找出所有价格高于 3.00 的产品，并按产品名称 (<code>ProductName</code>) 的字母倒序排列。</li>
-</ul>
-<hr>
-<h3 id="第二部分：为什么需要分表（避免数据冗余）"><a href="#第二部分：为什么需要分表（避免数据冗余）" class="headerlink" title="第二部分：为什么需要分表（避免数据冗余）"></a>第二部分：为什么需要分表（避免数据冗余）</h3><p>将所有信息都塞进一个大表，在个人使用、数据量小的情况下很方便。但当数据量变大、或者需要多人协作、长期维护时，“大表模式”就会带来三个非常严重的问题，我们称之为“更新异常”、“插入异常”和“删除异常”。</p>
-<p>假设我们把客户和订单信息合并成一个大表，然后客户“张三”又下了一个新订单：</p>
-<p><strong>合并后的大表（不好的设计）:</strong></p>
-<table>
-<thead>
-<tr>
-<th align="left">OrderID</th>
-<th align="left">CustomerID</th>
-<th align="left">CustomerName</th>
-<th align="left">OrderDate</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">1</td>
-<td align="left">101</td>
-<td align="left">张三</td>
-<td align="left">2025-10-12</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left">102</td>
-<td align="left">李四</td>
-<td align="left">2025-10-13</td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left">101</td>
-<td align="left">张三</td>
-<td align="left">2025-10-14</td>
-</tr>
-<tr>
-<td align="left">4</td>
-<td align="left">101</td>
-<td align="left">张三</td>
-<td align="left">2025-10-15</td>
-</tr>
-</tbody></table>
-<p>你看，<strong>“张三”这个名字被重复存储了3次</strong>。这就是问题的根源。</p>
-<h4 id="1-数据冗余和更新异常-Update-Anomaly"><a href="#1-数据冗余和更新异常-Update-Anomaly" class="headerlink" title="1. 数据冗余和更新异常 (Update Anomaly)"></a><strong>1. 数据冗余和更新异常 (Update Anomaly)</strong></h4><ul>
-<li><strong>问题</strong>: 如果有一天“张三”改名叫“张伟”了。你需要找到<strong>所有</strong>他下过的订单，然后把每一行的 <code>CustomerName</code> 都从“张三”改成“张伟”。如果漏改了一行，数据库里的数据就不一致了，有的订单是“张三”的，有的是“张伟”的，你就搞不清状况了。</li>
-<li><strong>分表如何解决</strong>: 在分表设计中（<code>Customers</code> 表和 <code>Orders</code> 表），你只需要去 <code>Customers</code> 表里，把 <code>CustomerID</code> 为 101 的那<strong>一行</strong>的名字改成“张伟”即可。所有 <code>Orders</code> 表中引用了 <code>CustomerID</code> 101 的订单，都会自动关联到这个新名字上。<strong>只改一处，永久生效</strong>。</li>
-</ul>
-<h4 id="2-插入异常-Insertion-Anomaly"><a href="#2-插入异常-Insertion-Anomaly" class="headerlink" title="2. 插入异常 (Insertion Anomaly)"></a><strong>2. 插入异常 (Insertion Anomaly)</strong></h4><ul>
-<li><strong>问题</strong>: 如果我们想添加一个新客户“王五”，但他还没有下任何订单。在这个大表里，你就没法添加他了。因为 <code>OrderID</code> 和 <code>OrderDate</code> 都是空的，这行数据是不完整的，可能会违反表的设计约束。</li>
-<li><strong>分表如何解决</strong>: 你可以直接在 <code>Customers</code> 表里添加一行 <code>(103, &#39;王五&#39;)</code>，完全没问题。他可以存在于客户列表里，直到他下第一个订单为止。</li>
-</ul>
-<h4 id="3-删除异常-Deletion-Anomaly"><a href="#3-删除异常-Deletion-Anomaly" class="headerlink" title="3. 删除异常 (Deletion Anomaly)"></a><strong>3. 删除异常 (Deletion Anomaly)</strong></h4><ul>
-<li><strong>问题</strong>: 客户“李四”只有一个订单。如果因为某种原因，我们要删除这个订单（比如订单取消了），那么在大表里，我们就得删除 <code>OrderID</code> 为 2 的这一整行。结果是什么？<strong>我们把“李四”这个客户的信息也一起删除了！</strong> 他从我们的系统里消失了。</li>
-<li><strong>分表如何解决</strong>: 你只需要从 <code>Orders</code> 表里删除 <code>OrderID</code> 为 2 的记录。<code>Customers</code> 表完全不受影响，“李四”依然是我们的客户。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/14/SQL%20%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/" data-id="cmgxw0zp00004cwnd5p8471b3" data-title="SQL 核心概念回顾与数据库设计原则" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ORDER-BY/" rel="tag">ORDER BY</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SELECT/" rel="tag">SELECT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WHERE/" rel="tag">WHERE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%86%97%E4%BD%99/" rel="tag">数据冗余</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" rel="tag">数据库设计</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Hexo 博客 PowerShell 发布完整流程笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/10/14/Hexo%20%E5%8D%9A%E5%AE%A2%20PowerShell%20%E5%8F%91%E5%B8%83%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time class="dt-published" datetime="2025-10-14T15:09:00.000Z" itemprop="datePublished">2025-10-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/10/14/Hexo%20%E5%8D%9A%E5%AE%A2%20PowerShell%20%E5%8F%91%E5%B8%83%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/">Hexo 博客 PowerShell 发布完整流程笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>记录一下使用 PowerShell 发布 Hexo 博客的完整步骤，作为操作备份，防止遗忘。假设已经安装好了 Node. Js 和 Git 环境。</p>
-<p>整个流程分为三步核心操作：<strong>新建文章 -&gt; 生成静态文件 -&gt; 部署到服务器</strong>。</p>
-<h3 id="第-1-步：启动-PowerShell-并进入博客目录"><a href="#第-1-步：启动-PowerShell-并进入博客目录" class="headerlink" title="第 1 步：启动 PowerShell 并进入博客目录"></a>第 1 步：启动 PowerShell 并进入博客目录</h3><p>首先，你需要打开 PowerShell 终端，并切换到你的 Hexo 博客所在的根文件夹。</p>
-<ol>
-<li>按下 <code>Win + X</code> 键，然后选择 “Windows PowerShell” 或者 “终端”。</li>
-<li>使用 <code>cd</code> 命令进入你的 Hexo 博客文件夹。例如，如果你的博客在 <code>D:\blog</code>：</li>
-</ol>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> D:\blog</span><br><span class="line"><span class="literal">---</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### 第 2 步：新建文章</span></span><br><span class="line"></span><br><span class="line">使用 `hexo new` 命令来创建一篇新的博文。文章的标题是必需的参数。</span><br><span class="line"></span><br><span class="line">PowerShell</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>hexo new “你的文章标题”</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">例如，创建一篇名为 &quot;Hello World&quot; 的文章：</span><br><span class="line"></span><br><span class="line">PowerShell</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>hexo new “Hello World”</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">执行后，Hexo 会在 `source/_posts` 文件夹里创建一个名为 `你的文章标题.md` 的 Markdown 文件。之后就可以用你喜欢的编辑器（如 VS Code, Sublime Text, Typora 等）打开这个文件开始写作了。</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">### 第 3 步：生成并部署</span><br><span class="line"></span><br><span class="line">在你写完文章并保存之后，就到了发布的环节。这里有两个核心命令 `generate` 和 `deploy`。</span><br><span class="line"></span><br><span class="line">#### 清除缓存并生成静态文件 (`hexo g`)</span><br><span class="line"></span><br><span class="line">这个命令会把你的 Markdown 文章（`.md`）转换成网站所需的静态文件（如 `.html`, `.css`, `.js` 等）。</span><br><span class="line"></span><br><span class="line">PowerShell</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>hexo clean &amp;&amp; hexo generate</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- `hexo clean`: 清除之前生成过的旧文件缓存（即 `public` 文件夹），这可以避免一些潜在的缓存问题。</span><br><span class="line">    </span><br><span class="line">- `hexo generate` (可简写为 `hexo g`): 生成最新的网站文件，默认会存放在 `public` 文件夹里。</span><br><span class="line">    </span><br><span class="line">- `&amp;&amp;`: 这是一个连接符，表示先执行 `hexo clean` 命令，当它成功执行完毕后，再执行 `hexo generate` 命令。</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">#### 部署到网站 (`hexo d`)</span><br><span class="line"></span><br><span class="line">这个命令会把 `public` 文件夹里的所有内容推送到你在 `_config.yml` 文件里配置好的 Git 仓库（比如 GitHub Pages）。</span><br><span class="line"></span><br><span class="line">PowerShell</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>hexo deploy</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- `hexo deploy` (可简写为 `hexo d`)</span><br><span class="line">    </span><br><span class="line">- 执行此命令时，PowerShell 可能会提示你输入 GitHub 的用户名和密码（或 Personal Access Token），根据提示输入即可完成推送。</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">### 总结：最常用的命令组合</span><br><span class="line"></span><br><span class="line">在你写完文章并保存后，只需要在 PowerShell 的博客根目录里，按顺序执行以下命令即可完成发布：</span><br><span class="line"></span><br><span class="line">PowerShell</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1 id="1-新建文章-只需要在开始写作时用一次"><a href="#1-新建文章-只需要在开始写作时用一次" class="headerlink" title="1. 新建文章 (只需要在开始写作时用一次)"></a>1. 新建文章 (只需要在开始写作时用一次)</h1><p>hexo new “My New Post”</p>
-<h1 id="2-写完文章后，一键生成并部署-这是最常用的组合"><a href="#2-写完文章后，一键生成并部署-这是最常用的组合" class="headerlink" title="2. 写完文章后，一键生成并部署 (这是最常用的组合)"></a>2. 写完文章后，一键生成并部署 (这是最常用的组合)</h1><p>hexo g -d</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">这里的 `hexo g -d` 是 `hexo generate --deploy` 的缩写，它会先执行生成操作，然后立刻执行部署操作，一步到位，非常方便。</span><br><span class="line"></span><br><span class="line">### 可选步骤：本地预览</span><br><span class="line"></span><br><span class="line">在发布到线上服务器之前，如果你想先在自己电脑上看看网站效果，可以使用本地预览命令：</span><br><span class="line"></span><br><span class="line">PowerShell</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>hexo server</p>
-<pre><code>
-- `hexo server` (可简写为 `hexo s`)
-    
-
-执行后，PowerShell 会显示一个网址，通常是 `http://localhost:4000`。在浏览器里打开这个网址，就可以实时预览你的博客效果了。确认所有内容显示无误后，在 PowerShell 窗口里按 `Ctrl + C` 停止本地服务器，然后再执行 `hexo g -d` 进行部署。
-</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/14/Hexo%20%E5%8D%9A%E5%AE%A2%20PowerShell%20%E5%8F%91%E5%B8%83%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/" data-id="cmgxw0zox0001cwnd9386d300" data-title="Hexo 博客 PowerShell 发布完整流程笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PowerShell/" rel="tag">PowerShell</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" rel="tag">博客部署</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-SQL 学习笔记：用拼图游戏理解 JOIN" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/10/14/SQL%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%94%A8%E6%8B%BC%E5%9B%BE%E6%B8%B8%E6%88%8F%E7%90%86%E8%A7%A3%20JOIN/" class="article-date">
-  <time class="dt-published" datetime="2025-10-14T15:01:00.000Z" itemprop="datePublished">2025-10-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/10/14/SQL%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%94%A8%E6%8B%BC%E5%9B%BE%E6%B8%B8%E6%88%8F%E7%90%86%E8%A7%A3%20JOIN/">SQL 学习笔记：用拼图游戏理解 JOIN</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="🧩-把-JOIN-想象成拼图"><a href="#🧩-把-JOIN-想象成拼图" class="headerlink" title="🧩 把 JOIN 想象成拼图"></a>🧩 把 JOIN 想象成拼图</h3><p>忘掉代码，我们来玩个游戏。</p>
-<p>你有<strong>两盒拼图块</strong>：</p>
-<p><strong>盒子 A (客户表 <code>Customers</code>)</strong></p>
-<ul>
-<li>每一块拼图上都有一个 <strong>客户 ID</strong> 和一个 <strong>客户名字</strong>。<ul>
-<li><code>[ID: 101 | 名字: 张三]</code></li>
-<li><code>[ID: 102 | 名字: 李四]</code></li>
-</ul>
-</li>
-</ul>
-<p><strong>盒子 B (订单表 <code>Orders</code>)</strong></p>
-<ul>
-<li>每一块拼图上都有一个 <strong>订单号</strong> 和一个 <strong>客户 ID</strong>。<ul>
-<li><code>[订单号: 1 | ID: 101]</code></li>
-<li><code>[订单号: 2 | ID: 102]</code></li>
-<li><code>[订单号: 3 | ID: 101]</code></li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="🎯-我们的目标"><a href="#🎯-我们的目标" class="headerlink" title="🎯 我们的目标"></a>🎯 我们的目标</h3><p>我们想知道<strong>每个订单号</strong>对应的<strong>客户名字</strong>是谁。</p>
-<p>但是，<code>订单号</code> 在 <strong>B 盒</strong>，<code>客户名字</code> 在 <strong>A 盒</strong>。信息是分开的。</p>
-<p><code>JOIN</code> 就是那个帮你**把能匹配的拼图块拼在一起</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/14/SQL%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%94%A8%E6%8B%BC%E5%9B%BE%E6%B8%B8%E6%88%8F%E7%90%86%E8%A7%A3%20JOIN/" data-id="cmgxw0zp10005cwndhr3sbtrh" data-title="SQL 学习笔记：用拼图游戏理解 JOIN" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JOIN/" rel="tag">JOIN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" rel="tag">入门教程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-端口443如何解决SSH连接超时问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/09/08/%E7%AB%AF%E5%8F%A3443%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3SSH%E8%BF%9E%E6%8E%A5%E8%B6%85%E6%97%B6%E9%97%AE%E9%A2%98/" class="article-date">
-  <time class="dt-published" datetime="2025-09-08T06:46:24.000Z" itemprop="datePublished">2025-09-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%92%E9%94%99/">技术排错</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/08/%E7%AB%AF%E5%8F%A3443%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3SSH%E8%BF%9E%E6%8E%A5%E8%B6%85%E6%97%B6%E9%97%AE%E9%A2%98/">排错实录：端口443如何解决SSH连接超时问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="一、遇到的问题：神秘的网络连接失败"><a href="#一、遇到的问题：神秘的网络连接失败" class="headerlink" title="一、遇到的问题：神秘的网络连接失败"></a>一、遇到的问题：神秘的网络连接失败</h3><p>今天，在我搭建和部署个人博客的过程中，我遇到了一个极其令人困惑的问题。当我满怀信心地在 PowerShell 中运行 <code>hexo deploy</code> 命令时，终端却无情地返回了网络错误：<br>ssh: connect to host github.com port 22: Connection timed out</p>
-<p>最奇怪的是，我明明可以正常地用浏览器打开 GitHub 网站，登录、浏览都没有任何问题。为什么我的浏览器可以连接，而我的 PowerShell 却不行呢？这成了我今天需要解开的谜题。</p>
-<h3 id="二、探寻真相：网页浏览和-SSH-连接有何不同？"><a href="#二、探寻真相：网页浏览和-SSH-连接有何不同？" class="headerlink" title="二、探寻真相：网页浏览和 SSH 连接有何不同？"></a>二、探寻真相：网页浏览和 SSH 连接有何不同？</h3><p>经过一番探索，我终于明白了问题的核心：<strong>能浏览网页，不代表所有开发工具都能正常联网。</strong></p>
-<p>我们可以用一个“访问一栋安全大厦”的比喻来理解：</p>
-<ul>
-<li><strong>GitHub 服务器</strong>：就像一栋安保严密的大厦。</li>
-<li>**网络端口 (Port)**：就是进入大厦的不同“门”。</li>
-<li><strong>我的网络环境（防火墙）</strong>：就是大厦门口的“保安”。</li>
-</ul>
-<p>What is the Significance of Changing to Port 443?<br>改为443端口有什么意义？<br>The simple significance is that you are disguising your specialized traffic as common web traffic to bypass firewalls.<br>简单的意义是，您将专用流量伪装成常见的 Web 流量以绕过防火墙 。</p>
-<p>To understand this, think of a server like GitHub as a large, secure building, and ports as the different doors into that building.<br>要理解这一点，请将像 GitHub 这样的服务器视为一个大型、安全的建筑物，而端口则是进入该建筑物的不同门。</p>
-<p>Door #22 (The Default SSH Port): This is like a special, high-security employee-only entrance in the back of the building. It’s very efficient and secure, but for that very reason, many public places (like cafés, airports, or even strict home networks) keep this door locked and sealed (the firewall blocks port 22). When you tried to connect, you found this door was locked (Connection timed out).<br>门 #22（默认 SSH 端口）： 这就像大楼后面一个特殊的、高度安全的员工专用入口 。它非常高效和安全，但正是出于这个原因，许多公共场所（如咖啡馆、机场，甚至严格的家庭网络）都将这扇门锁上并密封（防火墙阻止了端口 22）。当您尝试连接时，您发现此门已锁定（ 连接超时 ）。</p>
-<p>Door #443 (The HTTPS Port): This is the main public entrance to the building. It has a big “Welcome” sign and is used by millions of people every minute for secure web browsing (when you see https:&#x2F;&#x2F; in your browser). Because this door must be open for the internet to function, it is almost never blocked by any firewall.<br>门 #443（HTTPS 端口）： 这是大楼的主要公共入口 。它有一个很大的“欢迎”标志，每分钟有数百万人使用它来进行安全的网页浏览（当您在浏览器中看到 https:&#x2F;&#x2F; 时）。因为这扇门必须打开才能使互联网正常运行，所以它几乎从未被任何防火墙阻止 。</p>
-<p>By creating the config file, you essentially told your computer: “Don’t bother trying the locked employee door (#22) anymore. Just go to the main public entrance (#443) and use your employee keycard there.”<br>通过创建配置文件 ，您实际上告诉您的计算机：“不要再费心尝试上锁的员工门 （#22）。只需前往主公共入口 （#443） 并在那里使用您的员工钥匙卡即可。</p>
-<p>Is This Important for Programmers?<br>这对程序员来说重要吗？<br>Yes, absolutely. Understanding this concept is very important for a programmer. Here’s why:<br>是的，一点没错。理解这个概念对于程序员来说非常重要。 原因如下：</p>
-<p>Real-World Environments: Programmers don’t always work on perfect, unrestricted networks. You will often find yourself working from a corporate office, a university, a client’s site, or a public Wi-Fi hotspot. All of these environments are likely to have firewalls that block standard developer ports like 22.<br>真实环境： 程序员并不总是在完美、不受限制的网络上工作。您经常会发现自己在公司办公室、大学、客户网站或公共 Wi-Fi 热点工作。所有这些环境都可能具有阻止标准开发人员端口（如 22）的防火墙。</p>
-<p>Problem-Solving Ability: Knowing how to diagnose a blocked port and apply this workaround (tunneling over port 443) is a crucial real-world problem-solving skill. It can be the difference between being able to work and being completely stuck.<br>解决问题的能力： 了解如何诊断被阻止的端口并应用此解决方法（通过端口 443 进行隧道传输）是一项至关重要的实际问题解决技能。这可能是能够工作和完全陷入困境之间的区别。</p>
-<p>Understanding the Full Picture: It shows an understanding that programming isn’t just about writing code. It’s also about understanding the networks and systems your code interacts with. Knowing how to navigate network restrictions is a mark of a practical and experienced developer.<br>了解全貌： 它表明了一种理解，即编程不仅仅是编写代码。它还涉及了解您的代码与之交互的网络和系统。知道如何应对网络限制是实用且经验丰富的开发人员的标志。</p>
-<p>You just learned a valuable lesson that many programmers learn the hard way: your tools are only as good as your connection. Knowing how to make your tools work in a difficult network environment is a very important and practical skill that will serve you well in the future.<br>您刚刚学到了一个宝贵的教训，许多程序员都经历了艰难的教训： 您的工具的好坏取决于您的连接。 知道如何让您的工具在困难的网络环境中工作是一项非常重要且实用的技能，将来将为您服务。</p>
-<h4 id="1-为什么浏览器能访问？"><a href="#1-为什么浏览器能访问？" class="headerlink" title="1. 为什么浏览器能访问？"></a>1. 为什么浏览器能访问？</h4><p>当我用浏览器访问 <code>https://github.com</code> 时，我走的是 **443 号门 (HTTPS 端口)**。这是大厦的“正门”，访客络绎不绝，所以保安（防火墙）默认这个门是安全且必须保持开放的，于是挥手放行。</p>
-<h4 id="2-为什么-SSH-会失败？"><a href="#2-为什么-SSH-会失败？" class="headerlink" title="2. 为什么 SSH 会失败？"></a>2. 为什么 SSH 会失败？</h4><p>当我用 <code>hexo deploy</code> 或 <code>ssh</code> 命令时，程序默认尝试走的是 **22 号门 (SSH 端口)**。这像是大厦一个偏僻的“员工专用通道”。很多网络环境的保安（防火墙）为了安全，会把这个不常用的门锁死。我的请求根本到不了门口，自然就“连接超时”了。</p>
-<h3 id="三、解决方案：让-SSH-“伪装”成浏览器流量"><a href="#三、解决方案：让-SSH-“伪装”成浏览器流量" class="headerlink" title="三、解决方案：让 SSH “伪装”成浏览器流量"></a>三、解决方案：让 SSH “伪装”成浏览器流量</h3><p>既然“员工通道”被锁了，那我能不能拿着我的员工卡（SSH 密钥）去走“正门”呢？答案是可以的！</p>
-<p>解决方案就是修改我电脑上的 SSH 客户端配置，告诉它在连接 GitHub 的时候，不要走 22 号门，而是去走那个永远开放的 443 号门。</p>
-<h4 id="操作步骤："><a href="#操作步骤：" class="headerlink" title="操作步骤："></a>操作步骤：</h4><ol>
-<li><p><strong>找到或创建 SSH 配置文件</strong>：在 PowerShell 中用 <code>notepad ~/.ssh/config</code> 命令，在我的用户目录下创建了一个 <code>config</code> 文件。</p>
-</li>
-<li><p><strong>写入“绕路”规则</strong>：在 <code>config</code> 文件里，我粘贴了以下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">  Hostname ssh.github.com</span><br><span class="line">  Port 443</span><br><span class="line">  User git</span><br></pre></td></tr></table></figure>
-<p>这个配置的意思是：“嘿，SSH客户端！下次要去 <code>github.com</code> 的时候，请改道去 <code>ssh.github.com</code> 这个地址，并且走 <code>443</code> 号门。”</p>
-</li>
-<li><p><strong>测试连接</strong>：保存文件后，我运行了测试命令 <code>ssh -T git@github.com</code>。</p>
-<p>这一次，我没有再看到连接超时的错误，而是收到了来自 GitHub 的欢迎信息！</p>
-<blockquote>
-<p>Hi Link22233! You’ve successfully authenticated, but GitHub does not provide shell access.</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="四、经验与教训"><a href="#四、经验与教训" class="headerlink" title="四、经验与教训"></a>四、经验与教训</h3><p>这次排错经历让我学到了非常重要的一课：</p>
-<blockquote>
-<p><strong>网络连接问题是分层且具体的。</strong> 不能简单地用“能上网”来判断连接性。</p>
-</blockquote>
-<p>一个程序的网络请求能否成功，取决于它的<strong>协议、目标地址和端口</strong>，以及这条路径上每一道“安检”（防火墙）的规则。</p>
-<p>对于程序员来说，理解网络端口的基本概念，并掌握像修改 SSH 端口这样绕过网络限制的技巧，是一项非常实用且重要的能力。它能帮助我们在各种复杂的网络环境中保持生产力，而不是被一个简单的“连接超时”困住。</p>
-<p>最终，这个小小的 <code>config</code> 文件，解决了困扰我许久的部署难题，也让我对网络问题的排查有了更深刻的理解。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/08/%E7%AB%AF%E5%8F%A3443%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3SSH%E8%BF%9E%E6%8E%A5%E8%B6%85%E6%97%B6%E9%97%AE%E9%A2%98/" data-id="cmgxw0zp8000ocwndgl0o9ci0" data-title="排错实录：端口443如何解决SSH连接超时问题" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH/" rel="tag">SSH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AB%AF%E5%8F%A320/" rel="tag">端口20</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AB%AF%E5%8F%A3443/" rel="tag">端口443</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/" rel="tag">网络问题</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" rel="tag">防火墙</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-  </nav>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%92%E9%94%99/">技术排错</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/">数据库笔记</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">算法笔记</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/" rel="tag">DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Debugging/" rel="tag">Debugging</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JOIN/" rel="tag">JOIN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ORDER-BY/" rel="tag">ORDER BY</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PowerShell/" rel="tag">PowerShell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SELECT/" rel="tag">SELECT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/" rel="tag">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS-Code/" rel="tag">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WAPI/" rel="tag">WAPI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WHERE/" rel="tag">WHERE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WLAN/" rel="tag">WLAN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wi-Fi/" rel="tag">Wi-Fi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" rel="tag">二分查找</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" rel="tag">代码规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" rel="tag">入门教程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E5%AD%98%E8%B6%85%E9%99%90/" rel="tag">内存超限</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" rel="tag">博客部署</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%86%97%E4%BD%99/" rel="tag">数据冗余</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" rel="tag">数据库设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" rel="tag">最佳实践</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%9A%E5%8A%A8%E6%95%B0%E7%BB%84/" rel="tag">滚动数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%81%E5%AF%86/" rel="tag">私密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" rel="tag">空间复杂度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%AF%E5%8F%A320/" rel="tag">端口20</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AB%AF%E5%8F%A3443/" rel="tag">端口443</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96/" rel="tag">算法优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" rel="tag">编程基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/" rel="tag">网络问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/" rel="tag">问题求解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" rel="tag">防火墙</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Debugging/" style="font-size: 10px;">Debugging</a> <a href="/tags/Git/" style="font-size: 20px;">Git</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/JOIN/" style="font-size: 10px;">JOIN</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 10px;">LeetCode</a> <a href="/tags/ORDER-BY/" style="font-size: 10px;">ORDER BY</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/SELECT/" style="font-size: 10px;">SELECT</a> <a href="/tags/SQL/" style="font-size: 20px;">SQL</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/VS-Code/" style="font-size: 10px;">VS Code</a> <a href="/tags/WAPI/" style="font-size: 10px;">WAPI</a> <a href="/tags/WHERE/" style="font-size: 10px;">WHERE</a> <a href="/tags/WLAN/" style="font-size: 10px;">WLAN</a> <a href="/tags/Wi-Fi/" style="font-size: 10px;">Wi-Fi</a> <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" style="font-size: 10px;">二分查找</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" style="font-size: 10px;">代码规范</a> <a href="/tags/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/" style="font-size: 10px;">入门教程</a> <a href="/tags/%E5%86%85%E5%AD%98%E8%B6%85%E9%99%90/" style="font-size: 10px;">内存超限</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 10px;">动态规划</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">博客部署</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">学习笔记</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%86%97%E4%BD%99/" style="font-size: 10px;">数据冗余</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 15px;">数据库</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">数据库设计</a> <a href="/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" style="font-size: 10px;">最佳实践</a> <a href="/tags/%E6%BB%9A%E5%8A%A8%E6%95%B0%E7%BB%84/" style="font-size: 10px;">滚动数组</a> <a href="/tags/%E7%A7%81%E5%AF%86/" style="font-size: 10px;">私密</a> <a href="/tags/%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" style="font-size: 10px;">空间复杂度</a> <a href="/tags/%E7%AB%AF%E5%8F%A320/" style="font-size: 10px;">端口20</a> <a href="/tags/%E7%AB%AF%E5%8F%A3443/" style="font-size: 10px;">端口443</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px;">算法</a> <a href="/tags/%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96/" style="font-size: 10px;">算法优化</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 10px;">网络安全</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/" style="font-size: 15px;">网络问题</a> <a href="/tags/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/" style="font-size: 10px;">问题求解</a> <a href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" style="font-size: 10px;">防火墙</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/10/">October 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2025/10/19/hello-world/">Hello World</a>
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
           </li>
+          
         
-          <li>
-            <a href="/2025/10/18/%E6%88%91%E7%9A%84%20DP%20%E6%8E%A2%E9%99%A9%E5%AE%9E%E5%BD%95%EF%BC%9A%E4%BB%8E%E2%80%9C%E4%B8%BA%E4%BB%80%E4%B9%88%E2%80%9D%E5%88%B0%E2%80%9C%E6%88%91%E6%87%82%E4%BA%86%E2%80%9D/">我的 DP 探险实录：从“为什么”到“我懂了”</a>
-          </li>
         
-          <li>
-            <a href="/2025/10/18/DP%20%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%BD%93%E2%80%9C%E7%A9%BA%E9%97%B4%E6%8D%A2%E6%97%B6%E9%97%B4%E2%80%9D%E9%81%87%E5%88%B0%E5%86%85%E5%AD%98%E8%B6%85%E9%99%90/">DP 优化笔记：当“空间换时间”遇到内存超限</a>
-          </li>
-        
-          <li>
-            <a href="/2025/10/15/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">算法学习笔记：二分查找的两种写法与细节</a>
-          </li>
-        
-          <li>
-            <a href="/2025/10/15/SQL%20%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%20'%E8%A1%A8%E5%90%8D.%20%E5%88%97%E5%90%8D'/">SQL 最佳实践：为什么推荐使用 &#39;表名. 列名&#39;</a>
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
     </div>
   </div>
+</nav>
 
   
-</aside>
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="An elegant Material-Design theme for Hexo"></span>
+          
+        </div>
+
         
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
+
       
-      &copy; 2025 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
     </div>
   </div>
-</footer>
+</div>
 
-    </div>
-    <nav id="mobile-nav">
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/10/19/DP%20%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%BD%93%E2%80%9C%E7%A9%BA%E9%97%B4%E6%8D%A2%E6%97%B6%E9%97%B4%E2%80%9D%E9%81%87%E5%88%B0%E5%86%85%E5%AD%98%E8%B6%85%E9%99%90/" target="_self">
+          DP 优化笔记：当“空间换时间”遇到内存超限
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/10/19/DP%20%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%BD%93%E2%80%9C%E7%A9%BA%E9%97%B4%E6%8D%A2%E6%97%B6%E9%97%B4%E2%80%9D%E9%81%87%E5%88%B0%E5%86%85%E5%AD%98%E8%B6%85%E9%99%90/" target="_self">
+        <div>
+          一份关于动态规划（DP）优化的学习笔记，重点讨论了当使用“空间换时间”策略时遇到“内存超限”（Memory Limit Exceeded）问题的解决方案，并详细解释了“滚动数组”技巧的原理和实现。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-10-19 00:00" pubdate>
+              2025-10-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
   
-    <a href="/" class="mobile-nav-link">Home</a>
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
   
-</nav>
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">动态规划</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DP/">#DP</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95%E4%BC%98%E5%8C%96/">#算法优化</a>
+            
+              <a href="/tags/%E6%BB%9A%E5%8A%A8%E6%95%B0%E7%BB%84/">#滚动数组</a>
+            
+              <a href="/tags/%E5%86%85%E5%AD%98%E8%B6%85%E9%99%90/">#内存超限</a>
+            
+              <a href="/tags/%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/">#空间复杂度</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/10/18/%E6%88%91%E7%9A%84%20DP%20%E6%8E%A2%E9%99%A9%E5%AE%9E%E5%BD%95%EF%BC%9A%E4%BB%8E%E2%80%9C%E4%B8%BA%E4%BB%80%E4%B9%88%E2%80%9D%E5%88%B0%E2%80%9C%E6%88%91%E6%87%82%E4%BA%86%E2%80%9D/" target="_self">
+          我的 DP 探险实录：从“为什么”到“我懂了”
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/10/18/%E6%88%91%E7%9A%84%20DP%20%E6%8E%A2%E9%99%A9%E5%AE%9E%E5%BD%95%EF%BC%9A%E4%BB%8E%E2%80%9C%E4%B8%BA%E4%BB%80%E4%B9%88%E2%80%9D%E5%88%B0%E2%80%9C%E6%88%91%E6%87%82%E4%BA%86%E2%80%9D/" target="_self">
+        <div>
+          大家好，我刚刚经历了一场酣畅淋漓的“思维战斗”，对手是——动态规划（DP）。我决定把这次宝贵的经历写下来。这篇笔记并非总结，而是一份忠实还原我学习过程的对话实录。它将包含我提出的每一个问题，以及那些最终让我豁然 KAI 朗的、未经编辑的回答。 探险起点：一张看似简单的“藏宝图”我拿到的题目是这样的：  有 n 只怪物，编号从 1 到 n。对于每只怪物，你都可以选择“放走”或“击败”。  放走第 i
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-10-18 13:30" pubdate>
+              2025-10-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="category-chain-item">算法笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
+            
+              <a href="/tags/Java/">#Java</a>
+            
+              <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">#学习笔记</a>
+            
+              <a href="/tags/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3/">#问题求解</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/10/15/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" target="_self">
+          算法学习笔记：二分查找的两种写法与细节
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/10/15/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" target="_self">
+        <div>
+          好的同学，我们来看新的内容：二分查找。 这是一个非常经典且高效的算法，但同时它也是一个“细节是魔鬼”的算法。很多人觉得懂了，但一写就错。你提供的这篇文章，作者“代码随想录”把二分查找的精髓讲得非常透彻。 他提出了一个核心观点：写二分查找，最重要的是要搞清楚你定义的区间是“闭”的还是“开”的，然后所有的细节都围绕这个定义来展开，形成统一的逻辑。 我们来学习文章中提到的两种主要写法。  写法一：左闭右
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-10-15 11:00" pubdate>
+              2025-10-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="category-chain-item">算法笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+              <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">#二分查找</a>
+            
+              <a href="/tags/LeetCode/">#LeetCode</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/10/15/SQL%20%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%20&#39;%E8%A1%A8%E5%90%8D.%20%E5%88%97%E5%90%8D&#39;/" target="_self">
+          SQL 最佳实践：为什么推荐使用 &#39;表名. 列名&#39;
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/10/15/SQL%20%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%20&#39;%E8%A1%A8%E5%90%8D.%20%E5%88%97%E5%90%8D&#39;/" target="_self">
+        <div>
+          核心问题为什么要把 OrderID 写成 Orders.OrderID？ 直接答案为了避免混淆并让代码更清晰，尤其是在多个关联表拥有相同列名时。  详细解释1. 避免歧义 (最主要的原因) ⚠️ 问题: 想象一下，如果 Customers 表和 Orders 表里都有一个叫做 ID 的列。  Customers 表里的 ID 是客户 ID。 Orders 表里的 ID 是订单 ID。  如果你写
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-10-15 04:34" pubdate>
+              2025-10-15
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/SQL/">#SQL</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>
+            
+              <a href="/tags/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/">#代码规范</a>
+            
+              <a href="/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">#最佳实践</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/10/15/WAPI%E4%B8%8EWIFI/" target="_self">
+          技术科普：什么是 WAPI 及其优缺点
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/10/15/WAPI%E4%B8%8EWIFI/" target="_self">
+        <div>
+          核心优缺点摘要 优点: 安全性高，为无线局域网提供更强的身份认证和数据保密机制，适用于对安全有较高要求的场景。 缺点: 对普通用户影响不大，开启和关闭通常感觉不到明显差异，且可能增加设备耗电，因此如果对安全性没有特殊要求，可以选择不开启。   什么是 WAPI？WAPI 的全称是 无线局域网鉴别与保密基础结构 (WLAN Authentication and Privacy Infrastruct
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-10-15 04:17" pubdate>
+              2025-10-15
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/WAPI/">#WAPI</a>
+            
+              <a href="/tags/WLAN/">#WLAN</a>
+            
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">#网络安全</a>
+            
+              <a href="/tags/Wi-Fi/">#Wi-Fi</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/10/14/SQL%20%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/" target="_self">
+          SQL 核心概念回顾与数据库设计原则
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/10/14/SQL%20%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/" target="_self">
+        <div>
+          这篇笔记整合了 SQL 的基础查询要点和数据库设计的核心原则——“为什么需要分表”，前者是“如何操作”，后者是“为什么这么设计”。  第一部分：SQL 基础查询复习提纲主题: 基本的 SQL 查询 (SELECT, FROM) 使用 WHERE 进行数据筛选 使用 ORDER BY 进行结果排序 聚合函数 (COUNT, SUM, AVG)  摘要本指南涵盖了构成一条基本 SQL 查询的核心要素，
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-10-14 23:48" pubdate>
+              2025-10-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/" class="category-chain-item">数据库笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/SQL/">#SQL</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/">#数据库设计</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%86%97%E4%BD%99/">#数据冗余</a>
+            
+              <a href="/tags/SELECT/">#SELECT</a>
+            
+              <a href="/tags/WHERE/">#WHERE</a>
+            
+              <a href="/tags/ORDER-BY/">#ORDER BY</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/10/14/Hexo%20%E5%8D%9A%E5%AE%A2%20PowerShell%20%E5%8F%91%E5%B8%83%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/" target="_self">
+          Hexo 博客 PowerShell 发布完整流程笔记
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/10/14/Hexo%20%E5%8D%9A%E5%AE%A2%20PowerShell%20%E5%8F%91%E5%B8%83%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B%E7%AC%94%E8%AE%B0/" target="_self">
+        <div>
+          记录一下使用 PowerShell 发布 Hexo 博客的完整步骤，作为操作备份，防止遗忘。假设已经安装好了 Node. Js 和 Git 环境。 整个流程分为三步核心操作：新建文章 -&gt; 生成静态文件 -&gt; 部署到服务器。 第 1 步：启动 PowerShell 并进入博客目录首先，你需要打开 PowerShell 终端，并切换到你的 Hexo 博客所在的根文件夹。  按下 Win
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-10-14 23:09" pubdate>
+              2025-10-14
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Hexo/">#Hexo</a>
+            
+              <a href="/tags/PowerShell/">#PowerShell</a>
+            
+              <a href="/tags/Git/">#Git</a>
+            
+              <a href="/tags/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/">#博客部署</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/10/14/SQL%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%94%A8%E6%8B%BC%E5%9B%BE%E6%B8%B8%E6%88%8F%E7%90%86%E8%A7%A3%20JOIN/" target="_self">
+          SQL 学习笔记：用拼图游戏理解 JOIN
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/10/14/SQL%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%94%A8%E6%8B%BC%E5%9B%BE%E6%B8%B8%E6%88%8F%E7%90%86%E8%A7%A3%20JOIN/" target="_self">
+        <div>
+          🧩 把 JOIN 想象成拼图忘掉代码，我们来玩个游戏。 你有两盒拼图块： 盒子 A (客户表 Customers)  每一块拼图上都有一个 客户 ID 和一个 客户名字。 [ID: 101 | 名字: 张三] [ID: 102 | 名字: 李四]    盒子 B (订单表 Orders)  每一块拼图上都有一个 订单号 和一个 客户 ID。 [订单号: 1 | ID: 101] [订单号: 2
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-10-14 23:01" pubdate>
+              2025-10-14
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/SQL/">#SQL</a>
+            
+              <a href="/tags/JOIN/">#JOIN</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>
+            
+              <a href="/tags/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/">#入门教程</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/09/08/%E7%AB%AF%E5%8F%A3443%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3SSH%E8%BF%9E%E6%8E%A5%E8%B6%85%E6%97%B6%E9%97%AE%E9%A2%98/" target="_self">
+          排错实录：端口443如何解决SSH连接超时问题
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/09/08/%E7%AB%AF%E5%8F%A3443%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3SSH%E8%BF%9E%E6%8E%A5%E8%B6%85%E6%97%B6%E9%97%AE%E9%A2%98/" target="_self">
+        <div>
+          一、遇到的问题：神秘的网络连接失败今天，在我搭建和部署个人博客的过程中，我遇到了一个极其令人困惑的问题。当我满怀信心地在 PowerShell 中运行 hexo deploy 命令时，终端却无情地返回了网络错误：ssh: connect to host github.com port 22: Connection timed out 最奇怪的是，我明明可以正常地用浏览器打开 GitHub 网站，登
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-09-08 14:46" pubdate>
+              2025-09-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%8E%92%E9%94%99/" class="category-chain-item">技术排错</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Hexo/">#Hexo</a>
+            
+              <a href="/tags/Git/">#Git</a>
+            
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/">#网络问题</a>
+            
+              <a href="/tags/SSH/">#SSH</a>
+            
+              <a href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/">#防火墙</a>
+            
+              <a href="/tags/%E7%AB%AF%E5%8F%A3443/">#端口443</a>
+            
+              <a href="/tags/%E7%AB%AF%E5%8F%A320/">#端口20</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/09/08/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95%20(Debugging)%20%E7%9A%84%E6%A0%B8%E5%BF%83%E6%96%B9%E6%B3%95%E4%B8%8E%E6%8A%80%E5%B7%A7/" target="_self">
+          编程学习笔记：代码调试 (Debugging) 的核心方法与技巧
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/09/08/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95%20(Debugging)%20%E7%9A%84%E6%A0%B8%E5%BF%83%E6%96%B9%E6%B3%95%E4%B8%8E%E6%8A%80%E5%B7%A7/" target="_self">
+        <div>
+          第一部分：核心思想——你和计算机的“误会”在你开始学习具体的技巧之前，一定要先理解这篇文章的核心思想，这非常非常重要：  当程序没有按你的预期运行时，几乎总是因为你对代码的理解和计算机实际执行的情况之间存在“误会”。代码永远是忠实地执行你写下的指令，而不是你脑子里想的那个指令。  Debug的过程，其实就是通过各种方法，去看清楚代码实际上是怎么一步一步执行的，从而找到你和计算机之间的那个“误会”到
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-09-08 13:38" pubdate>
+              2025-09-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/" class="category-chain-item">技术分享</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Java/">#Java</a>
+            
+              <a href="/tags/Debugging/">#Debugging</a>
+            
+              <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">#编程基础</a>
+            
+              <a href="/tags/VS-Code/">#VS Code</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     
 
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
 
-<script src="/js/script.js"></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
 
 
-  </div>
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>
